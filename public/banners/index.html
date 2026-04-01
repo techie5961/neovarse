@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetrax - Multiple Income Stream Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0a1f44; /* Navy */
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --light-color: #f8fafc;
+            --text-color: #333;
+            --text-light: #666;
+            --gradient: linear-gradient(135deg, #0a1f44 0%, #1e40af 100%);
+            --gradient-light: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background: white;
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        nav a:hover {
+            color: #a5b4fc;
+        }
+        
+        .cta-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: var(--gradient-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%230a1f44"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%230a1f44"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%230a1f44"/></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            max-width: 900px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .hero-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: white;
+        }
+        
+        .feature-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .feature-description {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .payment-partners {
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .payment-title {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+        
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .payment-icon {
+            font-size: 3.5rem;
+            color: white;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            width: 90px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 200px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .hero-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-icons {
+                gap: 20px;
+            }
+            
+            .payment-icon {
+                font-size: 2.5rem;
+                width: 70px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">MONETRAX</div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Unlock Your Financial Potential Through Diversified Digital Income Streams</h1>
+            <p class="hero-description">Monetrax provides a seamless platform that compensates users for everyday online activities. Whether you're reading articles, developing skills, or engaging with social media, our innovative system transforms your digital engagement into tangible earnings.</p>
+            <div class="hero-buttons">
+                <a href="#" class="hero-button">Start Earning Now</a>
+                <a href="#" class="hero-button secondary">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Monetrax Amazing Features</h2>
+            <div class="features-grid">
+                <!-- Feature cards will be dynamically generated from the banner text -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="payment-partners">
+                <h3 class="payment-title">Our Payment Partners</h3>
+                <div class="payment-icons">
+                    <div class="payment-icon">
+                        <i class="fab fa-cc-visa"></i>
+                    </div>
+                    <div class="payment-icon">
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-logo">MONETRAX</div>
+            
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+                <a href="#">Support</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Monetrax. All rights reserved. Diversify your income streams with our trusted platform.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Feature data from the banner
+        const features = [
+            { 
+                title: "Worldwide Global Recognition", 
+                description: "Our platform is recognized and trusted by users across the globe, providing opportunities for international earnings.",
+                icon: "fas fa-globe-americas"
+            },
+            { 
+                title: "24/7 Customer Support", 
+                description: "Round-the-clock assistance ensures you have help whenever you need it, day or night.",
+                icon: "fas fa-headset"
+            },
+            { 
+                title: "Weekly Salary Payouts", 
+                description: "Consistent weekly earnings for all active users, providing reliable income streams.",
+                icon: "fas fa-calendar-week"
+            },
+            { 
+                title: "Skills Development Courses", 
+                description: "Access to comprehensive courses and skill-building resources to enhance your earning potential.",
+                icon: "fas fa-graduation-cap"
+            },
+            { 
+                title: "Curated Article Library", 
+                description: "Earn while you learn with our extensive library of informative and engaging articles.",
+                icon: "fas fa-newspaper"
+            },
+            { 
+                title: "Trade Sector Opportunities", 
+                description: "Explore specialized opportunities within various trade sectors for diversified income.",
+                icon: "fas fa-chart-line"
+            },
+            { 
+                title: "Unlimited Streaming Earnings", 
+                description: "Stream content and earn unlimited times with our innovative compensation model.",
+                icon: "fas fa-play-circle"
+            },
+            { 
+                title: "Social Media Monetization", 
+                description: "Transform your social media engagement into tangible earnings with our integrated tools.",
+                icon: "fas fa-share-alt"
+            }
+        ];
+
+        // Generate feature cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuresGrid = document.querySelector('.features-grid');
+            
+            features.forEach((feature, index) => {
+                const featureCard = document.createElement('div');
+                featureCard.className = 'feature-card';
+                featureCard.style.animation = `fadeInUp 0.8s ease ${0.1 * index}s both`;
+                
+                featureCard.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="${feature.icon}"></i>
+                    </div>
+                    <h3 class="feature-title">${feature.title}</h3>
+                    <p class="feature-description">${feature.description}</p>
+                `;
+                
+                featuresGrid.appendChild(featureCard);
+            });
+
+            // Add scroll animation to header
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '10px 0';
+                    header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                } else {
+                    header.style.padding = '20px 0';
+                    header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -96,20 +96,26 @@
             </div>
             <form action="{{ url('users/post/neo/translate/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.Translated,'do not notify')" class="w-full translate-form column g-10">
              <input name="_token" type="hidden" value="{{ @csrf_token() }}" class="inp input">
-                <input name="id" type="hidden" value="{{ $translate->id }}" class="inp input">
+                <input name="id" type="hidden" value="{{ $translate->id ?? '' }}" class="inp input">
                 <div style="border:1px solid var(--primary-05);box-shadow:0 0 10px var(--primary-03);background:var(--primary-005)" class="cont h-150 w-full br-10">
-                    <textarea name="word" readonly placeholder="Enter word to translate..." class="inp no-resize border-none bg-transparent h-full w-full input required">{{ $translate->primary }}</textarea>
+                    <textarea name="word" readonly placeholder="Enter word to translate..." class="inp no-resize border-none bg-transparent h-full w-full input required">{{ $translate->primary ?? '' }}</textarea>
                 </div>
-                @if ($translated == 'no')
+                @if ($translated == 'no' && $translate != null)
                     <button class="post translate-btn">Translate</button>
                     @else
-                    <div style="color:gold;background:rgba(255, 215, 0,0.1);border:1px solid gold;" class="w-full h-50 br-10 row align-center justify-center">
+               @if ($translate != null)
+                     
+                        <div style="color:gold;background:rgba(255, 215, 0,0.1);border:1px solid gold;" class="w-full h-50 br-10 row align-center justify-center">
                             You have used your daily free translation,try again tomorrow
                     </div>
+               @endif
                 @endif
-                <div onclick="CreateNotify('success','Translation successfull and gift card wallet credited successfully');spa(event,'{{ url()->current() }}')" class="w-full understood-btn h-50 bg-gold c-black br-10 row align-center justify-center">
+              
+              
+                    <div onclick="CreateNotify('success','Translation successfull and gift card wallet credited successfully');spa(event,'{{ url()->current() }}')" class="w-full understood-btn h-50 bg-gold c-black br-10 row align-center justify-center">
                    Claim Token
                 </div>
+              
             </form>
 
             <div style="border-left:4px solid var(--primary)" class="w-full p-10 bg br-10 column g-10">

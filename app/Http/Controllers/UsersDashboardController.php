@@ -503,11 +503,13 @@ class UsersDashboardController extends Controller
     public function NeoTranslate(){
         
         $translate=DB::table('neo_translate')->inRandomOrder()->first();
+       
         return view('users.neo.translate',[
             'translate' => $translate,
             'translated' => DB::table('translations')->where('user_id',Auth::guard('users')->user()->id)->whereDate('date',Carbon::today())->exists() ? 'yes' : 'no'
         ]);
     }
+    
     
 
 }

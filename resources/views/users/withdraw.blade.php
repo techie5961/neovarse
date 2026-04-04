@@ -51,6 +51,8 @@
                     <option value="activities_balance">Coin Wallet - &#8358;{{ number_format(Auth::guard('users')->user()->activities_balance,2) }}</option>
                     <option value="affiliate_balance">Profit Split Wallet - &#8358;{{ number_format(Auth::guard('users')->user()->affiliate_balance,2) }}</option>
                     <option value="gaming_balance">Game Wallet - &#8358;{{ number_format(Auth::guard('users')->user()->gaming_balance,2) }}</option>
+                     <option value="gaming_balance">GiftCard Wallet - {{ $giftcard_balance }}</option>
+            
                 </select>    
                 </div>
                </div>

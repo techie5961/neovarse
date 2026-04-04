@@ -696,6 +696,11 @@ class AdminsDashboardController extends Controller
         DB::table('skills')->where('id',request('id'))->delete();
         return redirect(url()->previous());
     }
+    // translate delete
+    public function TranslateDelete(){
+        DB::table('neo_translate')->where('id',request('id'))->delete();
+        return redirect(url()->previous());
+    }
      // song delete
     public function DeleteSong(){
         DB::table('songs')->where('id',request('id'))->delete();
@@ -733,6 +738,25 @@ class AdminsDashboardController extends Controller
         });
         return view('admins.stream.music.streams',[
             'streams' => $top_streamers
+        ]);
+    }
+    // add translate
+    public function AddTranslate(){
+        return view('admins.translate.add');
+    }
+    // manage translations
+    public function ManageTranslations(){
+        $total=DB::table('neo_translate')->count();
+        $translate=DB::table('neo_translate')->orderBy('date','desc')->paginate(10);
+        $translate->getCollection()->transform(function($each){
+            $each->frame=Carbon::parse($each->date)->diffForHumans();
+            $each->name=$each->uniqid;
+
+            return $each;
+        });
+        return view('admins.translate.manage',[
+            'total' => $total,
+            'translate' => $translate
         ]);
     }
 }

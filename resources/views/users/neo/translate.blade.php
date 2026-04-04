@@ -13,6 +13,15 @@
              font-size:1.5rem;
        
         }  
+        .translate-form .understood-btn{
+            display:none !important;
+        }
+        .translate-form.active .understood-btn{
+            display:flex !important;
+        }
+        .translate-form.active .translate-btn{
+            display:none !important;
+        }
     </style>
 @endsection
 @section('main')
@@ -67,7 +76,7 @@
                     </div>
                     <div class="column g-5">
                         <span style="color:hsl(var(--primary-hsl),50%,80%)">DAILY TRANSLATION</span>
-                     <strong class="desc c-primary">Available</strong>
+                     <strong class="desc c-primary">{{ $translated == 'no' ? 'Available' : 'Not Available' }}</strong>
                     </div>
                 </div>
                 <span class="opacity-07 row align-center g-5">
@@ -85,11 +94,22 @@
                 </span>
                 <span class="font-1">TRANSLATION STUDIO</span>
             </div>
-            <form action="" class="w-full">
+            <form action="{{ url('users/post/neo/translate/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.Translated,'do not notify')" class="w-full translate-form column g-10">
+             <input name="_token" type="hidden" value="{{ @csrf_token() }}" class="inp input">
+                <input name="id" type="hidden" value="{{ $translate->id }}" class="inp input">
                 <div style="border:1px solid var(--primary-05);box-shadow:0 0 10px var(--primary-03);background:var(--primary-005)" class="cont h-150 w-full br-10">
-                    <textarea placeholder="Enter word to translate..." class="inp no-resize border-none bg-transparent h-full w-full input required"></textarea>
+                    <textarea name="word" readonly placeholder="Enter word to translate..." class="inp no-resize border-none bg-transparent h-full w-full input required">{{ $translate->primary }}</textarea>
                 </div>
-                <button class="post">Translate</button>
+                @if ($translated == 'no')
+                    <button class="post translate-btn">Translate</button>
+                    @else
+                    <div style="color:gold;background:rgba(255, 215, 0,0.1);border:1px solid gold;" class="w-full h-50 br-10 row align-center justify-center">
+                            You have used your daily free translation,try again tomorrow
+                    </div>
+                @endif
+                <div onclick="CreateNotify('success','Translation successfull and gift card wallet credited successfully');spa(event,'{{ url()->current() }}')" class="w-full understood-btn h-50 bg-gold c-black br-10 row align-center justify-center">
+                   Claim Token
+                </div>
             </form>
 
             <div style="border-left:4px solid var(--primary)" class="w-full p-10 bg br-10 column g-10">
@@ -98,8 +118,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M132,24A100.11,100.11,0,0,0,32,124v84a16,16,0,0,0,16,16h84a100,100,0,0,0,0-200ZM88,140a12,12,0,1,1,12-12A12,12,0,0,1,88,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,132,140Zm44,0a12,12,0,1,1,12-12A12,12,0,0,1,176,140Z"></path></svg>
 
                     </span>
-                    <span class="font-1">Your translation will appear here...</span>
+                    <span class="font-1 translation-span">Your translation will appear here...</span>
+                  
                 </div>
+                  <span class="font-1 language-span"></span>
                 <div class="c-primary">
                     <span>✨</span>
                     <small>Translate a word, then claim your daily token rewards straight into your giftcard wallet.</small>
@@ -114,4 +136,18 @@
         </div>
      
     </section>
+@endsection
+@section('js')
+    <script class="js">
+        window.MyFunc = {
+            Translated : function(response){
+                let data=JSON.parse(response);
+                if(data.status == 'success'){
+                    document.querySelector('.translation-span').innerHTML=data.translation;
+                     document.querySelector('.language-span').innerHTML=data.language;
+                     document.querySelector('.translate-form').classList.add('active');
+                }
+            }
+        }
+    </script>
 @endsection

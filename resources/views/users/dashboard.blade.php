@@ -148,6 +148,13 @@
             <div class="column g-10">
                 <span class="opacity-06">Profit Split Wallet</span>
                 <strong style="font-size:2rem;">&#8358;{{ number_format(Auth::guard('users')->user()->affiliate_balance,2) }}</strong>
+          <div class="row font-1 opacity-07 align-center g-2">
+             <span class="h-fit column">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M225.24,150.73a12,12,0,0,1-1.58,16.9C205.49,182.7,189.06,188,174.15,188c-19.76,0-36.86-9.29-51.88-17.44-25.06-13.62-44.86-24.37-74.61.3a12,12,0,1,1-15.32-18.48c42.25-35,75-17.23,101.39-2.92,25.06,13.61,44.86,24.37,74.61-.31A12,12,0,0,1,225.24,150.73ZM47.66,106.85c29.75-24.68,49.55-13.92,74.61-.31,15,8.16,32.12,17.45,51.88,17.45,14.91,0,31.34-5.3,49.51-20.37a12,12,0,0,0-15.32-18.48c-29.75,24.67-49.55,13.92-74.61.3-26.35-14.3-59.14-32.11-101.39,2.93a12,12,0,0,0,15.32,18.48Z"></path></svg>
+            
+           </span>
+                <span>${{ number_format(ToDollars(Auth::guard('users')->user()->affiliate_balance),2) }}</span>
+          </div>
             </div>
             <div class="bg-primary-transparent p-10 h-50 column align-center justify-center w-50 br-10 c-primary no-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M93.82,116.64A12,12,0,0,0,100,106.15V40.74A12,12,0,0,0,83,29.83,108.26,108.26,0,0,0,20,128c0,3.37.16,6.76.47,10.1a12,12,0,0,0,17.76,9.38ZM76,62.06v37L44.81,116.36A84.39,84.39,0,0,1,76,62.06ZM128,20a12,12,0,0,0-12,12v89.53L39.18,166.27a12,12,0,0,0-4.3,16.46A108,108,0,1,0,128,20Zm0,192a84.47,84.47,0,0,1-65.57-31.5L134,138.79a12,12,0,0,0,6-10.37V44.85A84,84,0,0,1,128,212Z"></path></svg>
@@ -176,6 +183,13 @@
             <div class="column g-10">
                 <span class="opacity-06">Game Wallet</span>
                 <strong style="font-size:1.5rem;">&#8358;{{ number_format(Auth::guard('users')->user()->gaming_balance,2) }}</strong>
+              <div class="row font-1 opacity-07 align-center g-2">
+             <span class="h-fit column">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M225.24,150.73a12,12,0,0,1-1.58,16.9C205.49,182.7,189.06,188,174.15,188c-19.76,0-36.86-9.29-51.88-17.44-25.06-13.62-44.86-24.37-74.61.3a12,12,0,1,1-15.32-18.48c42.25-35,75-17.23,101.39-2.92,25.06,13.61,44.86,24.37,74.61-.31A12,12,0,0,1,225.24,150.73ZM47.66,106.85c29.75-24.68,49.55-13.92,74.61-.31,15,8.16,32.12,17.45,51.88,17.45,14.91,0,31.34-5.3,49.51-20.37a12,12,0,0,0-15.32-18.48c-29.75,24.67-49.55,13.92-74.61.3-26.35-14.3-59.14-32.11-101.39,2.93a12,12,0,0,0,15.32,18.48Z"></path></svg>
+            
+           </span>
+                <span>${{ number_format(ToDollars(Auth::guard('users')->user()->gaming_balance),2) }}</span>
+          </div>
             </div>
             <div class="bg-primary-transparent p-10 h-40 column align-center justify-center w-40 br-10 c-primary no-shrink">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M176,116H152a12,12,0,0,1,0-24h24a12,12,0,0,1,0,24ZM104,92h-4V88a12,12,0,0,0-24,0v4H72a12,12,0,0,0,0,24h4v4a12,12,0,0,0,24,0v-4h4a12,12,0,0,0,0-24ZM244.76,202.94a40,40,0,0,1-61,5.35,7,7,0,0,1-.53-.56L144.67,164H111.33L72.81,207.73c-.17.19-.35.38-.53.56A40,40,0,0,1,4.62,173.05a1.18,1.18,0,0,1,0-.2L21,88.79A63.88,63.88,0,0,1,83.88,36H172a64.08,64.08,0,0,1,62.93,52.48,1.8,1.8,0,0,1,0,.19l16.36,84.17a1.77,1.77,0,0,1,0,.2A39.74,39.74,0,0,1,244.76,202.94ZM172,140a40,40,0,0,0,0-80H83.89A39.9,39.9,0,0,0,44.62,93.06a1.55,1.55,0,0,0,0,.21l-16.34,84a16,16,0,0,0,13,18.44,16.07,16.07,0,0,0,13.86-4.21L96.9,144.07a12,12,0,0,1,9-4.07Zm55.76,37.31-7-35.95a63.84,63.84,0,0,1-44.27,22.46l24.41,27.72a16,16,0,0,0,26.85-14.23Z"></path></svg>
@@ -189,10 +203,27 @@
         {{-- COIN WALLET/ACTIVITIES WALLET --}}
              <div data-dot='coin-wallet-dot' class="w-full balance-div column g-10 p-10 br-10">
          <div class="content">
-             <div class="w-full row g-10 space-between">
+             <div class="w-full row g-10 space
+             Coin Wallet
+             ₦530.00
+             $0.53
+             Your earnings from daily platform activities
+             GiftCard Wallet
+             $0.10
+             Your gift card wallet balance
+             Daily Claim Wallet
+             ₦0.00
+             Your earnnigs from daily 30 minutes cl-between">
             <div class="column g-10">
                 <span class="opacity-06">Coin Wallet</span>
                 <strong style="font-size:1.5rem;">&#8358;{{ number_format(Auth::guard('users')->user()->activities_balance,2) }}</strong>
+              <div class="row font-1 opacity-07 align-center g-2">
+             <span class="h-fit column">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M225.24,150.73a12,12,0,0,1-1.58,16.9C205.49,182.7,189.06,188,174.15,188c-19.76,0-36.86-9.29-51.88-17.44-25.06-13.62-44.86-24.37-74.61.3a12,12,0,1,1-15.32-18.48c42.25-35,75-17.23,101.39-2.92,25.06,13.61,44.86,24.37,74.61-.31A12,12,0,0,1,225.24,150.73ZM47.66,106.85c29.75-24.68,49.55-13.92,74.61-.31,15,8.16,32.12,17.45,51.88,17.45,14.91,0,31.34-5.3,49.51-20.37a12,12,0,0,0-15.32-18.48c-29.75,24.67-49.55,13.92-74.61.3-26.35-14.3-59.14-32.11-101.39,2.93a12,12,0,0,0,15.32,18.48Z"></path></svg>
+            
+           </span>
+                <span>${{ number_format(ToDollars(Auth::guard('users')->user()->activities_balance),2) }}</span>
+          </div>
             </div>
             <div class="bg-primary-transparent p-10 h-40 column align-center justify-center w-40 br-10 c-primary no-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M128,20a12,12,0,0,0-12,12V88a12,12,0,0,0,12,12,28,28,0,1,1-24.26,14A12,12,0,0,0,99.35,97.6l-48.5-28A12,12,0,0,0,34.46,74,108,108,0,1,0,128,20ZM50,96.81l28.2,16.28A52.08,52.08,0,0,0,76,128c0,.5,0,1,0,1.5l-31.43,8.42A83.21,83.21,0,0,1,44,128,84.35,84.35,0,0,1,50,96.81Zm.83,64.3,31.43-8.43A52.2,52.2,0,0,0,116,178.59v32.54A84.26,84.26,0,0,1,50.81,161.11Zm89.19,50V178.59A52,52,0,0,0,140,77.4V44.85a84,84,0,0,1,0,166.28Z"></path></svg>
@@ -209,7 +240,7 @@
              <div class="w-full row g-10 space-between">
             <div class="column g-10">
                 <span class="opacity-06">GiftCard Wallet</span>
-                <strong style="font-size:1.5rem;">&#8358;{{ number_format(Auth::guard('users')->user()->giftcard_balance,2) }}</strong>
+                <strong style="font-size:1.5rem;">{{ $giftcard_balance }}</strong>
             </div>
             <div class="bg-primary-transparent p-10 h-40 column align-center justify-center w-40 br-10 c-primary no-shrink">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16h60a4,4,0,0,0,4-4V120H40V88h80v32h16V88h80v32H136v92a4,4,0,0,0,4,4h60a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM84.51,59a13.69,13.69,0,0,1-4.5-10A16.62,16.62,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92C109.71,70.39,94,67.43,84.51,59Zm87,0c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08,13.69,13.69,0,0,1,171.49,59Z"></path></svg>
@@ -226,7 +257,7 @@
              <div class="w-full row g-10 space-between">
             <div class="column g-10">
                 <span class="opacity-06">Daily Claim Wallet</span>
-                <strong style="font-size:1.5rem;">&#8358;{{ number_format(Auth::guard('users')->user()->dailyclaim_balance,2) }}</strong>
+                <strong style="font-size:1.5rem;">{{ number_format(Auth::guard('users')->user()->dailyclaim_balance) }} Coins</strong>
             </div>
             <div class="bg-primary-transparent p-10 h-40 column align-center justify-center w-40 br-10 c-primary no-shrink">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>

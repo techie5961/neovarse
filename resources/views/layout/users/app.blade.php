@@ -104,25 +104,10 @@ footer .child .f-links.active{
 }
 
 
-      @media(min-width:800px){
-        nav{
-            width:30%;
-           
-        }
-        nav section.nav{
-            width:100%;
-            border-right:1px solid var(--bg);
-        }
-        main,footer,header{
-            width:calc(100% - 30%) !important;
-           
-            margin-left:30%;
-        }
-      }
-      header{
+  header{
         left:30% !important;
       }
-      .profile-icon{
+      .profile-icon,.currency-icon{
         position:relative;
         height:100%;
         display:flex;
@@ -131,7 +116,7 @@ footer .child .f-links.active{
         justify-content: center;
         width:fit-content;
       }
-      .profile-links{
+      .profile-links,.currency-links{
         position:absolute;
         left:50%;
         transform:translateX(-50%);
@@ -145,7 +130,7 @@ footer .child .f-links.active{
         display:none;
 
       }
-      .profile-links.active{
+      .profile-links.active,.currency-links.active{
         display:flex;
         flex-direction:column;
       }
@@ -243,6 +228,23 @@ footer .child .f-links.active{
         display:flex;
       }
    
+
+      @media(min-width:800px){
+        nav{
+            width:30%;
+           
+        }
+        nav section.nav{
+            width:100%;
+            border-right:1px solid var(--bg);
+        }
+        main,footer,header{
+            width:calc(100% - 30%) !important;
+           
+            margin-left:30%;
+        }
+      }
+    
     </style>
     @yield('css')
 </head>
@@ -257,8 +259,9 @@ footer .child .f-links.active{
        
         <img src="{{ config('settings.site_logo') }}" alt="Logo" class="h-30 pc-pointer" onclick="window.location.href='{{ url('/') }}'">
         
-        
-      <div class="row profile-icon align-center g-10 m-left-auto">
+        <div class="row m-left-auto g-10 align-center">
+
+  <div class="row profile-icon align-center g-10">
           <div onclick="
           if(this.closest('.profile-icon').querySelector('.profile-links').classList.contains('active')){
           this.closest('.profile-icon').querySelector('.profile-links').classList.remove('active');
@@ -301,6 +304,48 @@ footer .child .f-links.active{
             </div>
            </div>
       </div>
+
+
+        <div class="row display-none currency-icon align-center g-10">
+          <div onclick="
+          if(this.closest('.currency-icon').querySelector('.currency-links').classList.contains('active')){
+          this.closest('.currency-icon').querySelector('.currency-links').classList.remove('active');
+          }else{
+          this.closest('.currency-icon').querySelector('.currency-links').classList.add('active');
+          }
+            " class="no-shrink no-select perfect-square p-10 br-10 column align-center justify-center">
+              <div class="row align-center g-5"><span>USD</span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"></path></svg>
+
+              </span>
+            </div>
+            </div>
+            {{-- PROFILE LINKS --}}
+           <div class="currency-links c-text">
+            <div onclick="this.closest('.profile-icon').querySelector('.profile-links').classList.remove('active');spa(event,'{{ url('users/account/settings') }}')" style="border-bottom:1px solid rgba(var(--rgt),0.1)" class="row no-select pointer align-center w-full g-10 p-10">
+              <span>
+               $
+              </span>
+              <span class="ws-nowrap">USD</span>
+            </div>
+             <div onclick="this.closest('.profile-icon').querySelector('.profile-links').classList.remove('active');spa(event,'{{ url('users/security/settings') }}')" style="border-bottom:1px solid rgba(var(--rgt),0.1)" class="row no-select pointer align-center w-full g-10 p-10">
+              <span>
+             ₦
+              </span>
+              <span class="ws-nowrap">NGN</span>
+            </div>
+            
+           </div>
+      </div>
+
+
+
+        </div>
+    
+
+
+       
       {{-- mode switch --}}
      <div data-link="{{ url('users/get/site/mode/process?link=') }}" onclick="SwitchMode(this,'{{ asset('vitecss/css/light.css?v='.config('versions.vite_version').'') }}','{{ asset('vitecss/css/app.css?v='.config('versions.vite_version').'') }}')" class="mode-switch {{ str_contains($mode_link,'light.css') ? 'active' : '' }}">
       <div class="child">
@@ -695,6 +740,8 @@ window.onload=function(){
   document.querySelector('main').style.paddingBottom=max_bottom - document.querySelector('.home-nav').getBoundingClientRect().top + 'px'; 
 //  alert(document.querySelector('header').getBoundingClientRect().bottom + 'px')
   document.querySelector('.profile-links').style.top=(document.querySelector('.profile-icon').getBoundingClientRect().height + 15) + 'px';
+   document.querySelector('.currency-links').style.top=(document.querySelector('.currency-icon').getBoundingClientRect().height + 15) + 'px';
+ 
   // document.querySelector('main').style.paddingBottom=document.querySelector('footer').offsetHeight + 'px';
 }
     </script>

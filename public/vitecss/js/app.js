@@ -76,7 +76,7 @@ function IsJSONABLE(data){
     }
 }
 // post request
-async function PostRequest(event,element,callback=null){
+async function PostRequest(event,element,callback=null,do_not_notify=null){
   try{
       event.preventDefault();
  let inputs=element.querySelectorAll('.inp.required');
@@ -150,7 +150,9 @@ async function PostRequest(event,element,callback=null){
         
         if(IsJSONABLE(data)){
             let json=JSON.parse(data);
-            CreateNotify(json.status,json.message);
+            if(!do_not_notify){
+                CreateNotify(json.status,json.message);
+            }
         }else{
             CreateNotify('error',data);
         }

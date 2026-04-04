@@ -239,6 +239,7 @@ class UserPostRequestController extends Controller
             'activities_balance' => 'Coin Wallet',
             'affiliate_balance' => 'Profit Split Wallet',
             'gaming_balance' => 'Game Wallet',
+            'giftcard_balance' => 'Gift Card Wallet'
         ];
 
             //check if wallet not selected
@@ -499,5 +500,38 @@ class UserPostRequestController extends Controller
             'status' => 'success'
         ]);
     }
-   
+    // neo translate
+    public function NeoTranslate(){
+        $data=DB::table('neo_translate')->where('id',request('id'))->first();
+        DB::table('translations')->insert([
+    'user_id' => Auth::guard('users')->user()->id,
+    'translate_id' => request('id'),
+    'updated' => Carbon::now(),
+    'date' => Carbon::now()
+        ]);
+        DB::table('users')->where('id',Auth::guard('users')->user()->id)->update([
+            'giftcard_balance' => json_decode(Auth::guard('users')->user()->package)->neo_translate ?? '100'
+        ]);
+        DB::table('transactions')->insert([
+             'uniqid' => strtoupper(uniqid('trx')),
+            'user_id' => Auth::guard('users')->user()->id,
+            'type' => 'Neo Translate',
+            'class' => 'credit',
+            'amount' => json_decode(Auth::guard('users')->user()->package)->neo_translate ?? '100',
+            'svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z"></path></svg>',
+            'json' => json_encode([
+                'data' => '{}',
+                'wallet' => 'giftcard_wallet'
+            ]),
+            'status' => 'success',
+            'updated' => Carbon::now(),
+            'date' => Carbon::now()
+        ]);
+        return response()->json([
+            'translation' => $data->translation,
+            'language' => ucfirst($data->language),
+            'message' => 'Translation successfull',
+             'status' => 'success'
+        ]);
+    }   
 }

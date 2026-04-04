@@ -220,6 +220,9 @@ Route::prefix('users')->group(function(){
         Route::post('update/profile/process',[
             UserPostRequestController::class,'UpdateProfile'
         ]);
+        Route::post('neo/translate/process',[
+            UserPostRequestController::class,'NeoTranslate'
+        ]);
        
     });
 });
@@ -372,6 +375,9 @@ Route::prefix('admins')->group(function(){
     Route::get('skills/delete',[
         AdminsDashboardController::class,'SkillsDelete'
     ]);
+     Route::get('translate/delete',[
+        AdminsDashboardController::class,'TranslateDelete'
+    ]);
      Route::get('song/delete',[
         AdminsDashboardController::class,'DeleteSong'
     ]);
@@ -388,6 +394,12 @@ Route::prefix('admins')->group(function(){
         // view streams
         Route::get('music/stream/view',[
            AdminsDashboardController::class,'ViewStreams'
+        ]);
+        Route::get('translate/add',[
+            AdminsDashboardController::class,'AddTranslate'
+        ]);
+        Route::get('translate/manage',[
+            AdminsDashboardController::class,'ManageTranslations'
         ]);
 
 
@@ -483,6 +495,10 @@ Route::prefix('get')->group(function(){
         // add song
         Route::post('add/song/process',[
             AdminsPostRequestController::class,'AddSong'
+        ]);
+        // add translate
+        Route::post('add/translation/process',[
+            AdminsPostRequestController::class,'AddTranslate'
         ]);
       
     });

@@ -50,3 +50,14 @@ function ConvertCurrency($amount, $from, $to) {
 
     return $converted;
 }
+
+
+function ToDollars($amount){
+      $rate=1000;
+      return $amount/$rate;
+}
+
+function ToNaira($amount){
+      $rate=1000;
+      return $rate*$amount;
+}

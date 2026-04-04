@@ -342,6 +342,29 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                            
                       </div>
                 </div>
+                  <div class="nav-group w-full column">
+                     <a onclick="
+                     let child=this.closest('.nav-group').querySelector('.nav-child');
+                     if(child.classList.contains('display-none')){
+                        child.classList.remove('display-none');
+                        this.closest('.nav-group').querySelector('.main-a .chevron').classList.add('rotate-90');
+
+                     }else{
+                     child.classList.add('display-none');
+                     this.closest('.nav-group').querySelector('.main-a .chevron').classList.remove('rotate-90');
+
+                    }
+                     " class="p-10 w-full main-a row g-5 no-u c-black" >
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M250.73,210.63l-56-112a12,12,0,0,0-21.46,0l-20.52,41A84.2,84.2,0,0,1,114,126.22,107.48,107.48,0,0,0,139.33,68H160a12,12,0,0,0,0-24H108V32a12,12,0,0,0-24,0V44H32a12,12,0,0,0,0,24h83.13A83.69,83.69,0,0,1,96,110.35,84,84,0,0,1,83.6,91a12,12,0,1,0-21.81,10A107.55,107.55,0,0,0,78,126.24,83.54,83.54,0,0,1,32,140a12,12,0,0,0,0,24,107.47,107.47,0,0,0,64-21.07,108.4,108.4,0,0,0,45.39,19.44l-24.13,48.26a12,12,0,1,0,21.46,10.73L151.41,196h65.17l12.68,25.36a12,12,0,1,0,21.47-10.73ZM163.41,172,184,130.83,204.58,172Z"></path></svg>
+                       Neo Translate
+                      <svg class="m-left-auto chevron transition-ease-half" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="CurrentColor" viewBox="0 0 256 256"><path d="M141.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L124.69,128,50.34,53.66A8,8,0,0,1,61.66,42.34l80,80A8,8,0,0,1,141.66,133.66Zm80-11.32-80-80a8,8,0,0,0-11.32,11.32L204.69,128l-74.35,74.34a8,8,0,0,0,11.32,11.32l80-80A8,8,0,0,0,221.66,122.34Z"></path></svg>
+                      </a> 
+                      <div style="width:calc(100% - 10px)" class="nav-child display-none m-left-10 border-left-4 border-color-bg bg-primary-transparent w-full column">
+                        <a class="p-10 w-full row g-5 no-u c-black" href="{{ url('admins/translate/add') }}">Add New Translate</a>
+                          <a class="p-10 w-full row g-5 no-u c-black" href="{{ url('admins/translate/manage') }}">Manage Translations</a>
+                           
+                      </div>
+                </div>
                    <div class="nav-group w-full column">
                      <a onclick="
                      let child=this.closest('.nav-group').querySelector('.nav-child');

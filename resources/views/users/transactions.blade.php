@@ -53,7 +53,7 @@
                {{-- TRANSACTION STATUS AND AMOUNT --}}
                <div class="column align-center g-2">
             
-                  <strong class="font-1">{{ $data->class == 'credit' ? '+' : '-' }} {!! Currency(Auth::guard('users')->user()->id)  !!}{{ number_format($data->amount,2) }}</strong> 
+                  <strong class="font-1">{{ $data->class == 'credit' ? '+' : '-' }} {{ $data->currency }}{{ number_format($data->amount,2) }}</strong> 
              
                 <div class="row status m-left-auto {{ $data->status == 'success' ? 'green' : ($data->status == 'rejected' ? 'red' : 'gold') }}">{{ $data->status }}</div>
                </div>

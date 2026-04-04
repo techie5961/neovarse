@@ -413,5 +413,21 @@ class AdminsPostRequestController extends Controller
             }
         }
     }
+    // add translate
+    public function AddTranslate(){
+        DB::table('neo_translate')->insert([
+            'uniqid' => Str::random(12),
+            'primary' => request('primary'),
+            'translation' => request('translation'),
+            'language' => request('language'),
+            'status' => 'active',
+            'updated' => Carbon::now(),
+            'date' => Carbon::now()
+        ]);
+        return response()->json([
+            'message' => 'Translation added successfully',
+            'status' => 'success'
+        ]);
+    }
   
 }

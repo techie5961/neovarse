@@ -23,6 +23,7 @@ class UsersAuthCheckerMiddleware
         if(!Auth::guard('users')->check()){
             return redirect()->to('login');
         }
+        View::share('giftcard_balance','$'.number_format(ToDollars(Auth::guard('users')->user()->giftcard_balance),2));
         View::share('mode_link',Session::get('mode_link',asset('vitecss/css/app.css?v='.config('versions.vite_version').'')));
         return $next($request);
     }

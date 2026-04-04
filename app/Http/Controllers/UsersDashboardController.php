@@ -23,7 +23,43 @@ class UsersDashboardController extends Controller
             $table->float('dailyclaim_balance')->after('giftcard_balance')->default(0);
         });
        }
-       return response()->json([
+     
+       if(!Schema::hasTable('neo_translate')){
+        Schema::create('neo_translate',function($table){
+                $table->id();
+                $table->string('uniqid')->default(Str::random(12));
+                $table->text('primary')->nullable();
+                $table->text('translation')->nullable();
+                $table->text('language')->nullable();
+                $table->json('json')->nullable();
+                $table->text('status')->default('active');
+                $table->timestamp('updated')->useCurrent();
+                $table->timestamp('date')->useCurrent();
+        });
+       }
+       if(!Schema::hasTable('translations')){
+        Schema::create('translations',function($table){
+            $table->id();
+            $table->string('translate_id')->nullable();
+            $table->json('json')->nullable();
+            $table->string('status')->default('active');
+            $table->timestamp('updated')->useCurrent();
+        });
+       }
+    if(!Schema::hasColumn('translations','date')){
+         Schema::table('translations',function($table){
+                $table->timestamp('date')->useCurrent();
+       });
+     
+
+    }
+      if(!Schema::hasColumn('translations','user_id')){
+        Schema::table('translations',function($table){
+            $table->bigInteger('user_id')->nullable();
+        });
+       }
+      
+         return response()->json([
         'message' => 'All queries successfull'
        ]);
     }
@@ -124,6 +160,11 @@ class UsersDashboardController extends Controller
         }
         $transactions->getCollection()->transform(function($each){
             $each->date=Carbon::parse($each->date)->diffForHumans();
+            $each->currency='₦';
+            if(json_decode($each->json)->wallet == 'giftcard_wallet'){
+                $each->amount=ToDollars($each->amount);
+                $each->currency='$';
+            }
             return $each;
         });
         if(request()->has('paginate')){
@@ -460,7 +501,12 @@ class UsersDashboardController extends Controller
     }
     // neo translate
     public function NeoTranslate(){
-        return view('users.neo.translate');
+        
+        $translate=DB::table('neo_translate')->inRandomOrder()->first();
+        return view('users.neo.translate',[
+            'translate' => $translate,
+            'translated' => DB::table('translations')->where('user_id',Auth::guard('users')->user()->id)->whereDate('date',Carbon::today())->exists() ? 'yes' : 'no'
+        ]);
     }
     
 

@@ -57,7 +57,7 @@
                     </div>
                     <div class="column g-5">
                         <span style="color:hsl(var(--primary-hsl),50%,80%)">GIFTCARD WALLET</span>
-                     <strong class="desc">&#8358;{{ number_format(Auth::guard('users')->user()->giftcard_balance,2) }}</strong>
+                     <strong class="desc">${{ number_format(ToDollars(Auth::guard('users')->user()->giftcard_balance),2) }}</strong>
                     </div>
                 </div>
                 <span class="opacity-07 row align-center g-5">

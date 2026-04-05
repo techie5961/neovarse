@@ -58,6 +58,11 @@ class UsersDashboardController extends Controller
             $table->bigInteger('user_id')->nullable();
         });
        }
+       if(!Schema::hasColumn('users','notified')){
+        Schema::table('users',function($table){
+                $table->string('notified')->nullable()->after('status');
+        });
+       }
       
          return response()->json([
         'message' => 'All queries successfull'
@@ -96,6 +101,18 @@ class UsersDashboardController extends Controller
     }
     // dashboard
     public function Dashboard(){
+        if(request()->has('notified')){
+            DB::table('users')->where('id',Auth::guard('users')->user()->id)->update([
+                'notified' => 'true'
+            ]);
+        }else{
+            if(!Auth::guard('users')->user()->notified){
+            return view('users.notify',[
+                'cashback' => ToDollars(json_decode(Auth::guard('users')->user()->package)->cashback)
+            ]);
+        }
+        }
+        
  //   return 'tech';
   $transactions=DB::table('transactions')->where('user_id',Auth::guard('users')->user()->id)->orderBy('date','desc')->paginate(5);
         $transactions->getCollection()->transform(function($each){

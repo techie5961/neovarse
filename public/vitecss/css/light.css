@@ -45,7 +45,7 @@
     /* primary font */
     --font:'montserrat';
     /* background color */
-    --bg:whitesmoke;
+    --bg:#ffefb3;
     /* bg secondary */
     --bg-secondary:rgb(108,92,230);
     /* bg secondary dark */
@@ -53,9 +53,9 @@
      /* bg secondary light */
     --bg-secondary-light:rgba(108, 92, 230,0.1);
     /* light background color */
-    --bg-light:white;
+    --bg-light:#fff7dc;
     /* lighter bg */
-    --bg-lighter:white;
+    --bg-lighter:#f8f6ec;
     /* dark background color */
     --bg-dark:rgb(108, 92, 230);
     /* text color */

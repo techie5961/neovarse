@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png?v=1.1') }}" />
 <link rel="manifest" href="{{ asset('favicon/site.webmanifest?v=1.1') }}" />
 <link rel="stylesheet" href="{{ asset('vitecss/fonts/fonts.css?v='.config('versions.vite_version').'') }}">
-<link rel="stylesheet" class="mode_css" href="{{ $mode_link }}">
+<link rel="stylesheet" class="mode_css" href="{{ $mode_link }}{{ config('versions.vite_version') }}">
     <title>{{ config('app.name') }} | Users | @yield('title')</title>
     <style>
       
@@ -429,6 +429,21 @@ footer .child .f-links.active{
                   </a> 
                @endif
               
+                 {{-- NEW NAV LINK --}}
+                 <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
+                  spa(event,'{{ url('users/recharge') }}');
+                  this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
+                  document.body.classList.remove('overflow-hidden');
+                  ">
+                 <div class="icon-group">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M224,44H32A20,20,0,0,0,12,64V192a20,20,0,0,0,20,20H224a20,20,0,0,0,20-20V64A20,20,0,0,0,224,44Zm-4,24V88H36V68ZM36,188V112H220v76Zm172-24a12,12,0,0,1-12,12H164a12,12,0,0,1,0-24h32A12,12,0,0,1,208,164Zm-68,0a12,12,0,0,1-12,12H116a12,12,0,0,1,0-24h12A12,12,0,0,1,140,164Z"></path></svg>
+
+
+                   </div>
+
+                   Fund game wallet
+                </a>
+
                   {{-- NEW NAV LINK --}}
                  <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
                   spa(event,'{{ url('users/tasks') }}');
@@ -442,6 +457,22 @@ footer .child .f-links.active{
                    </div>
 
                    Tasks
+                </a>
+
+                   {{-- NEW NAV LINK --}}
+                 <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
+                  spa(event,'{{ url('users/neo/chat') }}');
+                  this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
+                  document.body.classList.remove('overflow-hidden');
+                  ">
+                 <div class="icon-group">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M84,100A12,12,0,0,1,96,88h64a12,12,0,0,1,0,24H96A12,12,0,0,1,84,100Zm12,52h64a12,12,0,0,0,0-24H96a12,12,0,0,0,0,24ZM236,56V184a20,20,0,0,1-20,20H157.89l-12.52,21.92a20,20,0,0,1-34.74,0L98.11,204H40a20,20,0,0,1-20-20V56A20,20,0,0,1,40,36H216A20,20,0,0,1,236,56Zm-24,4H44V180h61.07a12,12,0,0,1,10.42,6.05L128,207.94l12.51-21.89A12,12,0,0,1,150.93,180H212Z"></path></svg>
+
+                  
+
+                   </div>
+
+                   Neo Chat
                 </a>
                   {{-- NEW NAV LINK --}}
                  <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
@@ -457,6 +488,53 @@ footer .child .f-links.active{
                    </div>
 
                    Neo Stream
+                </a>
+
+                   {{-- NEW NAV LINK --}}
+                 <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
+                  spa(event,'{{ url('users/neo/translate') }}');
+                  this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
+                  document.body.classList.remove('overflow-hidden');
+                  ">
+                 <div class="icon-group">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M250.73,210.63l-56-112a12,12,0,0,0-21.46,0l-20.52,41A84.2,84.2,0,0,1,114,126.22,107.48,107.48,0,0,0,139.33,68H160a12,12,0,0,0,0-24H108V32a12,12,0,0,0-24,0V44H32a12,12,0,0,0,0,24h83.13A83.69,83.69,0,0,1,96,110.35,84,84,0,0,1,83.6,91a12,12,0,1,0-21.81,10A107.55,107.55,0,0,0,78,126.24,83.54,83.54,0,0,1,32,140a12,12,0,0,0,0,24,107.47,107.47,0,0,0,64-21.07,108.4,108.4,0,0,0,45.39,19.44l-24.13,48.26a12,12,0,1,0,21.46,10.73L151.41,196h65.17l12.68,25.36a12,12,0,1,0,21.47-10.73ZM163.41,172,184,130.83,204.58,172Z"></path></svg>
+
+                  
+
+                   </div>
+
+                   Neo Translate
+                </a>
+
+                  {{-- NEW NAV LINK --}}
+                 <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
+                  spa(event,'{{ url('users/neo/game') }}');
+                  this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
+                  document.body.classList.remove('overflow-hidden');
+                  ">
+                 <div class="icon-group">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M176,116H152a12,12,0,0,1,0-24h24a12,12,0,0,1,0,24ZM104,92h-4V88a12,12,0,0,0-24,0v4H72a12,12,0,0,0,0,24h4v4a12,12,0,0,0,24,0v-4h4a12,12,0,0,0,0-24ZM244.76,202.94a40,40,0,0,1-61,5.35,7,7,0,0,1-.53-.56L144.67,164H111.33L72.81,207.73c-.17.19-.35.38-.53.56A40,40,0,0,1,4.62,173.05a1.18,1.18,0,0,1,0-.2L21,88.79A63.88,63.88,0,0,1,83.88,36H172a64.08,64.08,0,0,1,62.93,52.48,1.8,1.8,0,0,1,0,.19l16.36,84.17a1.77,1.77,0,0,1,0,.2A39.74,39.74,0,0,1,244.76,202.94ZM172,140a40,40,0,0,0,0-80H83.89A39.9,39.9,0,0,0,44.62,93.06a1.55,1.55,0,0,0,0,.21l-16.34,84a16,16,0,0,0,13,18.44,16.07,16.07,0,0,0,13.86-4.21L96.9,144.07a12,12,0,0,1,9-4.07Zm55.76,37.31-7-35.95a63.84,63.84,0,0,1-44.27,22.46l24.41,27.72a16,16,0,0,0,26.85-14.23Z"></path></svg>
+
+                  
+
+                   </div>
+
+                   Neo Game
+                </a>
+
+                   {{-- NEW NAV LINK --}}
+                 <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
+                  spa(event,'{{ url('users/skill/aquisition') }}');
+                  this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
+                  document.body.classList.remove('overflow-hidden');
+                  ">
+                 <div class="icon-group">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M249.8,85.49l-116-64a12,12,0,0,0-11.6,0l-116,64a12,12,0,0,0,0,21l21.8,12v47.76a19.89,19.89,0,0,0,5.09,13.32C46.63,194.7,77,220,128,220a136.88,136.88,0,0,0,40-5.75V240a12,12,0,0,0,24,0V204.12a119.53,119.53,0,0,0,30.91-24.51A19.89,19.89,0,0,0,228,166.29V118.53l21.8-12a12,12,0,0,0,0-21ZM128,45.71,219.16,96,186,114.3a1.88,1.88,0,0,1-.18-.12l-52-28.69a12,12,0,0,0-11.6,21l39,21.49L128,146.3,36.84,96ZM128,196c-40.42,0-64.65-19.07-76-31.27v-33l70.2,38.74a12,12,0,0,0,11.6,0L168,151.64v37.23A110.46,110.46,0,0,1,128,196Zm76-31.27a93.21,93.21,0,0,1-12,10.81V138.39l12-6.62Z"></path></svg>
+
+
+                   </div>
+
+                   Neo Skill
                 </a>
               
              

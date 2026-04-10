@@ -112,6 +112,35 @@ body{
 
 
 }
+
+.balance-div{
+    background:var(--primary) !important;
+    color:var(--primary-text) !important;
+}
+.balance-div .c-primary{
+    color:white !important;
+}
+.balance-div div:has(> svg){
+    color:white !important;
+    background:rgba(255,255,255,0.2) !important
+}
+
+.balance-div .withdraw-btn{
+    background:var(--primary-text);
+    color:var(--primary)
+}
+.balance-div .trx-btn{
+    border:1px solid var(--primary-text);
+    color:var(--primary-text) !important;
+}
+.balance-div .wallet-icon{
+    background:rgba(255,255,255,0.2);
+    color:white !important;
+}
+.balance-div::before{
+    background:rgba(255,255,255,0.5) !important;
+}
+
 .cont:has(input:focus){
     border-color:var(--primary);
 }

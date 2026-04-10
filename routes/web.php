@@ -99,6 +99,9 @@ Route::prefix('users')->group(function(){
     Route::get('withdraw',[
         UsersDashboardController::class,'Withdraw'
     ]);
+    Route::get('recharge',[
+    UsersDashboardController::class,'Recharge'
+    ]);
     
     Route::get('team',[
         UsersDashboardController::class,'Team'
@@ -145,11 +148,20 @@ Route::prefix('users')->group(function(){
     Route::get('neo/chat',[
         UsersDashboardController::class,'NeoChat'
     ]);
+    Route::get('neo/game',[
+        UsersDashboardController::class,'NeoGame'
+    ]);
+    Route::get('get/game/update/process',[
+        UsersGetRequestController::class,'GameUpdate'
+    ]);
     Route::get('neo/stream',[
         UsersDashboardController::class,'NeoStream'
     ]);
     Route::get('neo/translate',[
         UsersDashboardController::class,'NeoTranslate'
+    ]);
+    Route::get('get/debit/users/poll/game',[
+        UsersGetRequestController::class,'DebitForGame'
     ]);
     
 
@@ -174,9 +186,7 @@ Route::prefix('users')->group(function(){
      Route::get('data/topup',[
         UsersGetRequestController::class,'DataTopup'
     ]);
-    Route::get('redeem/voucher/process',[
-       UsersGetRequestController::class,'RedeemVoucher'
-    ]);
+   
     Route::get('color/game/play/process',[
         UsersGetRequestController::class,'ColorGame'
     ]);
@@ -223,6 +233,9 @@ Route::prefix('users')->group(function(){
         Route::post('neo/translate/process',[
             UserPostRequestController::class,'NeoTranslate'
         ]);
+         Route::post('redeem/voucher/process',[
+       UserPostRequestController::class,'RedeemVoucher'
+    ]);
        
     });
 });

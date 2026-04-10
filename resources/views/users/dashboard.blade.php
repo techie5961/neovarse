@@ -76,6 +76,31 @@
             background:var(--primary);
             transform:scale(1.2);
         }
+        .wallet-column span.hide{
+            display:none;
+        }
+
+        .wallet-column .star{
+            display:flex;
+        }
+        .wallet-column .balance{
+            display:none;
+        }
+        .wallet-column.active span.hide{
+            display:flex;
+        }
+         .wallet-column.active span.view{
+            display:none;
+        }
+        .wallet-column.active .balance{
+            display:flex !important;
+        }
+        .wallet-column.active .star{
+            display:none !important;
+        }
+
+
+        
     </style>
 @endsection
  @section('main')
@@ -102,7 +127,7 @@
                 <small class="opacity-06">Neo Skill</small>
             </div>
             {{-- NEW --}}
-             <div onclick="spa(event,'{{ url('users/withdraw') }}')" style="border:1px solid rgba(var(--rgt),0.08);background:rgba(var(--rgt),0.03)" class="w-70 quick-nav perfect-square column align-center text-center g-2 justify-center br-5">
+             <div onclick="window.location.href='{{ url('users/neo/game') }}'" style="border:1px solid rgba(var(--rgt),0.08);background:rgba(var(--rgt),0.03)" class="w-70 quick-nav perfect-square column align-center text-center g-2 justify-center br-5">
                <span class="opacity-06">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M176,116H152a12,12,0,0,1,0-24h24a12,12,0,0,1,0,24ZM104,92h-4V88a12,12,0,0,0-24,0v4H72a12,12,0,0,0,0,24h4v4a12,12,0,0,0,24,0v-4h4a12,12,0,0,0,0-24ZM244.76,202.94a40,40,0,0,1-61,5.35,7,7,0,0,1-.53-.56L144.67,164H111.33L72.81,207.73c-.17.19-.35.38-.53.56A40,40,0,0,1,4.62,173.05a1.18,1.18,0,0,1,0-.2L21,88.79A63.88,63.88,0,0,1,83.88,36H172a64.08,64.08,0,0,1,62.93,52.48,1.8,1.8,0,0,1,0,.19l16.36,84.17a1.77,1.77,0,0,1,0,.2A39.74,39.74,0,0,1,244.76,202.94ZM172,140a40,40,0,0,0,0-80H83.89A39.9,39.9,0,0,0,44.62,93.06a1.55,1.55,0,0,0,0,.21l-16.34,84a16,16,0,0,0,13,18.44,16.07,16.07,0,0,0,13.86-4.21L96.9,144.07a12,12,0,0,1,9-4.07Zm55.76,37.31-7-35.95a63.84,63.84,0,0,1-44.27,22.46l24.41,27.72a16,16,0,0,0,26.85-14.23Z"></path></svg>
 
@@ -133,30 +158,48 @@
             </div>
         </div>
         {{-- NOTIFICATION --}}
-        <div style="background:var(--primary-transparent);border:1px solid var(--primary)" class="w-full br-10 row g-10 p-10">
+        {{-- <div style="background:var(--primary-transparent);border:1px solid var(--primary)" class="w-full br-10 row g-10 p-10">
             <div class="w-40 no-shrink h-40 bg-primary-transparent column br-10 align-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M225.29,165.93C216.61,151,212,129.57,212,104a84,84,0,0,0-168,0c0,25.58-4.59,47-13.27,61.93A20.08,20.08,0,0,0,30.66,186,19.77,19.77,0,0,0,48,196H84.18a44,44,0,0,0,87.64,0H208a19.77,19.77,0,0,0,17.31-10A20.08,20.08,0,0,0,225.29,165.93ZM128,212a20,20,0,0,1-19.6-16h39.2A20,20,0,0,1,128,212ZM54.66,172C63.51,154,68,131.14,68,104a60,60,0,0,1,120,0c0,27.13,4.48,50,13.33,68Z"></path></svg>
                 
             </div>
             <span>This is a mock/test notification.</span>
-        </div>
+        </div> --}}
         {{-- balance divs --}}
          {{-- Profit split/affiliate wallet --}}
         <div class="w-full balance-div column g-10 p-10 br-10">
          <div class="content">
              <div class="w-full row g-10 space-between">
-            <div class="column g-10">
+            <div class="column wallet-column active actifve g-10">
+                  <div class="row align-center g-5">
                 <span class="opacity-06">Profit Split Wallet</span>
-                <strong style="font-size:2rem;">&#8358;{{ number_format(Auth::guard('users')->user()->affiliate_balance,2) }}</strong>
+                  <div>
+            <span onclick="this.closest('.wallet-column').classList.remove('active')" class="opacity-07 wallet-toggle hide">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M56.88,31.93A12,12,0,1,0,39.12,48.07l16,17.65C20.67,88.66,5.72,121.58,5,123.13a12.08,12.08,0,0,0,0,9.75c.37.82,9.13,20.26,28.49,39.61C59.37,198.34,92,212,128,212a131.34,131.34,0,0,0,51-10l20.09,22.1a12,12,0,0,0,17.76-16.14ZM128,188c-29.59,0-55.47-10.73-76.91-31.88A130.69,130.69,0,0,1,29.52,128c5.27-9.31,18.79-29.9,42-44.29l90.09,99.11A109.33,109.33,0,0,1,128,188Zm123-55.12c-.36.81-9,20-28,39.16a12,12,0,1,1-17-16.9A130.48,130.48,0,0,0,226.48,128a130.36,130.36,0,0,0-21.57-28.12C183.46,78.73,157.59,68,128,68c-3.35,0-6.7.14-10,.42a12,12,0,1,1-2-23.91c3.93-.34,8-.51,12-.51,36,0,68.63,13.67,94.49,39.52,19.35,19.35,28.11,38.8,28.48,39.61A12.08,12.08,0,0,1,251,132.88Z"></path></svg>
+
+            </span>
+            <span onclick="this.closest('.wallet-column').classList.add('active')" class="opacity-07 wallet-toggle view">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M251,123.13c-.37-.81-9.13-20.26-28.48-39.61C196.63,57.67,164,44,128,44S59.37,57.67,33.51,83.52C14.16,102.87,5.4,122.32,5,123.13a12.08,12.08,0,0,0,0,9.75c.37.82,9.13,20.26,28.49,39.61C59.37,198.34,92,212,128,212s68.63-13.66,94.48-39.51c19.36-19.35,28.12-38.79,28.49-39.61A12.08,12.08,0,0,0,251,123.13Zm-46.06,33C183.47,177.27,157.59,188,128,188s-55.47-10.73-76.91-31.88A130.36,130.36,0,0,1,29.52,128,130.45,130.45,0,0,1,51.09,99.89C72.54,78.73,98.41,68,128,68s55.46,10.73,76.91,31.89A130.36,130.36,0,0,1,226.48,128,130.45,130.45,0,0,1,204.91,156.12ZM128,84a44,44,0,1,0,44,44A44.05,44.05,0,0,0,128,84Zm0,64a20,20,0,1,1,20-20A20,20,0,0,1,128,148Z"></path></svg>
+              
+            </span>
+          </div>
+          </div>
+             
+                 <strong class="balance" style="font-size:2rem;">&#8358;{{ number_format(Auth::guard('users')->user()->affiliate_balance,2) }}</strong>
+               <strong class="star" style="font-size:2rem;">****</strong>
+               
+
           <div class="row font-1 opacity-07 align-center g-2">
              <span class="h-fit column">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M225.24,150.73a12,12,0,0,1-1.58,16.9C205.49,182.7,189.06,188,174.15,188c-19.76,0-36.86-9.29-51.88-17.44-25.06-13.62-44.86-24.37-74.61.3a12,12,0,1,1-15.32-18.48c42.25-35,75-17.23,101.39-2.92,25.06,13.61,44.86,24.37,74.61-.31A12,12,0,0,1,225.24,150.73ZM47.66,106.85c29.75-24.68,49.55-13.92,74.61-.31,15,8.16,32.12,17.45,51.88,17.45,14.91,0,31.34-5.3,49.51-20.37a12,12,0,0,0-15.32-18.48c-29.75,24.67-49.55,13.92-74.61.3-26.35-14.3-59.14-32.11-101.39,2.93a12,12,0,0,0,15.32,18.48Z"></path></svg>
             
            </span>
-                <span>${{ number_format(ToDollars(Auth::guard('users')->user()->affiliate_balance),2) }}</span>
-          </div>
+                <span class="balance">${{ number_format(ToDollars(Auth::guard('users')->user()->affiliate_balance),2) }}</span>
+           <span class="star">****</span>
+         
             </div>
-            <div class="bg-primary-transparent p-10 h-50 column align-center justify-center w-50 br-10 c-primary no-shrink">
+            </div>
+            <div class="bg-primary-transparent wallet-icon p-10 h-50 column align-center justify-center w-50 br-10 c-primary no-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M93.82,116.64A12,12,0,0,0,100,106.15V40.74A12,12,0,0,0,83,29.83,108.26,108.26,0,0,0,20,128c0,3.37.16,6.76.47,10.1a12,12,0,0,0,17.76,9.38ZM76,62.06v37L44.81,116.36A84.39,84.39,0,0,1,76,62.06ZM128,20a12,12,0,0,0-12,12v89.53L39.18,166.27a12,12,0,0,0-4.3,16.46A108,108,0,1,0,128,20Zm0,192a84.47,84.47,0,0,1-65.57-31.5L134,138.79a12,12,0,0,0,6-10.37V44.85A84,84,0,0,1,128,212Z"></path></svg>
 
             </div>
@@ -164,10 +207,10 @@
           <span class="c-primary">Your earnings from downlines and referrals</span>
          {{-- NEW ROW --}}
          <div class="row w-full align-center g-10">
-             <div class="bg-primary p-10 w-fit h-40 row align-center justify-center no-select br-5">
+             <div class="bg-primary withdraw-btn p-10 w-fit h-40 row align-center justify-center no-select br-5">
             Withdraw
           </div>
-           <div class="bg-transaperent border-1 border-color-primary c-primary p-10 w-fit h-40 row align-center justify-center no-select br-5">
+           <div class="bg-transaperent trx-btn border-1 border-color-primary c-primary p-10 w-fit h-40 row align-center justify-center no-select br-5">
             Transactions
           </div>
 

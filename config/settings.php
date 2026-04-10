@@ -2,9 +2,12 @@
 return [
     'site_logo' => asset('logos/logo.png'),
     // naming for coupon code
-    'coupon' => 'Coupon Code',
+    'coupon' => 'Neo Ticket',
     // naming for vendors
-    'vendors' => 'Distributor'
+    'vendors' => 'Distributor',
+    'game_deposit' => 2500,
+    'game_win' => 5000,
+    'game_high_score' => 50
 ];
 
 ?>

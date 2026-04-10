@@ -526,6 +526,16 @@ class UsersDashboardController extends Controller
             'translated' => DB::table('translations')->where('user_id',Auth::guard('users')->user()->id)->whereDate('date',Carbon::today())->exists() ? 'yes' : 'no'
         ]);
     }
+
+    // neo game
+    public function NeoGame(){
+        return view('users.neo.game');
+    }
+
+    // recharge
+    public function Recharge(){
+        return view('users.recharge');
+    }
     
     
 

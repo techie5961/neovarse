@@ -91,7 +91,7 @@ button:focus{
   box-shadow: 0px 4px 8px #0000005c;
 }
 
-.rules-popup {
+.rules-popup,.populate {
   position: fixed;
   top: 0;
   left: 0;
@@ -103,7 +103,7 @@ button:focus{
   align-items: center;
 }
 
-.rules-content {
+.rules-content,.populate-content {
   background: white;
   color:black;
   padding: 20px;
@@ -114,7 +114,7 @@ button:focus{
   box-shadow: 0px 4px 10px #000;
 }
 
-.rules-content button {
+.rules-content button,.populate-content button {
   margin-top: 15px;
   padding: 10px 20px;
   background: #03A9F4;
@@ -167,7 +167,13 @@ button:focus{
 		</div>
 
           <button class="rules-btn" onclick="openRules()">Game Rules</button>
-
+<div onclick="this.style.display='none'" style="z-index:100000;" class="populate">
+  <div onclick="event.stopPropagation()" class="populate-content column g-10">
+	<strong style="text-transform:capitalize;" class="desc"></strong>
+<span style="text-transform:capitalize;"></span>
+<button onclick="window.location.href='{{ url('users/recharge') }}'">Add Funds</button>
+  </div>
+</div>
 <div class="rules-popup" id="rulesPopup">
   <div class="rules-content">
     <h2>🎱 Game Rules</h2>
@@ -212,7 +218,10 @@ async function StartGame(element){
 	if(response.ok){
 		let data=await response.json();
 		if(data.status == 'error'){
-			alert(data.message);
+			document.querySelector('.populate strong').innerHTML=data.status;
+			document.querySelector('.populate span').innerHTML=data.message;
+			document.querySelector('.populate').style.display='flex';
+			
 			element.classList.remove('disabled');
 		}else{
 			document.getElementById("rulesPopup").classList.add('active');
@@ -220,7 +229,10 @@ async function StartGame(element){
 	element.classList.remove('disabled');
 		}
 	}else{
-		alert('Internal server error,please try again');
+		document.querySelector('.populate strong').innerHTML='Error';
+			document.querySelector('.populate span').innerHTML='Internal server error,please try again';
+			document.querySelector('.populate').style.display='flex';
+		
 	}
 	
 	

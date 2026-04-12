@@ -420,6 +420,120 @@
         <img src="{{ asset('banners/56ad2bfc-d99e-4b40-9aa4-1985b8f1f900.jpeg') }}" alt="" data-class="trans-from-bottom" class="w-full m-x-auto observe max-w-500 br-10">
           
         </div>
+        <div class="column m-x-auto m-top-50 g-10 w-full">
+            <strong class="hero-title">Start Earning from YouTube — Even as a Beginner</strong>
+            <span>Turn your ideas into income with a simple step-by-step system. From creating your channel to growing views and cashing out in dollars — we guide you all the way.</span>
+        <img src="{{ asset('banners/PNG image 5.png') }}" alt="" data-class="trans-from-bottom" class="w-full m-x-auto observe max-w-500 br-10">
+          
+        </div>
+         <div class="column m-x-auto m-top-50 g-10 w-full">
+            <strong class="hero-title">Play Games. Earn Real Money.</strong>
+            <span>Enjoy your favorite games like Ludo, Candy Crush, and more — and get paid while having fun. Withdraw directly to your bank account anytime.</span>
+        <img src="{{ asset('banners/PNG image 6.png') }}" alt="" data-class="trans-from-bottom" class="w-full m-x-auto observe max-w-500 br-10">
+          
+        </div>
+         <div class="column m-x-auto m-top-50 g-10 w-full">
+            <strong class="hero-title">Get Up to $12 Gift Card Instantly 🎁</strong>
+            <span>Join NeoVarse today and enjoy unlimited rebates from clients.Trade your gift cards easily after claiming them — fast, simple, and secure.</span>
+        <img src="{{ asset('banners/PNG image 8.png') }}" alt="" data-class="trans-from-bottom" class="w-full m-x-auto observe max-w-500 br-10">
+          
+        </div>
+        {{-- testimonials --}}
+        <div class="column m-top-10 g-10 pc-grid pc-grid-4">
+            <strong class="hero-title grid-full">What our Clients say</strong>
+            <span class="grid-full text-center w-full opacity-07">Trusted by thousands of digital creators</span>
+            <div class="features-card">
+                <div style="color:rgb(0,255,0)" class="row align-center g-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.4,16.4,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65A8,8,0,0,0,128,181.1V32c.24,0,.27.08.35.26L153,91.86a8,8,0,0,0,6.75,4.92l63.91,5.16c.16,0,.25,0,.34.29S224,102.63,223.84,102.73Z"></path></svg>
+                </div>
+                <i class="opacity-07">"NeoVarse completely changed my mindset about making money online. From NeoChat to Neo_Skill, I now earn daily just by learning and engaging. It’s simple, consistent, and real."</i>
+         <div class="row g-5 align-center">
+            <div style="height:40px;width:40px;min-height:40px;min-width:40px;background:linear-gradient(to bottom right,var(--primary-dark),var(--primary-light));border-radius:50%;color:var(--primary-text);display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;">MA</div>
+          <div class="column g-5">
+              <strong class="font-1">- Michael A.</strong>
+            <span class="opacity-07">Digital Marketer</span>
+          </div>
+         </div>
+            </div>
+
+             <div class="features-card">
+                <div style="color:rgb(0,255,0)" class="row align-center g-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                  
+                </div>
+                <i class="opacity-07">"At first I was doubting, but after my first withdrawal, everything changed. The earning structure is clear and the system actually works if you stay active."</i>
+         <div class="row g-5 align-center">
+            <div style="height:40px;width:40px;min-height:40px;min-width:40px;background:linear-gradient(to bottom right,var(--primary-dark),var(--primary-light));border-radius:50%;color:var(--primary-text);display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;">FS</div>
+          <div class="column g-5">
+              <strong class="font-1">- Fatima S.</strong>
+            <span class="opacity-07">Student</span>
+          </div>
+         </div>
+            </div>
+             <div class="features-card">
+                <div style="color:rgb(0,255,0)" class="row align-center g-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                  
+                </div>
+                <i class="opacity-07">"What I love most is Neo_Skill. I’m learning valuable things and still earning from it. No platform has given me this kind of opportunity before."</i>
+         <div class="row g-5 align-center">
+            <div style="height:40px;width:40px;min-height:40px;min-width:40px;background:linear-gradient(to bottom right,var(--primary-dark),var(--primary-light));border-radius:50%;color:var(--primary-text);display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;">DK</div>
+          <div class="column g-5">
+              <strong class="font-1">— Daniel K.</strong>
+            <span class="opacity-07">Freelancer</span>
+          </div>
+         </div>
+            </div>
+
+            <div class="features-card">
+                <div style="color:rgb(0,255,0)" class="row align-center g-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                  
+                </div>
+                <i class="opacity-07">"NeoVarse helped me build a steady side income. With daily tasks, NeoTranslate, and bonuses, I now support myself better financially."</i>
+         <div class="row g-5 align-center">
+            <div style="height:40px;width:40px;min-height:40px;min-width:40px;background:linear-gradient(to bottom right,var(--primary-dark),var(--primary-light));border-radius:50%;color:var(--primary-text);display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;">IU</div>
+          <div class="column g-5">
+              <strong class="font-1">— Ibrahim U.</strong>
+            <span class="opacity-07">Entrepreneur</span>
+          </div>
+         </div>
+            </div>
+
+            <div class="features-card">
+                <div style="color:rgb(0,255,0)" class="row align-center g-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="15" width="15"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+                  
+                </div>
+                <i class="opacity-07">"The referral system and team structure are powerful. Once you understand it, your income starts growing faster than you expect."</i>
+         <div class="row g-5 align-center">
+            <div style="height:40px;width:40px;min-height:40px;min-width:40px;background:linear-gradient(to bottom right,var(--primary-dark),var(--primary-light));border-radius:50%;color:var(--primary-text);display:flex;flex-direction:column;align-items:center;justify-content:center;user-select:none;">GO</div>
+          <div class="column g-5">
+              <strong class="font-1">— Grace O.</strong>
+            <span class="opacity-07">Content Creator</span>
+          </div>
+         </div>
+            </div>
+        </div>
         {{-- FREQUENTLY ASKED QUESTIONS --}}
          <div class="column m-x-auto m-top-50 text-center g-10 w-full">
             <strong class="hero-title">Frequently Asked Questions</strong>
@@ -520,7 +634,7 @@
                 </div>
             </div>
         </div>
-         <img src="{{ asset('banners/f8ba1e5d-12ed-45b7-9ee0-b828227e0c67.jpeg') }}" alt="" class="w-full m-x-auto br-10 max-w-500">
+         <img src="{{ asset('banners/PNG image 7.png') }}" alt="" class="w-full m-x-auto br-10 max-w-500">
         
     </section>
 @endsection

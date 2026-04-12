@@ -245,7 +245,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
                             <a class="p-10 w-full row g-5 no-u c-black" href="{{ url('admins/coupons/redeemed') }}">Redeemed Codes</a>
                       </div>
                 </div>
-                   <div class="nav-group display-none w-full column">
+                   <div class="nav-group w-full column">
                      <a onclick="
                      let child=this.closest('.nav-group').querySelector('.nav-child');
                      if(child.classList.contains('display-none')){

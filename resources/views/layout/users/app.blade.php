@@ -508,7 +508,7 @@ footer .child .f-links.active{
 
                   {{-- NEW NAV LINK --}}
                  <a class="p-10 searchable nav-link align-center pointer clip-10 w-full row g-5 no-u c-white" onclick="
-                  spa(event,'{{ url('users/neo/game') }}');
+                  window.location.href='{{ url('users/neo/game') }}';
                   this.closest('nav').classList.add('mobile-display-none');   document.body.classList.remove('overflow-hidden');
                   document.body.classList.remove('overflow-hidden');
                   ">

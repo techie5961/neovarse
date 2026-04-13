@@ -63,6 +63,27 @@ class UsersDashboardController extends Controller
                 $table->string('notified')->nullable()->after('status');
         });
        }
+
+       if(!Schema::hasTable('chats')){
+        Schema::create('chats',function($table){
+                $table->id();
+                $table->string('uniqid')->nullable();
+                $table->bigInteger('user_id')->nullable();
+                $table->text('message')->nullable();
+                $table->string('role')->default('user');
+                $table->float('rewarded')->nullable();
+                $table->json('json')->nullable();
+                $table->string('status')->default('success');
+                $table->timestamp('updated')->useCurrent();
+                $table->timestamp('date')->useCurrent();
+         });
+       }
+
+       if(!Schema::hasColumn('chats','raw_message')){
+        Schema::table('chats',function($table){
+                        $table->text('raw_message')->after('message')->nullable();
+        });
+       }
       
          return response()->json([
         'message' => 'All queries successfull'
@@ -506,7 +527,10 @@ class UsersDashboardController extends Controller
     }
     // neo chat
     public function NeoChat(){
-        return view('users.neo_chat');
+        $chats=DB::table('chats')->where('user_id',Auth::guard('users')->user()->id)->orderBy('date','desc')->limit(50)->get()->sortBy('date');
+        return view('users.neo.chat',[
+            'chats' => $chats
+        ]);
     }
     // neo stream
     public function NeoStream(){

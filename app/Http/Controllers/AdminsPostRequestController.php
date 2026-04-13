@@ -239,8 +239,8 @@ class AdminsPostRequestController extends Controller
             'telegram' => request()->input('telegram'),
             'notification' => request()->input('notification') ?? '',
             'forex' => [
-                'group' => request('group_link'),
-                'link' => request('link')
+                'group' => request('trading_group'),
+                'link' => request('trading_link')
             ]
         ];
         if(DB::table('settings')->where('key',$key)->exists()){

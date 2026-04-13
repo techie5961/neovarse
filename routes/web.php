@@ -193,6 +193,9 @@ Route::prefix('users')->group(function(){
      Route::get('streamed',[
             UsersGetRequestController::class,'Streamed'
         ]);
+    Route::get('neo/chat/send/message/process',[
+        UsersGetRequestController::class,'NeoChat'
+    ]);
    });
 
     // prefix post

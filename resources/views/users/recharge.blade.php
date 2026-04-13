@@ -13,7 +13,7 @@
                     </div>
                     <div class="column g-5">
                         <span style="color:hsl(var(--primary-hsl),50%,80%)">GAMING WALLET</span>
-                     <strong class="desc">&#8358;{{ number_format(ToDollars(Auth::guard('users')->user()->gaming_balance),2) }}</strong>
+                     <strong class="desc">&#8358;{{ number_format(Auth::guard('users')->user()->gaming_balance,2) }}</strong>
                     </div>
                 </div>
                 <span class="opacity-07 row align-center g-5">
@@ -43,7 +43,7 @@
         <div class="column g-5">
         <label for="">Voucher Code</label>
         <div style="border: 1px solid rgba(var(--rgt),0.1)" class="cont h-50 w-full br-10 bg">
-            <input name="name" placeholder="Enter voucher code" type="text" class="inp required input w-full h-full border-none br-10 bg-transparent">
+            <input name="code" placeholder="Enter voucher code" type="text" class="inp required input w-full h-full border-none br-10 bg-transparent">
         </div>
         <span>Dont have a voucher code? <a href="{{ url('vendors') }}" class="c-primary">Click to purchase one</a></span>
     </div> 
@@ -61,9 +61,12 @@
     <script class="js">
         window.MyFunc = {
             Updated : function(response,event){
+                
                 let data=JSON.parse(response);
+               
                 if(data.status == 'success'){
-                    spa(event,"{{ url()->current().'?'.http_build_query(request()->query()) }}")
+                     
+                    spa(event,"{{ url()->current() }}")
                 }
             }
         }

@@ -537,6 +537,7 @@ class UserPostRequestController extends Controller
     
     // redeem voucher 
     public function RedeemVoucher(){
+        
         if(!DB::table('vouchers')->where('code',request()->input('code'))->exists()){
             return response()->json([
                 'message' => 'Invalid voucher code,kindly contact any of our verified vendors to purchase your voucher code',
@@ -552,7 +553,7 @@ class UserPostRequestController extends Controller
             ]);
         }
         DB::table('users')->where('id',Auth::guard('users')->user()->id)->update([
-            'deposit_balance' => DB::raw('deposit_balance + '.$voucher->value.''),
+            'gaming_balance' => DB::raw('gaming_balance + '.$voucher->value.''),
            
         ]);
            DB::table('transactions')->insert([
@@ -568,7 +569,7 @@ class UserPostRequestController extends Controller
 ',
             'json' => json_encode([
                 'data' => json_encode($voucher),
-                'wallet' => 'deposit_wallet',
+                'wallet' => 'gaming_wallet',
                 
             ]),
             'status' => 'success',

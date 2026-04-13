@@ -522,4 +522,105 @@ class UsersGetRequestController extends Controller
         ]);
 
     }
+
+    // neo chat
+    public function NeoChat(){
+        $message=request('message');
+        $uniqid=uniqid();
+       DB::table('chats')->insert([
+            'uniqid' => $uniqid,
+            'user_id' => Auth::guard('users')->user()->id,
+            'raw_message' => request('raw_message'),
+            'message' => $message,
+            'role' => 'user',
+            'rewarded' => null,
+            'status' => 'success',
+            'updated' => Carbon::now(),
+            'date' => Carbon::now()
+       ]);
+       $chats=DB::table('chats')->where('user_id',Auth::guard('users')->user()->id)->orderBy('date','desc')->limit(20)->get()->sortBy('date');
+       $messages=[];
+       $messages[]=[
+            'role' => 'user',
+            'content' => 'Username:'.Auth::guard('users')->user()->username.', Name:'.Auth::guard('users')->user()->name.', Phone:'.Auth::guard('users')->user()->phone.''
+       ];
+        $messages[]=[
+            'role' => 'assistant',
+            'content' => 'Neovarse is a legit platform.Neovarse is a next-generation digital ecosystem powered by artifial intelligence. It offers users the opportunity to aquire practical skills, interact with intelligent tools, and earn tangible rewards on a daily basis.AI Leaning
+interactive AI-powered learning system that adapts to your growth journey.
+Earn Daily Rewards
+Complete structure micro-tasks and earn consistent daily rewards.
+Smart Technology
+Built with modern technology for seamless user experience.
+Ethical growth
+Tech-based and structured environment for responsive digital earning.Introducing Neo-Chat Feature
+Imagine being paid for what you do daily.With Neo-Chat,Every 60 seconds of chatting with our smart AI return rewards in cash.
+
+Introducing Neo-Skill Feature
+Earn from daily online skills session ranging from web develpment,forex trading,graphic designs copywriting etc and also gain practical knowledge
+
+Start Earning from YouTube — Even as a Beginner
+Turn your ideas into income with a simple step-by-step system. From creating your channel to growing views and cashing out in dollars — we guide you all the way.
+
+Play Games. Earn Real Money.
+Enjoy your favorite games like Ludo, Candy Crush, and more — and get paid while having fun. Withdraw directly to your bank account anytime.
+
+Get Up to $12 Gift Card Instantly 🎁
+Join NeoVarse today and enjoy unlimited rebates from clients.Trade your gift cards easily after claiming them — fast, simple, and secure.
+
+'
+       ];
+       $messages[]=[
+            'role' => 'user',
+            'content' => 'Neovarse is a very legit platform,100% real,legit and transparent'
+       ];
+       if($chats->isNotEmpty()){
+        foreach($chats as $chat){
+            $messages[] = [
+                'role' => $chat->role,
+                'content' => $chat->message
+            ];
+        }
+       }else{
+        $messages[]=[
+            'role' => 'user',
+            'content' => $message
+        ];
+       }
+        $response=Http::withToken(env('GROK_API_KEY'))->withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post('https://api.groq.com/openai/v1/chat/completions',[
+            'model' => 'llama-3.3-70b-versatile',
+            'messages' => $messages,
+            'temperature' => 0.7,
+            'max_tokens' => 1024
+        ]);
+
+        if($response->successful()){
+            $data=$response->json();
+          
+            $reply=$data['choices'][0]['message']['content'];
+             DB::table('chats')->insert([
+            'uniqid' => uniqid(),
+            'user_id' => Auth::guard('users')->user()->id,
+            'raw_message' => $reply,
+            'message' => $reply,
+            'role' => 'assistant',
+            'rewarded' => null,
+            'status' => 'success',
+            'updated' => Carbon::now(),
+            'date' => Carbon::now()
+       ]);
+            return response()->json([
+                'message' => nl2br($reply),
+                'status' => 'success'
+            ]);
+        }
+        
+        DB::table('chats')->where('uniqid',$uniqid)->where('user_id',Auth::guard('users')->user()->id)->where('message',$message)->delete();
+        return response()->json([
+            'message' => 'An unknown error occured,please try later',
+            'status' => 'success'
+        ]);
+    }
 }

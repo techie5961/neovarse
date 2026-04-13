@@ -124,6 +124,14 @@
                         let data=await response.json();
                         if(data.status == 'success'){
                             document.querySelector('div.message-divs:last-of-type').innerHTML=`<span>${data.message}</span>`;
+                             // scroll into view start
+                  
+                    chats_body.scrollTo({
+                        top : chats_body.scrollHeight,
+                        behavior : 'smooth'
+                    });
+
+                    // scroll into view end
                         }else{
                             CreateNotify('error',data.message);
                         }

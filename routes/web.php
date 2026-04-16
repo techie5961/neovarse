@@ -11,10 +11,11 @@ use App\Http\Controllers\UserPostRequestController;
 use App\Http\Controllers\UsersGetRequestController;
 use App\Http\Middleware\UsersAuthCheckerMiddleware;
 use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\GeneralMiddleware;
 
 
 
-
+Route::middleware([GeneralMiddleware::class])->group(function(){
 Route::get('hash',function(){
     return Hash::make(request('password'));
 });
@@ -579,3 +580,5 @@ Route::get('queries',function(){
      }
   
 });
+});
+

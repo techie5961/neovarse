@@ -98,6 +98,20 @@
         .wallet-column.active .star{
             display:none !important;
         }
+        .claim-btn.disabled{
+            pointer-events:none;
+            filter:grayscale(50%);
+        }
+        .claim-section .claim-btn{
+            display:none;
+        }
+        .claim-section.active .claim-btn{
+            display:flex;
+        }
+        .claim-section.active .countdown{
+            opacity:0;
+            pointer-events: none;
+        }
 
 
         
@@ -207,10 +221,10 @@
           <span class="c-primary">Your earnings from downlines and referrals</span>
          {{-- NEW ROW --}}
          <div class="row w-full align-center g-10">
-             <div class="bg-primary withdraw-btn p-10 w-fit h-40 row align-center justify-center no-select br-5">
+             <div onclick="spa(event,'{{ url('users/withdraw') }}')" class="bg-primary withdraw-btn p-10 w-fit h-40 row align-center justify-center no-select br-5">
             Withdraw
           </div>
-           <div class="bg-transaperent trx-btn border-1 border-color-primary c-primary p-10 w-fit h-40 row align-center justify-center no-select br-5">
+           <div onclick="spa(event,'{{ url('users/transactions') }}')" class="bg-transaperent trx-btn border-1 border-color-primary c-primary p-10 w-fit h-40 row align-center justify-center no-select br-5">
             Transactions
           </div>
 
@@ -300,7 +314,7 @@
              <div class="w-full row g-10 space-between">
             <div class="column g-10">
                 <span class="opacity-06">Daily Claim Wallet</span>
-                <strong style="font-size:1.5rem;">{{ number_format(Auth::guard('users')->user()->dailyclaim_balance) }} Coins</strong>
+                <strong style="font-size:1.5rem;" class="dailyclaim_balance">{{ number_format(Auth::guard('users')->user()->dailyclaim_balance) }} Coins</strong>
             </div>
             <div class="bg-primary-transparent p-10 h-40 column align-center justify-center w-40 br-10 c-primary no-shrink">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-52.2,6.84-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
@@ -372,6 +386,30 @@
            </div>
         </div>
         </div>
+        
+        <div style="border:1px solid var(--primary)" class="w-full {{ $minutes <= 0 ? 'active' : '' }} claim-section max-w-500 br-10 column g-10 p-20">
+            <div class="row align-center g-5">
+                <span style="font-size:2rem;">🎁</span>
+                <div class="column g-2">
+                    <strong class="font-1">30-Minutes Claim</strong>
+                    <div style="background:rgb(var(--rgt),0.1)" class="p-5 w-fit p-x-10 h-fit br-1000 row align-center g-5"><small>🔥Every 30 Minutes</small></div>
+
+                </div>
+            </div>
+            <div style="background:var(--primary-01);border:1px solid var(--primary-02)" class="w-full p-x-20 p-10 br-1000 row align-center space-between g-10">
+                <span>⌛NEXT IN</span>
+                <strong class="font-1 countdown">00:00</strong>
+                <span>✅Ready</span>
+            </div>
+            <div style="background:rgba(var(--rgt),0.1);" class="w-full p-x-20 p-10 br-1000 row justify-center align-center g-10">
+             <span>🏆Reward</span>
+                <strong class="font-1">+5 coins</strong>
+            </div>
+            <div onclick="MyFunc.LoginClaim(this,'{{ url('users/get/login/claim') }}')" class="w-full claim-btn br-1000 p-10 p-x-20 no-select row align-center justify-center bg-primary primary-text pointer">
+                ✨Claim Now✨
+            </div>
+            <small style="color:var(--primary-05);text-align:center;">⚡Claim every 30 minutes &bull; resets every 30 minutes &bull; streak bonus griws</small>
+        </div>
 
         {{-- referral link --}}
         <div style="border:1px solid var(--primary);background:rgba(var(--rgt),0.05)" class="w-full align-center br-10 p-10 g-10 column">
@@ -392,6 +430,8 @@
                 </div>
             </div>
         </div>
+        
+        
           {{-- group links --}}
         <div style="border:1px solid rgba(var(--rgt),0.1);background:rgba(var(--rgt),0.05)" class="w-full align-center no-select br-10 p-10 g-10 column">
             
@@ -441,10 +481,60 @@
             document.querySelectorAll('main .quick-navs .quick-nav').forEach((nav)=>{
                 let nav_height=(document.querySelector('main .quick-navs').getBoundingClientRect().width / document.querySelectorAll('main .quick-navs .quick-nav').length) + 'px';
                 nav.style.width=nav_height;
-            })
+            });
+
+          
+
+        },
+        countdown : (mins,secs)=>{
+          let minutes = mins;
+let seconds = secs;
+
+let timer = setInterval(() => {
+    if (minutes === 0 && seconds === 0) {
+        clearInterval(timer);
+        document.querySelector('.claim-section').classList.add('active');
+        document.querySelector('.countdown').innerHTML = '0:00';
+        return;
+    }
+    
+    if (seconds === 0) {
+        minutes--;
+        seconds = 59;
+    } else {
+        seconds--;
+    }
+    
+    // Format with leading zero for seconds
+    const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+    document.querySelector('.countdown').innerHTML = minutes + ':' + formattedSeconds;
+}, 1000);
+        },
+        LoginClaim : async (element,url)=>{
+            if(!element.dataset.text){
+                element.dataset.text=element.innerHTML;
+               
+            }
+             element.innerHTML='CLAIMING...';
+                element.classList.add('disabled')
+            let response=await fetch(url);
+            if(response.ok){
+                let data=await response.json();
+                if(data.status == 'success'){
+                document.querySelector('.dailyclaim_balance').innerHTML=data.balance + ' Coins';
+                document.querySelector('.claim-section').classList.remove('active');
+              
+                
+              spa(event,'{{ url()->current() }}')
+                CreateNotify(data.status,data.message);
+                }
+                element.innerHTML=element.dataset.text;
+                element.classList.remove('disabled');
+            }
 
         }
     }
     MyFunc.Style()
+    MyFunc.countdown({{ $minutes }},{{ $seconds }});
    </script>
 @endsection

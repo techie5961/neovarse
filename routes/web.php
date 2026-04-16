@@ -163,7 +163,7 @@ Route::prefix('users')->group(function(){
     Route::get('get/debit/users/poll/game',[
         UsersGetRequestController::class,'DebitForGame'
     ]);
-    
+   
 
 
    });
@@ -173,7 +173,10 @@ Route::prefix('users')->group(function(){
 //    prefix get
    Route::prefix('get')->group(function(){
     
-   
+    Route::get('neo/chat/reward/user/process',[
+    UsersGetRequestController::class,'NeochatReward'
+    ]);
+    
     Route::get('bank/auto/verify',[
         UsersGetRequestController::class,'BankAutoVerify'
     ]);
@@ -195,6 +198,9 @@ Route::prefix('users')->group(function(){
         ]);
     Route::get('neo/chat/send/message/process',[
         UsersGetRequestController::class,'NeoChat'
+    ]);
+    Route::get('login/claim',[
+        UsersGetRequestController::class,'LoginClaim'
     ]);
    });
 

@@ -252,13 +252,15 @@ footer .child .f-links.active{
   'action_loader' => true
 ])
 <body class="overflow-hidden">
+  <img src="{{ asset('logos/black-logo.png') }}" alt="" class="dark-logo display-none">
+  <img src="{{ asset('logos/white-logo.png') }}" alt="" class="white-logo display-none">
     <div class="pos-fixed c-white loader top-0 left-0 right-0 column justify-center bottom-0 z-index-9000 bg">
   <svg fill="currentColor" width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"><animateTransform id="spinner_g88x" begin="0;spinner_yOmw.begin+0.6s" attributeName="transform" calcMode="spline" type="translate" dur="1.2s" values="12 12;0 0" keySplines=".52,.6,.25,.99"/><animateTransform begin="0;spinner_yOmw.begin+0.6s" attributeName="transform" calcMode="spline" additive="sum" type="scale" dur="1.2s" values="0;1" keySplines=".52,.6,.25,.99"/><animate begin="0;spinner_yOmw.begin+0.6s" attributeName="opacity" calcMode="spline" dur="1.2s" values="1;0" keySplines=".52,.6,.25,.99"/></path><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"><animateTransform id="spinner_yOmw" begin="spinner_g88x.begin+0.6s" attributeName="transform" calcMode="spline" type="translate" dur="1.2s" values="12 12;0 0" keySplines=".52,.6,.25,.99"/><animateTransform begin="spinner_g88x.begin+0.6s" attributeName="transform" calcMode="spline" additive="sum" type="scale" dur="1.2s" values="0;1" keySplines=".52,.6,.25,.99"/><animate begin="spinner_g88x.begin+0.6s" attributeName="opacity" calcMode="spline" dur="1.2s" values="1;0" keySplines=".52,.6,.25,.99"/></path></svg>
 </div>
   <header style="z-index:3000" class="pos-sticky average c-white bg p-10 top-0 left-0 right-0 bottom-0 row align-center g-10">
        
-        <img src="{{ config('settings.site_logo') }}" alt="Logo" class="h-30 pc-pointer" onclick="window.location.href='{{ url('/') }}'">
-        
+        <img src="{{ $logo }}" alt="Logo" class="h-30 logo pc-pointer" onclick="window.location.href='{{ url('/') }}'">
+      
         <div class="row m-left-auto g-10 align-center">
 
   <div class="row profile-icon align-center g-10">
@@ -384,7 +386,7 @@ footer .child .f-links.active{
             {{-- NAV PROFILE SECTION --}}
           <div style="border-bottom:1px solid rgba(var(--rgt),0.1)" class="nav-profile z-index-1000 pos-sticky stick-top w-full row align-center space-between g-10 p-20">
              {{-- logo --}}
-            <img src="{{ config('settings.site_logo') }}" alt="" class="w-half">
+            <img src="{{ $logo }}" alt="" class="w-half">
              {{-- close --}}
              <span onclick="
               this.closest('nav').querySelector('section.nav').classList.remove('animation-trans-in-from-left');
@@ -793,6 +795,7 @@ footer .child .f-links.active{
           // link.rel='stylesheet';
           // link.classList.add('mode_css');
           document.querySelector('link.mode_css').href=dark_link;
+      
           let response=await fetch( element.dataset.link + dark_link);
           
          
@@ -803,7 +806,7 @@ footer .child .f-links.active{
           // link.rel='stylesheget';
           // link.classList.add('mode_css');
           document.querySelector('link.mode_css').href=light_link;
-          let response=await fetch( element.dataset.link + light_link);
+           let response=await fetch( element.dataset.link + light_link);
            
         }
        }catch(error){

@@ -235,7 +235,7 @@ body::before{
   <svg fill="currentColor" width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"><animateTransform id="spinner_g88x" begin="0;spinner_yOmw.begin+0.6s" attributeName="transform" calcMode="spline" type="translate" dur="1.2s" values="12 12;0 0" keySplines=".52,.6,.25,.99"/><animateTransform begin="0;spinner_yOmw.begin+0.6s" attributeName="transform" calcMode="spline" additive="sum" type="scale" dur="1.2s" values="0;1" keySplines=".52,.6,.25,.99"/><animate begin="0;spinner_yOmw.begin+0.6s" attributeName="opacity" calcMode="spline" dur="1.2s" values="1;0" keySplines=".52,.6,.25,.99"/></path><path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"><animateTransform id="spinner_yOmw" begin="spinner_g88x.begin+0.6s" attributeName="transform" calcMode="spline" type="translate" dur="1.2s" values="12 12;0 0" keySplines=".52,.6,.25,.99"/><animateTransform begin="spinner_g88x.begin+0.6s" attributeName="transform" calcMode="spline" additive="sum" type="scale" dur="1.2s" values="0;1" keySplines=".52,.6,.25,.99"/><animate begin="spinner_g88x.begin+0.6s" attributeName="opacity" calcMode="spline" dur="1.2s" values="1;0" keySplines=".52,.6,.25,.99"/></path></svg>
 </div>
  <header>
-           <img  onclick="window.location.href='{{ url('/') }}'" src="{{ config('settings.site_logo') }}" alt="Logo" class="h-30 pc-pointer">
+           <img  onclick="window.location.href='{{ url('/') }}'" src="{{ $logo }}" alt="Logo" class="h-30 pc-pointer">
         
         {{-- MENU ICON --}}
         <div onclick="
@@ -412,7 +412,7 @@ body::before{
 </section>
     </main>
    <footer class="w-full pc-align-center c-white bg p-10 column g-10">
-   <img src="{{ config('settings.site_logo') }}" alt="" class="grid-full w-100 pc-m-x-auto">
+   <img src="{{ $logo }}" alt="" class="grid-full w-100 pc-m-x-auto">
    <span class="font-1 grid-full">
     Learn. Engage. Earn. -- The future of digital growth with {{ config('app.name') }}.
 </span>

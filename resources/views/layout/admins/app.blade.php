@@ -143,7 +143,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="CurrentColor" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"></path></svg>
             
         </div>
-        <img src="{{ config('settings.site_logo') }}" alt="Logo" class="h-30">
+        <img src="{{ $logo }}" alt="Logo" class="h-30">
         <div class="m-left-auto row g-5 align-center">
             <div onclick="window.location.href='{{ url('admins/notifications') }}'" class="notification-icon">
     <!-- Bell icon -->
@@ -161,7 +161,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     " class="pos-fixed mobile-display-none high top-0 left-0 right-0 bottom-0 bg-black-transparent average">
         <section onclick="event.stopPropagation()" class="nav transition-ease-half overflow-auto column bg-white h-full w-semi-full">
             <div class="nav-profile pos-sticky stick-top w-full column g-10 p-10">
-              <img src="{{ config('settings.site_logo') }}" alt="Logo" class="w-half">
+              <img src="{{ $logo }}" alt="Logo" class="w-half">
            <strong class="desc " style="color:var(--primary-text);font-weight:900;font-size:2rrem;">{{ ucfirst(Auth::guard('admins')->user()->role) }}</strong>
             </div>
             <div class="nav-links flex-auto bg-inherit w-full column">

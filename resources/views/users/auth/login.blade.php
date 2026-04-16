@@ -19,7 +19,7 @@
         {{-- <form action="{{ url('users/post/login/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.call_back)" class="w-full border-1 border-color-silver max-w-500 align-center br-10 bg-white  column g-5"> --}}
           <form action="{{ url('users/post/login/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.call_back)" class="w-full max-w-500 align-center bg-transparent c-white column g-5">
             <div class="column w-full p-10 align-center g-5">
-             <img onclick="window.location.href='{{ url('/') }}'" src="{{ config('settings.site_logo') }}" class="w-quarter pc-pointer" alt="">
+             <img onclick="window.location.href='{{ url('/') }}'" src="{{ $logo }}" class="w-quarter pc-pointer" alt="">
             <span class="desc strong">Welcome Back</span>
             <span class="text-center opacity-06">Enter your credentials to access your account</span>
        

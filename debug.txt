@@ -46,7 +46,7 @@
      <section class="column p-10 p-y-20 w-full flex-auto justify-center">
        <form style="backdrop-filter: blur(20px);box-shadow:inset 0 0 50px var(--bg-light)" action="{{ url('users/post/register/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.call_back)" class="w-full border-1 border-color-silver max-w-500 align-center br-10 bg-transparent c-white column g-5">
             <div class="column w-full p-10 align-center g-5">
-              <img onclick="window.location.href='{{ url('/') }}'" src="{{ config('settings.site_logo') }}" class="w-quarter pc-pointer" alt="">
+              <img onclick="window.location.href='{{ url('/') }}'" src="{{ $logo }}" class="w-quarter pc-pointer" alt="">
           
             <span style="font-family:titan one" class="c-primary desc">Join {{  config('app.name')}}</span>
            

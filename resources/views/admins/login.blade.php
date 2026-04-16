@@ -5,7 +5,7 @@
 @section('main')
     <section class="column p-10  w-full flex-auto justify-center">
         <form action="{{ url('admins/post/login/process') }}" method="POST" onsubmit="PostRequest(event,this,call_back)" class="w-full max-w-500 p-10 align-center br-10 bg-transparent c-white column g-5">
-            <img src="{{ config('settings.site_logo') }}" class="w-quarter" alt="">
+            <img src="{{ $logo }}" class="w-quarter" alt="">
            <span style="font-family:titan one" class="c-primary desc">Admin Login</span>
              <span class="m-bottom-20">Login with your credentials</span>
            <input type="hidden" class="input" name="_token" value="{{ csrf_token() }}">

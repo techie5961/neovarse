@@ -47,7 +47,7 @@ div.menu.active svg.menu.close{
 <body>
     <header class="pos-sticky backdrop-blur-5 average c-white bg p-10 top-0 left-0 right-0 bottom-0 row align-center g-10">
        
-        <img  onclick="window.location.href='{{ url('/') }}'" src="{{ config('settings.site_logo') }}" alt="Logo" class="h-30 pc-pointer">
+        <img  onclick="window.location.href='{{ url('/') }}'" src="{{ $logo }}" alt="Logo" class="h-30 pc-pointer">
          <div onclick="
        if(document.querySelector('section.nav').classList.contains('display-none')){
         document.querySelector('section.nav').classList.remove('display-none');

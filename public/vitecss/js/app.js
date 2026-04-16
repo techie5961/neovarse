@@ -118,10 +118,15 @@ async function PostRequest(event,element,callback=null,do_not_notify=null){
  }
  
  if(!isEmpty){
-  WrapBtnText(element.querySelector('button'));
-    // element.querySelector('button').classList.add('active');
-    // BtnLoader(element.querySelector('button'));
-    ActionLoader();
+ let post_btn=element.querySelector("button.post");
+ if(post_btn){
+    let data_text=post_btn.dataset.text;
+    if(!data_text){
+        post_btn.dataset.text=post_btn.innerHTML; 
+    }
+    post_btn.innerHTML='Processing...';
+    post_btn.classList.add('disabled');
+ }
     let inps=element.querySelectorAll('.input');
     let form=new FormData();
    
@@ -159,11 +164,17 @@ async function PostRequest(event,element,callback=null,do_not_notify=null){
         if(callback !== null){
             callback(data,event);
         }
-        HideActionLoader();
-        // element.querySelector('button').classList.remove('active');
+       if(post_btn){
+        post_btn.innerHTML=post_btn.dataset.text;
+        post_btn.classList.remove('disabled');
+       }
      }else{
-        HideActionLoader();
+          if(post_btn){
+        post_btn.innerHTML=post_btn.dataset.text;
+        post_btn.classList.remove('disabled');
+       }
         CreateNotify('error','Internal Error: ' + response.status + ' Error');
+        
         //   element.querySelector('button').classList.remove('active');
      }
      

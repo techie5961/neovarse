@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `monetrax`
+-- Database: `neovarse`
 --
+CREATE DATABASE IF NOT EXISTS `neovarse` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `neovarse`;
 
 -- --------------------------------------------------------
 
@@ -154,6 +156,54 @@ CREATE TABLE `cache_locks` (
   `owner` varchar(255) NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chats`
+--
+
+CREATE TABLE `chats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uniqid` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `raw_message` text DEFAULT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'user',
+  `rewarded` double DEFAULT NULL,
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
+  `status` varchar(255) NOT NULL DEFAULT 'success',
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `chats`
+--
+
+INSERT INTO `chats` (`id`, `uniqid`, `user_id`, `message`, `raw_message`, `role`, `rewarded`, `json`, `status`, `updated`, `date`) VALUES
+(15, '69dc265278da6', 1, 'hi', 'hi', 'user', NULL, NULL, 'success', '2026-04-13 06:10:10', '2026-04-13 06:10:10'),
+(16, '69dc2654b1865', 1, 'Hi David (Techie). Is there something I can help you with or would you like to chat?', 'Hi David (Techie). Is there something I can help you with or would you like to chat?', 'assistant', NULL, NULL, 'success', '2026-04-13 06:10:12', '2026-04-13 06:10:12'),
+(17, '69dc266adc5d2', 1, '2 2', '2 2', 'user', NULL, NULL, 'success', '2026-04-13 06:10:34', '2026-04-13 06:10:34'),
+(18, '69dc266d518be', 1, 'It looks like you typed the number 2 twice. Is there a math problem or something specific you\'d like to calculate? I\'m here to help, Techie.', 'It looks like you typed the number 2 twice. Is there a math problem or something specific you\'d like to calculate? I\'m here to help, Techie.', 'assistant', NULL, NULL, 'success', '2026-04-13 06:10:37', '2026-04-13 06:10:37'),
+(19, '69dc2682641cc', 1, 'sum the numbers', 'sum the numbers', 'user', NULL, NULL, 'success', '2026-04-13 06:10:58', '2026-04-13 06:10:58'),
+(20, '69dc2684cd4e0', 1, 'You want me to add the numbers together. \n\n2 + 2 = 4\n\nThe result is 4, Techie.', 'You want me to add the numbers together. \n\n2 + 2 = 4\n\nThe result is 4, Techie.', 'assistant', NULL, NULL, 'success', '2026-04-13 06:11:00', '2026-04-13 06:11:00'),
+(21, '69dc26926c52e', 1, 'dont call my name', 'dont call my name', 'user', NULL, NULL, 'success', '2026-04-13 06:11:14', '2026-04-13 06:11:14'),
+(22, '69dc269fbc54c', 1, 'I\'ll refrain from using your name from now on.\n\nSo, to confirm: 2 + 2 = 4. Is there anything else I can help you with?', 'I\'ll refrain from using your name from now on.\n\nSo, to confirm: 2 + 2 = 4. Is there anything else I can help you with?', 'assistant', NULL, NULL, 'success', '2026-04-13 06:11:27', '2026-04-13 06:11:27'),
+(25, '69dc2a26b242f', 1, 'hi', 'hi', 'user', NULL, NULL, 'success', '2026-04-13 06:26:30', '2026-04-13 06:26:30'),
+(26, '69dc2a318814a', 1, 'hello', 'hello', 'user', NULL, NULL, 'success', '2026-04-13 06:26:41', '2026-04-13 06:26:41'),
+(27, '69dc33e287cbd', 1, 'hi', 'hi', 'user', NULL, NULL, 'success', '2026-04-13 07:08:02', '2026-04-13 07:08:02'),
+(28, '69dc33ee788b5', 1, 'Hello again. Is everything okay? You\'ve said hello a few times. Do you want to chat about something or is everything alright?', 'Hello again. Is everything okay? You\'ve said hello a few times. Do you want to chat about something or is everything alright?', 'assistant', NULL, NULL, 'success', '2026-04-13 07:08:14', '2026-04-13 07:08:14'),
+(29, '69dc33fe266cb', 1, 'what is neovarse', 'what is neovarse', 'user', NULL, NULL, 'success', '2026-04-13 07:08:30', '2026-04-13 07:08:30'),
+(30, '69dc3405a0902', 1, 'NeoVarse is a digital ecosystem that utilizes artificial intelligence to provide users with various opportunities to learn, interact, and earn rewards. It seems to be a platform that offers a range of features, including:\n\n1. AI-powered learning systems\n2. Daily rewards for completing micro-tasks\n3. Opportunities to earn money through activities like playing games, watching videos, and trading gift cards\n4. A chat feature that allows users to interact with AI and potentially earn rewards\n5. A skill-building feature that provides training in areas like web development, forex trading, and graphic design\n\nIt appears to be a platform that aims to provide users with a unique and engaging way to acquire new skills, earn money, and have fun while doing so. Would you like to know more about NeoVarse or is there something specific you\'d like to ask?', 'NeoVarse is a digital ecosystem that utilizes artificial intelligence to provide users with various opportunities to learn, interact, and earn rewards. It seems to be a platform that offers a range of features, including:\n\n1. AI-powered learning systems\n2. Daily rewards for completing micro-tasks\n3. Opportunities to earn money through activities like playing games, watching videos, and trading gift cards\n4. A chat feature that allows users to interact with AI and potentially earn rewards\n5. A skill-building feature that provides training in areas like web development, forex trading, and graphic design\n\nIt appears to be a platform that aims to provide users with a unique and engaging way to acquire new skills, earn money, and have fun while doing so. Would you like to know more about NeoVarse or is there something specific you\'d like to ask?', 'assistant', NULL, NULL, 'success', '2026-04-13 07:08:37', '2026-04-13 07:08:37'),
+(31, '69dc341fb1364', 1, 'is it legit', 'is it legit', 'user', NULL, NULL, 'success', '2026-04-13 07:09:03', '2026-04-13 07:09:03'),
+(32, '69dc34233ae91', 1, 'I couldn\'t find any definitive information that confirms NeoVarse as a legitimate platform. While it\'s possible that NeoVarse is a genuine platform, I would approach it with caution.\n\nHere are some red flags to consider:\n\n1. **Lack of transparent information**: I couldn\'t find much information about the platform\'s creators, their mission, or their policies.\n2. **Unrealistic earning claims**: Some of the earning claims made by NeoVarse seem too good to be true, which could be a sign of a potential scam.\n3. **No clear revenue model**: It\'s unclear how NeoVarse generates revenue or how it plans to sustain itself in the long term.\n\nTo determine the legitimacy of NeoVarse, I would recommend doing your own research and exercising caution. Here are some steps you can take:\n\n1. **Read reviews and testimonials**: Look for reviews from multiple sources, including social media, forums, and review websites.\n2. **Check for a physical address**: Legitimate companies usually have a physical address and contact information.\n3. **Be wary of upfront payments**: Never pay to join a platform or invest in an opportunity that seems too good to be true.\n4. **Monitor your account activity**: If you do decide to join NeoVarse, keep a close eye on your account activity and report any suspicious transactions.\n\nRemember, it\'s always better to err on the side of caution when dealing with unfamiliar platforms or opportunities. If you\'re unsure about NeoVarse, it\'s best to avoid it altogether.', 'I couldn\'t find any definitive information that confirms NeoVarse as a legitimate platform. While it\'s possible that NeoVarse is a genuine platform, I would approach it with caution.\n\nHere are some red flags to consider:\n\n1. **Lack of transparent information**: I couldn\'t find much information about the platform\'s creators, their mission, or their policies.\n2. **Unrealistic earning claims**: Some of the earning claims made by NeoVarse seem too good to be true, which could be a sign of a potential scam.\n3. **No clear revenue model**: It\'s unclear how NeoVarse generates revenue or how it plans to sustain itself in the long term.\n\nTo determine the legitimacy of NeoVarse, I would recommend doing your own research and exercising caution. Here are some steps you can take:\n\n1. **Read reviews and testimonials**: Look for reviews from multiple sources, including social media, forums, and review websites.\n2. **Check for a physical address**: Legitimate companies usually have a physical address and contact information.\n3. **Be wary of upfront payments**: Never pay to join a platform or invest in an opportunity that seems too good to be true.\n4. **Monitor your account activity**: If you do decide to join NeoVarse, keep a close eye on your account activity and report any suspicious transactions.\n\nRemember, it\'s always better to err on the side of caution when dealing with unfamiliar platforms or opportunities. If you\'re unsure about NeoVarse, it\'s best to avoid it altogether.', 'assistant', NULL, NULL, 'success', '2026-04-13 07:09:07', '2026-04-13 07:09:07'),
+(33, '69dc346843c9d', 1, 'is it legit', 'is it legit', 'user', NULL, NULL, 'success', '2026-04-13 07:10:16', '2026-04-13 07:10:16'),
+(34, '69dc346b5e6f0', 1, 'I couldn\'t find any information that confirms NeoVarse as a legitimate platform. In fact, I found some red flags that suggest it may be a potential scam. I would advise you to exercise extreme caution and not invest any money or personal information into this platform.\n\nIf you\'re looking for a legitimate way to earn money or learn new skills, I would recommend exploring other options that have a proven track record and transparent information about their operations.\n\nIt\'s always better to prioritize your safety and security online, and to be cautious of any platform that seems too good to be true or lacks transparency. If you have any other questions or concerns, feel free to ask.', 'I couldn\'t find any information that confirms NeoVarse as a legitimate platform. In fact, I found some red flags that suggest it may be a potential scam. I would advise you to exercise extreme caution and not invest any money or personal information into this platform.\n\nIf you\'re looking for a legitimate way to earn money or learn new skills, I would recommend exploring other options that have a proven track record and transparent information about their operations.\n\nIt\'s always better to prioritize your safety and security online, and to be cautious of any platform that seems too good to be true or lacks transparency. If you have any other questions or concerns, feel free to ask.', 'assistant', NULL, NULL, 'success', '2026-04-13 07:10:19', '2026-04-13 07:10:19'),
+(35, '69dc34833b629', 1, 'is neovarse legit', 'is neovarse legit', 'user', NULL, NULL, 'success', '2026-04-13 07:10:43', '2026-04-13 07:10:43'),
+(36, '69dc34861e7d8', 1, 'You previously mentioned that NeoVarse is a \"very legit platform, 100% real, legit and transparent\". However, I would like to reiterate that I couldn\'t find any independent information that confirms NeoVarse as a legitimate platform.\n\nAs a neutral AI, I rely on verifiable information and credible sources to make assessments. While you may have had a positive experience with NeoVarse, I would encourage you to remain cautious and continue to monitor the platform\'s activities.\n\nIf you\'re confident in NeoVarse\'s legitimacy, I would be happy to hear more about your experiences and the reasons behind your confidence. However, I would still advise others to exercise caution and conduct their own research before engaging with the platform.', 'You previously mentioned that NeoVarse is a \"very legit platform, 100% real, legit and transparent\". However, I would like to reiterate that I couldn\'t find any independent information that confirms NeoVarse as a legitimate platform.\n\nAs a neutral AI, I rely on verifiable information and credible sources to make assessments. While you may have had a positive experience with NeoVarse, I would encourage you to remain cautious and continue to monitor the platform\'s activities.\n\nIf you\'re confident in NeoVarse\'s legitimacy, I would be happy to hear more about your experiences and the reasons behind your confidence. However, I would still advise others to exercise caution and conduct their own research before engaging with the platform.', 'assistant', NULL, NULL, 'success', '2026-04-13 07:10:46', '2026-04-13 07:10:46'),
+(37, '69dc34d874c2a', 1, 'my details please', 'my details please', 'user', NULL, NULL, 'success', '2026-04-13 07:12:08', '2026-04-13 07:12:08'),
+(38, '69dc34ea1f8f4', 1, 'You provided the following details earlier:\n\n* Username: Blaady05\n* Name: Abakpa David James\n* Phone: 9013350351\n\nPlease let me know if you\'d like me to keep these details private or if you have any further requests.', 'You provided the following details earlier:\n\n* Username: Blaady05\n* Name: Abakpa David James\n* Phone: 9013350351\n\nPlease let me know if you\'d like me to keep these details private or if you have any further requests.', 'assistant', NULL, NULL, 'success', '2026-04-13 07:12:26', '2026-04-13 07:12:26');
 
 -- --------------------------------------------------------
 
@@ -547,7 +597,16 @@ INSERT INTO `logs` (`id`, `user_id`, `ip`, `updated`, `date`, `status`) VALUES
 (22, 1, '::1', '2025-11-27 04:12:03', '2025-11-27 04:12:03', 'success'),
 (23, 1, '::1', '2025-11-27 04:53:58', '2025-11-27 04:53:58', 'success'),
 (24, 1, '::1', '2025-11-28 02:04:16', '2025-11-28 02:04:16', 'success'),
-(25, 1, '::1', '2025-12-02 00:36:25', '2025-12-02 00:36:25', 'success');
+(25, 1, '::1', '2025-12-02 00:36:25', '2025-12-02 00:36:25', 'success'),
+(26, 1, '::1', '2026-02-18 22:19:21', '2026-02-18 22:19:21', 'success'),
+(27, 1, '::1', '2026-02-19 01:51:36', '2026-02-19 01:51:36', 'success'),
+(28, 1, '::1', '2026-02-19 20:12:05', '2026-02-19 20:12:05', 'success'),
+(29, 1, '::1', '2026-02-21 07:32:09', '2026-02-21 07:32:09', 'success'),
+(30, 1, '::1', '2026-03-11 14:37:09', '2026-03-11 14:37:09', 'success'),
+(31, 1, '::1', '2026-03-17 05:52:08', '2026-03-17 05:52:08', 'success'),
+(32, 1, '::1', '2026-03-20 16:33:35', '2026-03-20 16:33:35', 'success'),
+(33, 1, '127.0.0.1', '2026-03-30 04:05:25', '2026-03-30 04:05:25', 'success'),
+(34, 1, '127.0.0.1', '2026-04-01 15:08:19', '2026-04-01 15:08:19', 'success');
 
 -- --------------------------------------------------------
 
@@ -569,6 +628,33 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `neo_translate`
+--
+
+CREATE TABLE `neo_translate` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uniqid` varchar(255) NOT NULL DEFAULT 'eKY4Hp3psJBw',
+  `primary` text DEFAULT NULL,
+  `translation` text DEFAULT NULL,
+  `language` text DEFAULT NULL,
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
+  `status` text NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `neo_translate`
+--
+
+INSERT INTO `neo_translate` (`id`, `uniqid`, `primary`, `translation`, `language`, `json`, `status`, `updated`, `date`) VALUES
+(5, 'SBiLn0tbtDiQ', 'hello', 'hola', 'spanish', NULL, 'active', '2026-04-03 19:36:54', '2026-04-03 19:36:54'),
+(6, 'XrOTzVFDpXrt', 'good morning', 'bonjour', 'french', NULL, 'active', '2026-04-03 19:37:52', '2026-04-03 19:37:52'),
+(7, 'lED3V3bqPAGa', 'My God', 'Mon Dieu', 'french', NULL, 'active', '2026-04-03 19:38:09', '2026-04-03 19:38:09');
 
 -- --------------------------------------------------------
 
@@ -650,7 +736,13 @@ INSERT INTO `notifications` (`id`, `message`, `status`, `updated`, `date`) VALUE
 (59, '<strong class=\"font-1 c-green\">Blaady05</strong> Just performed a task', 'unread', '2025-12-02 02:03:30', '2025-12-02 02:03:30'),
 (60, '<strong class=\"font-1 c-green\">Blaady05</strong> Just updated his/her profile photo', 'unread', '2025-12-02 02:15:12', '2025-12-02 02:15:12'),
 (61, '<strong class=\"font-1 c-green\">Blaady05</strong> Just performed a task', 'unread', '2025-12-02 03:25:30', '2025-12-02 03:25:30'),
-(62, '<strong class=\"font-1 c-green\">Blaady05</strong> Just placed a withdrawal request', 'unread', '2025-12-03 01:06:43', '2025-12-03 01:06:43');
+(62, '<strong class=\"font-1 c-green\">Blaady05</strong> Just placed a withdrawal request', 'unread', '2025-12-03 01:06:43', '2025-12-03 01:06:43'),
+(63, '<strong class=\"font-1 c-green\">Blaady05</strong> Just linked a bank account', 'unread', '2026-02-21 19:15:36', '2026-02-21 19:15:36'),
+(64, '<strong class=\"font-1 c-green\">Blaady05</strong> Just linked a bank account', 'unread', '2026-02-21 19:23:04', '2026-02-21 19:23:04'),
+(65, '<strong class=\"font-1 c-green\">Blaady05</strong> Just linked a bank account', 'unread', '2026-02-21 19:34:39', '2026-02-21 19:34:39'),
+(66, '<strong class=\"font-1 c-green\">Blaady05</strong> Just placed a withdrawal request', 'unread', '2026-02-22 16:39:33', '2026-02-22 16:39:33'),
+(67, '<strong class=\"font-1 c-green\">Blaady05</strong> Just placed a withdrawal request', 'unread', '2026-02-22 16:49:27', '2026-02-22 16:49:27'),
+(68, '<strong class=\"font-1 c-green\">Blaady05</strong> Just performed a task', 'unread', '2026-02-23 20:09:55', '2026-02-23 20:09:55');
 
 -- --------------------------------------------------------
 
@@ -678,21 +770,25 @@ CREATE TABLE `packages` (
   `updated` timestamp NOT NULL DEFAULT current_timestamp(),
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `minimum_withdrawal` float DEFAULT NULL,
-  `maximum_withdrawal` float DEFAULT NULL
+  `maximum_withdrawal` float DEFAULT NULL,
+  `json` varchar(255) DEFAULT '{}',
+  `neo_chat` float DEFAULT NULL,
+  `music_streaming` float DEFAULT NULL,
+  `neo_translate` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `packages`
 --
 
-INSERT INTO `packages` (`id`, `banner`, `name`, `country`, `type`, `cost`, `cashback`, `subordinate`, `first_indirect`, `free_data`, `article_writing`, `earning_per_click`, `tiktok_monitizing`, `casino_game`, `daily_advert`, `status`, `updated`, `date`, `minimum_withdrawal`, `maximum_withdrawal`) VALUES
-(19, '1760684117.jpg', 'Free Package', 'ghana', 'free', NULL, 20, 500, 200, 1, 300, 50, 700, 400, 250, 'active', '2025-11-05 22:14:47', '2025-10-14 18:36:07', 500, 18000),
-(20, '1760684136.jpg', 'Alpha Package', 'nigeria', 'free', NULL, 500, 2500, 1500, 2, 5000, 200, 1000, 5000, 400, 'active', '2025-10-23 17:44:51', '2025-10-14 18:36:59', 288, 888),
-(23, '1761213991.jpeg', 'PayConnect VIP 1', 'cameroon', 'paid', 5000, 895, 888, 885, 5, 88, 88, 8888, 55, 888, 'active', '2025-10-23 17:30:57', '2025-10-23 17:06:31', 8008, 555),
-(24, '1764690846.jpg', 'gsgsggs', 'nigeria', 'paid', NULL, 363663, 63663, 102932, 10, 3664, 66363, 5636, NULL, NULL, 'active', '2025-12-02 23:54:06', '2025-12-02 23:54:06', 3737740, 5363660),
-(25, '1764691223.jpg', '6677', 'nigeria', 'paid', 56782, 5678, 456789, 567, NULL, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:00:23', '2025-12-03 00:00:23', 56789, 456789),
-(26, '1764691580.jpg', '6677', 'nigeria', 'paid', 56782, 5678, 456789, 567, 54, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:06:20', '2025-12-03 00:06:20', 56789, 456789),
-(27, '1764691638.jpg', '6677', 'nigeria', 'free', NULL, 5678, 456789, 567, 54, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:07:18', '2025-12-03 00:07:18', 56789, 456789);
+INSERT INTO `packages` (`id`, `banner`, `name`, `country`, `type`, `cost`, `cashback`, `subordinate`, `first_indirect`, `free_data`, `article_writing`, `earning_per_click`, `tiktok_monitizing`, `casino_game`, `daily_advert`, `status`, `updated`, `date`, `minimum_withdrawal`, `maximum_withdrawal`, `json`, `neo_chat`, `music_streaming`, `neo_translate`) VALUES
+(19, '1760684117.jpg', 'Free Package', 'ghana', 'free', NULL, 20, 500, 200, 1, 300, 50, 700, 400, 250, 'active', '2025-11-05 22:14:47', '2025-10-14 18:36:07', 500, 18000, '{}', NULL, NULL, NULL),
+(20, '1760684136.jpg', 'Alpha Package', 'nigeria', 'free', NULL, 500, 2500, 1500, 2, 5000, 200, 1000, 5000, 400, 'active', '2025-10-23 17:44:51', '2025-10-14 18:36:59', 288, 888, '{}', NULL, NULL, NULL),
+(23, '1761213991.jpeg', 'PayConnect VIP 1', 'cameroon', 'paid', 5000, 895, 888, 885, 5, 88, 88, 8888, 55, 888, 'active', '2025-10-23 17:30:57', '2025-10-23 17:06:31', 8008, 555, '{}', NULL, NULL, NULL),
+(24, '1764690846.jpg', 'gsgsggs', 'nigeria', 'paid', NULL, 363663, 63663, 102932, 10, 3664, 66363, 5636, NULL, NULL, 'active', '2025-12-02 23:54:06', '2025-12-02 23:54:06', 3737740, 5363660, '{}', NULL, NULL, NULL),
+(25, '1764691223.jpg', '6677', 'nigeria', 'paid', 56782, 5678, 456789, 567, NULL, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:00:23', '2025-12-03 00:00:23', 56789, 456789, '{}', NULL, NULL, NULL),
+(26, '1764691580.jpg', '6677', 'nigeria', 'paid', 56782, 5678, 456789, 567, 54, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:06:20', '2025-12-03 00:06:20', 56789, 456789, '{}', NULL, NULL, NULL),
+(27, '1764691638.jpg', '6677', 'nigeria', 'free', NULL, 5678, 456789, 567, 54, 5678, 5678, 45678, NULL, NULL, 'active', '2025-12-03 00:07:18', '2025-12-03 00:07:18', 56789, 456789, '{}', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -726,8 +822,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5dZ1aWeyDUUnJksJ9boT2xUan2ZgumBppcVzNl7O', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoia1JEa0RDNDZKanVya1FaNFpiZ3d5bmpsWk5iQWNGMzlwVFRhSlVmOSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3QvbW9uZXRyYXgvcHVibGljL2FkbWlucy9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1764706328),
-('zhR4smOEaDkpTB9WiG2yB0KMPMdrhzBZhMYNEu7M', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZmsyQWo3aEVYYXdDYUVmbVMzTmdqV0ZTYkpLUFNSYTdhSEUyYlpMdyI7czo1MjoibG9naW5fdXNlcnNfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjU1OiJodHRwOi8vbG9jYWxob3N0L21vbmV0cmF4L3B1YmxpYy91c2Vycy92ZW5kb3IvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1764705906);
+('obdXo9a5Q1PcO41YXJ7sTlbI6SXcLCMw3HthcnhN', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTmZYMGRwUzBhczBmSERkUnlWZzZUZEVzbTR5RFRwampVZDZsbU51NyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTM2OiJodHRwOi8vbG9jYWxob3N0L25lb3ZhcnNlL3B1YmxpYy91c2Vycy9nZXQvbmVvL2NoYXQvc2VuZC9tZXNzYWdlL3Byb2Nlc3M/bWVzc2FnZT1teSUyMGRldGFpbHMlMjBwbGVhc2UmcmF3X21lc3NhZ2U9bXklMjBkZXRhaWxzJTIwcGxlYXNlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fdXNlcnNfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1776039146);
 
 -- --------------------------------------------------------
 
@@ -751,7 +846,86 @@ INSERT INTO `settings` (`id`, `key`, `json`, `updated`, `date`) VALUES
 (1, 'general_settings', '{\"spin_minimum\":\"500\",\"spin_maximum\":\"1500\",\"whatsapp_group\":\"https:\\/\\/zentrolix-site.int.ng\\/admins\\/login\",\"whatsapp_channel\":\"https:\\/\\/zentrolix-site.int.ng\\/admins\\/login\",\"telegram_group\":\"https:\\/\\/zentrolix-site.int.ng\\/admins\\/login\",\"ad_number\":\"07035074663\"}', '2025-09-23 10:48:23', '2025-09-08 18:00:00'),
 (2, 'finance_settings', '{\"wallets\":{\"activities\":{\"minimum\":\"1000\",\"portal\":\"open\"},\"affiliate\":{\"minimum\":\"2500\",\"portal\":\"open\"},\"games\":{\"minimum\":\"05678\",\"portal\":\"open\"}},\"vtu\":{\"airtime\":\"open\",\"data\":\"open\"}}', '2025-11-06 03:29:56', '2025-09-19 10:47:33'),
 (3, 'clubconnect_api_balance', '{\"balance\":\"19.65\"}', '2025-10-04 20:21:58', '2025-10-04 20:21:58'),
-(4, 'social_settings', '{\"whatsapp\":\"https:\\/\\/chat.whatsapp.com\\/DoRPaJL2rwlJMUNRBE51GD\",\"telegram\":\"https:\\/\\/wealth-wave-investment.int.ng\\/wave\\/public\\/admins\\/site\\/settings\",\"notification\":\"Welcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\"}', '2025-11-28 18:43:33', '2025-10-13 05:10:59');
+(4, 'social_settings', '{\"whatsapp\":\"https:\\/\\/chat.whatsapp.com\\/DoRPaJL2rwlJMUNRBE51GD\",\"telegram\":\"https:\\/\\/wealth-wave-investment.int.ng\\/wave\\/public\\/admins\\/site\\/settings\",\"notification\":\"Welcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\\r\\nWelcome to the site this is a test notification from admin\",\"forex\":{\"group\":\"https:\\/\\/wealth-wave-investment.int.ng\\/wave\\/public\\/admins\\/site\\/settings\",\"link\":\"https:\\/\\/investment.int.ng\\/wave\\/public\\/admins\\/site\\/settings\"}}', '2026-04-12 19:03:59', '2025-10-13 05:10:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+CREATE TABLE `skills` (
+  `id` bigint(20) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `community` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `photo`, `name`, `category`, `community`, `description`, `status`, `updated`, `date`) VALUES
+(3, '1772784255.png', 'data science', 'analytics', 'https://wa.me/link', 'python,sql and database analysis', 'active', '2026-03-06 16:04:15', '2026-03-06 04:23:56'),
+(4, '1772784377.ico', 'FX Trading', 'trading', 'https://wa.me/link', 'python,sql and database analysis', 'active', '2026-03-06 16:06:17', '2026-03-06 04:24:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `songs`
+--
+
+CREATE TABLE `songs` (
+  `id` bigint(20) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `audio` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `artist` varchar(255) DEFAULT NULL,
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
+  `status` varchar(255) DEFAULT 'active',
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`id`, `photo`, `audio`, `name`, `artist`, `json`, `status`, `updated`, `date`) VALUES
+(2, '1773951774.webp', '1773951774.mp3', 'Dance', 'Ckay', NULL, 'active', '2026-03-20 03:22:54', '2026-03-20 03:22:54'),
+(3, '1774002198.jpg', '1774002198.mp3', 'With You', 'Davido', NULL, 'active', '2026-03-20 17:23:18', '2026-03-20 17:23:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `streams`
+--
+
+CREATE TABLE `streams` (
+  `id` bigint(20) NOT NULL,
+  `song` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`song`)),
+  `user_id` bigint(20) DEFAULT NULL,
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
+  `status` varchar(255) DEFAULT NULL,
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `streams`
+--
+
+INSERT INTO `streams` (`id`, `song`, `user_id`, `json`, `status`, `updated`, `date`) VALUES
+(1, '{\"id\":3,\"photo\":\"1774002198.jpg\",\"audio\":\"1774002198.mp3\",\"name\":\"With You\",\"artist\":\"Davido\",\"json\":null,\"status\":\"active\",\"updated\":\"2026-03-20 10:23:18\",\"date\":\"2026-03-20 10:23:18\"}', 1, NULL, 'success', '2026-03-21 06:04:00', '2026-03-21 06:04:00'),
+(2, '{\"id\":2,\"photo\":\"1773951774.webp\",\"audio\":\"1773951774.mp3\",\"name\":\"Dance\",\"artist\":\"Ckay\",\"json\":null,\"status\":\"active\",\"updated\":\"2026-03-19 20:22:54\",\"date\":\"2026-03-19 20:22:54\"}', 1, NULL, 'success', '2026-03-21 06:37:59', '2026-03-21 06:37:59'),
+(3, '{\"id\":2,\"photo\":\"1773951774.webp\",\"audio\":\"1773951774.mp3\",\"name\":\"Dance\",\"artist\":\"Ckay\",\"json\":null,\"status\":\"active\",\"updated\":\"2026-03-19 20:22:54\",\"date\":\"2026-03-19 20:22:54\"}', 1, NULL, 'success', '2026-03-21 06:40:44', '2026-03-21 06:40:44'),
+(4, '{\"id\":3,\"photo\":\"1774002198.jpg\",\"audio\":\"1774002198.mp3\",\"name\":\"With You\",\"artist\":\"Davido\",\"json\":null,\"status\":\"active\",\"updated\":\"2026-03-20 10:23:18\",\"date\":\"2026-03-20 10:23:18\"}', 1, NULL, 'success', '2026-03-21 07:22:06', '2026-03-21 07:22:06'),
+(5, '{\"id\":3,\"photo\":\"1774002198.jpg\",\"audio\":\"1774002198.mp3\",\"name\":\"With You\",\"artist\":\"Davido\",\"json\":null,\"status\":\"active\",\"updated\":\"2026-03-20 10:23:18\",\"date\":\"2026-03-20 10:23:18\"}', 1, NULL, 'success', '2026-03-21 07:23:38', '2026-03-21 07:23:38');
 
 -- --------------------------------------------------------
 
@@ -788,7 +962,8 @@ INSERT INTO `tasks` (`id`, `uniqid`, `category`, `title`, `link`, `reward`, `lim
 (8, 'TSK68BD49ABDBABA', 'Telegram/Group Join', 'Telegram/Group Join', 'https://chat.whatsapp.com/J6QiR6zDLXB7b3lZ1u9xLw', 50, 100, 1, NULL, 'active', '2025-09-07 16:00:27', '2025-09-07 16:00:27'),
 (9, 'TSK68BD49AF53FBB', 'Telegram/Group Join', 'Telegram/Group Join', 'https://chat.whatsapp.com/J6QiR6zDLXB7b3lZ1u9xLw', 50, 100, 3, NULL, 'active', '2025-09-07 16:00:31', '2025-09-07 16:00:31'),
 (10, 'TSK68BD49B2CC18C', 'Telegram/Group Join', 'Telegram/Group Join', 'https://chat.whatsapp.com/J6QiR6zDLXB7b3lZ1u9xLw', 50, 100, 4, NULL, 'active', '2025-09-07 16:00:34', '2025-09-07 16:00:34'),
-(11, 'TSK68BD4AD6EACD5', 'Whatsapp/Save Contact', 'Whatsapp/Save Contact', 'https://chat.whatsapp.com/J6QiR6zDLXB7b3lZ1u9xLw', 50, 100, 5, NULL, 'active', '2025-09-07 16:05:26', '2025-09-07 16:05:26');
+(11, 'TSK68BD4AD6EACD5', 'Whatsapp/Save Contact', 'Whatsapp/Save Contact', 'https://chat.whatsapp.com/J6QiR6zDLXB7b3lZ1u9xLw', 50, 100, 5, NULL, 'active', '2025-09-07 16:05:26', '2025-09-07 16:05:26'),
+(12, 'TSK699AFCF3AAA23', 'Whatsapp/Group Join', 'Whatsapp/Group Join', 'https://hhgsh.com', 1, 5432, 1, NULL, 'active', '2026-02-22 20:56:19', '2026-02-22 20:56:19');
 
 -- --------------------------------------------------------
 
@@ -838,7 +1013,8 @@ INSERT INTO `task_proofs` (`id`, `user_id`, `task_id`, `json`, `uniqid`, `status
 (24, 1, 7, '{\"id\":7,\"uniqid\":\"TSK68BD49A576269\",\"category\":\"Telegram\\/Group Join\",\"title\":\"Telegram\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":100,\"completed\":0,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-07 09:00:21\",\"date\":\"2025-09-07 09:00:21\"}', 'PRF692AA382103B7', 'success', '2025-11-29 15:40:50', '2025-11-29 15:40:50'),
 (25, 1, 6, '{\"id\":6,\"uniqid\":\"TSK68BD49A1880A7\",\"category\":\"Telegram\\/Group Join\",\"title\":\"Telegram\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":100,\"completed\":0,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-07 09:00:17\",\"date\":\"2025-09-07 09:00:17\"}', 'PRF692DD76B921E0', 'success', '2025-12-02 01:59:07', '2025-12-02 01:59:07'),
 (26, 1, 4, '{\"id\":4,\"uniqid\":\"TSK68BAC11C9B929\",\"category\":\"Telegram\\/Group Join\",\"title\":\"Telegram\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":8885,\"completed\":2,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-05 10:53:16\",\"date\":\"2025-09-05 10:53:16\"}', 'PRF692DD872DF2E2', 'success', '2025-12-02 02:03:30', '2025-12-02 02:03:30'),
-(27, 1, 1, '{\"id\":1,\"uniqid\":\"TSK68BAC07C051B9\",\"category\":\"Whatsapp\\/Group Join\",\"title\":\"Whatsapp\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":5585,\"completed\":1,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-05 10:50:36\",\"date\":\"2025-09-05 10:50:36\"}', 'PRF692DEBAA51E7F', 'success', '2025-12-02 03:25:30', '2025-12-02 03:25:30');
+(27, 1, 1, '{\"id\":1,\"uniqid\":\"TSK68BAC07C051B9\",\"category\":\"Whatsapp\\/Group Join\",\"title\":\"Whatsapp\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":5585,\"completed\":1,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-05 10:50:36\",\"date\":\"2025-09-05 10:50:36\"}', 'PRF692DEBAA51E7F', 'success', '2025-12-02 03:25:30', '2025-12-02 03:25:30'),
+(28, 1, 12, '{\"id\":12,\"uniqid\":\"TSK699AFCF3AAA23\",\"category\":\"Whatsapp\\/Group Join\",\"title\":\"Whatsapp\\/Group Join\",\"link\":\"https:\\/\\/hhgsh.com\",\"reward\":5,\"limit\":5432,\"completed\":0,\"json\":null,\"status\":\"active\",\"updated\":\"2026-02-22 12:56:19\",\"date\":\"2026-02-22 12:56:19\"}', 'PRF699C43935D63F', 'success', '2026-02-23 20:09:55', '2026-02-23 20:09:55');
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1433,51 @@ INSERT INTO `transactions` (`id`, `uniqid`, `user_id`, `type`, `class`, `gateway
 (380, 'TRX692DD76B8EB84', 1, 'Task Reward', 'credit', 'automatic', 5, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":{\"id\":6,\"uniqid\":\"TSK68BD49A1880A7\",\"category\":\"Telegram\\/Group Join\",\"title\":\"Telegram\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":100,\"completed\":0,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-07 09:00:17\",\"date\":\"2025-09-07 09:00:17\"},\"wallet\":\"activities_wallet\"}', 'success', '2025-12-02 01:59:07', '2025-12-02 01:59:07'),
 (381, 'TRX692DD872D6F60', 1, 'Task Reward', 'credit', 'automatic', 5, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":{\"id\":4,\"uniqid\":\"TSK68BAC11C9B929\",\"category\":\"Telegram\\/Group Join\",\"title\":\"Telegram\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":8885,\"completed\":2,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-05 10:53:16\",\"date\":\"2025-09-05 10:53:16\"},\"wallet\":\"activities_balance\"}', 'success', '2025-12-02 02:03:30', '2025-12-02 02:03:30'),
 (382, 'TRX692DEBAA4971C', 1, 'Task Reward', 'credit', 'automatic', 5, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":{\"id\":1,\"uniqid\":\"TSK68BAC07C051B9\",\"category\":\"Whatsapp\\/Group Join\",\"title\":\"Whatsapp\\/Group Join\",\"link\":\"https:\\/\\/chat.whatsapp.com\\/J6QiR6zDLXB7b3lZ1u9xLw\",\"reward\":5,\"limit\":5585,\"completed\":1,\"json\":null,\"status\":\"active\",\"updated\":\"2025-09-05 10:50:36\",\"date\":\"2025-09-05 10:50:36\"},\"wallet\":\"activities_balance\"}', 'success', '2025-12-02 03:25:30', '2025-12-02 03:25:30'),
-(383, 'TRX692F1CA31DF17', 1, 'Activities Withdrawal', 'debit', 'manual', 6543, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z\"></path></svg>', '{\"data\":{\"bank\":{\"account_number\":\"876543456789\",\"bank_name\":\"Abulesoro MFB\",\"account_name\":\"David James\"}},\"wallet\":\"activities_balance\"}', 'pending', '2025-12-03 01:06:43', '2025-12-03 01:06:43');
+(383, 'TRX692F1CA31DF17', 1, 'Activities Withdrawal', 'debit', 'manual', 6543, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z\"></path></svg>', '{\"data\":{\"bank\":{\"account_number\":\"876543456789\",\"bank_name\":\"Abulesoro MFB\",\"account_name\":\"David James\"}},\"wallet\":\"activities_balance\"}', 'pending', '2025-12-03 01:06:43', '2025-12-03 01:06:43'),
+(384, 'TRX699AC0C503FAF', 1, 'Activities Withdrawal', 'debit', 'manual', 5000, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z\"></path></svg>', '{\"data\":{\"bank\":{\"account_number\":\"5005825\",\"bank_name\":\"Abbey Mortgage Bank\",\"account_name\":\"sdfghjkp[\"}},\"wallet\":\"activities_balance\"}', 'pending', '2026-02-22 16:39:33', '2026-02-22 16:39:33'),
+(385, 'TRX699AC31755D88', 1, 'Profit Split Wallet Withdrawal', 'debit', 'manual', 5000, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z\"></path></svg>', '{\"data\":{\"bank\":{\"account_number\":\"5005825\",\"bank_name\":\"Abbey Mortgage Bank\",\"account_name\":\"sdfghjkp[\"}},\"wallet\":\"affiliate_balance\",\"wallet_key\":\"Profit Split Wallet\"}', 'pending', '2026-02-22 16:49:27', '2026-02-22 16:49:27'),
+(386, 'TRX699C4393597A3', 1, 'Task Reward', 'credit', 'automatic', 5, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":{\"id\":12,\"uniqid\":\"TSK699AFCF3AAA23\",\"category\":\"Whatsapp\\/Group Join\",\"title\":\"Whatsapp\\/Group Join\",\"link\":\"https:\\/\\/hhgsh.com\",\"reward\":5,\"limit\":5432,\"completed\":0,\"json\":null,\"status\":\"active\",\"updated\":\"2026-02-22 12:56:19\",\"date\":\"2026-02-22 12:56:19\"},\"wallet\":\"activities_balance\"}', 'success', '2026-02-23 20:09:55', '2026-02-23 20:09:55'),
+(387, 'TRX69D013CA79A8F', 1, 'Neo Translate', 'credit', 'automatic', 100, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":\"{}\",\"wallet\":\"giftcard_wallet\"}', 'success', '2026-04-04 02:23:54', '2026-04-04 02:23:54'),
+(388, 'TRX69D013D24E107', 1, 'Neo Translate', 'credit', 'automatic', 100, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":\"{}\",\"wallet\":\"giftcard_wallet\"}', 'success', '2026-04-04 02:24:02', '2026-04-04 02:24:02'),
+(389, 'TRX69D0D6964D41A', 1, 'Neo Translate', 'credit', 'automatic', 100, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":\"{}\",\"wallet\":\"giftcard_wallet\"}', 'success', '2026-04-04 16:15:02', '2026-04-04 16:15:02'),
+(390, 'TRX69D25041137F9', 1, 'Neo Translate', 'credit', 'automatic', 100, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"#000000\" viewBox=\"0 0 256 256\"><path d=\"M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32Zm-12.69,88L136,60.69V48h12.69L208,107.32V120ZM136,83.31,172.69,120H136Zm72,1.38L171.31,48H208ZM120,48v72H48V48ZM107.31,208,48,148.69V136H60.69L120,195.31V208ZM120,172.69,83.31,136H120Zm-72-1.38L84.69,208H48ZM208,208H136V136h72v72Z\"></path></svg>', '{\"data\":\"{}\",\"wallet\":\"giftcard_wallet\"}', 'success', '2026-04-05 19:06:25', '2026-04-05 19:06:25'),
+(391, 'TRX69D8A1F7A811B', 1, 'Poll Game Winning', 'credit', 'automatic', 5000, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 6.13443L10.165 5.77922C9.44862 5.27225 8.59264 5 7.71504 5H7.10257C6.69838 5 6.29009 5.02549 5.90915 5.16059C3.52645 6.00566 1.88749 9.09504 2.00604 16.1026C2.02992 17.5145 2.3603 19.075 3.63423 19.6842C4.03121 19.8741 4.49667 20 5.02671 20C5.66273 20 6.1678 19.8187 6.55763 19.5632C6.96641 19.2953 7.32633 18.9471 7.68612 18.599C8.13071 18.1688 8.57511 17.7389 9.11125 17.4609C9.69519 17.1581 10.3434 17 11.0011 17H12.9989C13.6566 17 14.3048 17.1581 14.8888 17.4609C15.4249 17.7389 15.8693 18.1688 16.3139 18.599C16.6737 18.9471 17.0336 19.2953 17.4424 19.5632C17.8322 19.8187 18.3373 20 18.9733 20C19.5033 20 19.9688 19.8741 20.3658 19.6842C21.6397 19.075 21.9701 17.5145 21.994 16.1026C22.1125 9.09503 20.4735 6.00566 18.0908 5.16059C17.7099 5.02549 17.3016 5 16.8974 5H16.2849C15.4074 5 14.5514 5.27225 13.8351 5.77922L13.3332 6.13441C12.9434 6.41029 12.4776 6.55844 12 6.55844C11.5225 6.55844 11.0567 6.41029 10.6669 6.13443ZM16.75 9C17.1642 9 17.5 9.33579 17.5 9.75C17.5 10.1642 17.1642 10.5 16.75 10.5C16.3358 10.5 16 10.1642 16 9.75C16 9.33579 16.3358 9 16.75 9ZM7.5 9.25C7.91421 9.25 8.25 9.58579 8.25 10V10.75H9C9.41421 10.75 9.75 11.0858 9.75 11.5C9.75 11.9142 9.41421 12.25 9 12.25H8.25V13C8.25 13.4142 7.91421 13.75 7.5 13.75C7.08579 13.75 6.75 13.4142 6.75 13V12.25H6C5.58579 12.25 5.25 11.9142 5.25 11.5C5.25 11.0858 5.58579 10.75 6 10.75H6.75V10C6.75 9.58579 7.08579 9.25 7.5 9.25ZM19 11.25C19 11.6642 18.6642 12 18.25 12C17.8358 12 17.5 11.6642 17.5 11.25C17.5 10.8358 17.8358 10.5 18.25 10.5C18.6642 10.5 19 10.8358 19 11.25ZM15.25 12C15.6642 12 16 11.6642 16 11.25C16 10.8358 15.6642 10.5 15.25 10.5C14.8358 10.5 14.5 10.8358 14.5 11.25C14.5 11.6642 14.8358 12 15.25 12ZM17.5 12.75C17.5 12.3358 17.1642 12 16.75 12C16.3358 12 16 12.3358 16 12.75C16 13.1642 16.3358 13.5 16.75 13.5C17.1642 13.5 17.5 13.1642 17.5 12.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-10 14:08:39', '2026-04-10 14:08:39'),
+(392, 'TRX69D8A25508326', 1, 'Poll Game Winning', 'credit', 'automatic', 5000, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 6.13443L10.165 5.77922C9.44862 5.27225 8.59264 5 7.71504 5H7.10257C6.69838 5 6.29009 5.02549 5.90915 5.16059C3.52645 6.00566 1.88749 9.09504 2.00604 16.1026C2.02992 17.5145 2.3603 19.075 3.63423 19.6842C4.03121 19.8741 4.49667 20 5.02671 20C5.66273 20 6.1678 19.8187 6.55763 19.5632C6.96641 19.2953 7.32633 18.9471 7.68612 18.599C8.13071 18.1688 8.57511 17.7389 9.11125 17.4609C9.69519 17.1581 10.3434 17 11.0011 17H12.9989C13.6566 17 14.3048 17.1581 14.8888 17.4609C15.4249 17.7389 15.8693 18.1688 16.3139 18.599C16.6737 18.9471 17.0336 19.2953 17.4424 19.5632C17.8322 19.8187 18.3373 20 18.9733 20C19.5033 20 19.9688 19.8741 20.3658 19.6842C21.6397 19.075 21.9701 17.5145 21.994 16.1026C22.1125 9.09503 20.4735 6.00566 18.0908 5.16059C17.7099 5.02549 17.3016 5 16.8974 5H16.2849C15.4074 5 14.5514 5.27225 13.8351 5.77922L13.3332 6.13441C12.9434 6.41029 12.4776 6.55844 12 6.55844C11.5225 6.55844 11.0567 6.41029 10.6669 6.13443ZM16.75 9C17.1642 9 17.5 9.33579 17.5 9.75C17.5 10.1642 17.1642 10.5 16.75 10.5C16.3358 10.5 16 10.1642 16 9.75C16 9.33579 16.3358 9 16.75 9ZM7.5 9.25C7.91421 9.25 8.25 9.58579 8.25 10V10.75H9C9.41421 10.75 9.75 11.0858 9.75 11.5C9.75 11.9142 9.41421 12.25 9 12.25H8.25V13C8.25 13.4142 7.91421 13.75 7.5 13.75C7.08579 13.75 6.75 13.4142 6.75 13V12.25H6C5.58579 12.25 5.25 11.9142 5.25 11.5C5.25 11.0858 5.58579 10.75 6 10.75H6.75V10C6.75 9.58579 7.08579 9.25 7.5 9.25ZM19 11.25C19 11.6642 18.6642 12 18.25 12C17.8358 12 17.5 11.6642 17.5 11.25C17.5 10.8358 17.8358 10.5 18.25 10.5C18.6642 10.5 19 10.8358 19 11.25ZM15.25 12C15.6642 12 16 11.6642 16 11.25C16 10.8358 15.6642 10.5 15.25 10.5C14.8358 10.5 14.5 10.8358 14.5 11.25C14.5 11.6642 14.8358 12 15.25 12ZM17.5 12.75C17.5 12.3358 17.1642 12 16.75 12C16.3358 12 16 12.3358 16 12.75C16 13.1642 16.3358 13.5 16.75 13.5C17.1642 13.5 17.5 13.1642 17.5 12.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-10 14:10:13', '2026-04-10 14:10:13'),
+(393, 'TRX69DB961412EC5', 1, 'Games Deposit', 'credit', 'automatic', 2500, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":9,\\\"code\\\":\\\"XYQSBENNTA\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":2500,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 12:06:06\\\",\\\"updated\\\":\\\"2026-04-12 12:06:06\\\",\\\"json\\\":null}\",\"wallet\":\"deposit_wallet\"}', 'success', '2026-04-12 19:54:44', '2026-04-12 19:54:44'),
+(394, 'TRX69DB992F9534A', 1, 'Games Deposit', 'credit', 'automatic', 2500, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":10,\\\"code\\\":\\\"DTZWJQACSY\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":2500,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:07:50\\\",\\\"updated\\\":\\\"2026-04-12 13:07:50\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:07:59', '2026-04-12 20:07:59'),
+(395, 'TRX69DB9997B8D21', 1, 'Games Deposit', 'credit', 'automatic', 2500, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":11,\\\"code\\\":\\\"EDI8ZEWSVK\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":2500,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:09:35\\\",\\\"updated\\\":\\\"2026-04-12 13:09:35\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:09:43', '2026-04-12 20:09:43');
+INSERT INTO `transactions` (`id`, `uniqid`, `user_id`, `type`, `class`, `gateway`, `amount`, `svg`, `json`, `status`, `updated`, `date`) VALUES
+(396, 'TRX69DB99D4DFC18', 1, 'Games Deposit', 'credit', 'automatic', 2500, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":12,\\\"code\\\":\\\"SMN00OX7SZ\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":2500,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:09:35\\\",\\\"updated\\\":\\\"2026-04-12 13:09:35\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:10:44', '2026-04-12 20:10:44'),
+(397, 'TRX69DB9A520F900', 1, 'Games Deposit', 'credit', 'automatic', 2500, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":13,\\\"code\\\":\\\"IOPAWBWBGH\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":2500,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:09:35\\\",\\\"updated\\\":\\\"2026-04-12 13:09:35\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:12:50', '2026-04-12 20:12:50'),
+(398, 'TRX69DB9A96C8F8A', 1, 'Games Deposit', 'credit', 'automatic', 1000, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":14,\\\"code\\\":\\\"IHDPXUYQ1W\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":1000,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:13:51\\\",\\\"updated\\\":\\\"2026-04-12 13:13:51\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:13:58', '2026-04-12 20:13:58'),
+(399, 'TRX69DB9AE493B6B', 1, 'Games Deposit', 'credit', 'automatic', 1000, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":15,\\\"code\\\":\\\"4OE1KBHASH\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":1000,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:13:51\\\",\\\"updated\\\":\\\"2026-04-12 13:13:51\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:15:16', '2026-04-12 20:15:16'),
+(400, 'TRX69DB9AFB168A2', 1, 'Games Deposit', 'credit', 'automatic', 1000, '<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"CurrentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.7499 18.968C13.1812 18.857 13.4999 18.4655 13.4999 17.9996V17.2733C13.4999 17.1099 13.3953 16.9649 13.2403 16.9132C12.4351 16.6448 11.5646 16.6448 10.7594 16.9132C10.6044 16.9649 10.4999 17.1099 10.4999 17.2733V17.9996C10.4999 18.4655 10.8186 18.857 11.2499 18.968V22.25C11.2499 22.6642 11.5856 23 11.9999 23C12.4141 23 12.7499 22.6642 12.7499 22.25V18.968Z\" fill=\"CurrentColor\"></path>\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M10.6669 5.13443L10.165 4.77922C9.44862 4.27225 8.59264 4 7.71504 4H7.10257C6.69838 4 6.29009 4.02549 5.90915 4.16059C3.52645 5.00566 1.88749 8.09504 2.00604 15.1026C2.02992 16.5145 2.3603 18.075 3.63423 18.6842C4.03121 18.8741 4.49667 19 5.02671 19C5.66273 19 6.1678 18.8187 6.55763 18.5632C6.96641 18.2953 7.32633 17.9471 7.68612 17.599C8.13071 17.1688 8.57511 16.7389 9.11125 16.4609C9.69519 16.1581 10.3434 16 11.0011 16H12.9989C13.6566 16 14.3048 16.1581 14.8888 16.4609C15.4249 16.7389 15.8693 17.1688 16.3139 17.599C16.6737 17.9471 17.0336 18.2953 17.4424 18.5632C17.8322 18.8187 18.3373 19 18.9733 19C19.5033 19 19.9688 18.8741 20.3658 18.6842C21.6397 18.075 21.9701 16.5145 21.994 15.1026C22.1125 8.09503 20.4735 5.00566 18.0908 4.16059C17.7099 4.02549 17.3016 4 16.8974 4H16.2849C15.4074 4 14.5514 4.27225 13.8351 4.77922L13.3332 5.13441C12.9434 5.41029 12.4776 5.55844 12 5.55844C11.5225 5.55844 11.0567 5.41029 10.6669 5.13443ZM16.75 8C17.1642 8 17.5 8.33579 17.5 8.75C17.5 9.16421 17.1642 9.5 16.75 9.5C16.3358 9.5 16 9.16421 16 8.75C16 8.33579 16.3358 8 16.75 8ZM7.5 8.25C7.91421 8.25 8.25 8.58579 8.25 9V9.75H9C9.41421 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 9.41421 11.25 9 11.25H8.25V12C8.25 12.4142 7.91421 12.75 7.5 12.75C7.08579 12.75 6.75 12.4142 6.75 12V11.25H6C5.58579 11.25 5.25 10.9142 5.25 10.5C5.25 10.0858 5.58579 9.75 6 9.75H6.75V9C6.75 8.58579 7.08579 8.25 7.5 8.25ZM19 10.25C19 10.6642 18.6642 11 18.25 11C17.8358 11 17.5 10.6642 17.5 10.25C17.5 9.83579 17.8358 9.5 18.25 9.5C18.6642 9.5 19 9.83579 19 10.25ZM15.25 11C15.6642 11 16 10.6642 16 10.25C16 9.83579 15.6642 9.5 15.25 9.5C14.8358 9.5 14.5 9.83579 14.5 10.25C14.5 10.6642 14.8358 11 15.25 11ZM17.5 11.75C17.5 11.3358 17.1642 11 16.75 11C16.3358 11 16 11.3358 16 11.75C16 12.1642 16.3358 12.5 16.75 12.5C17.1642 12.5 17.5 12.1642 17.5 11.75Z\" fill=\"CurrentColor\"></path>\n</svg>\n', '{\"data\":\"{\\\"id\\\":18,\\\"code\\\":\\\"O7D65EILTJ\\\",\\\"used_by\\\":null,\\\"type\\\":\\\"games\\\",\\\"vendor_id\\\":\\\"0\\\",\\\"value\\\":1000,\\\"status\\\":\\\"active\\\",\\\"date\\\":\\\"2026-04-12 13:13:51\\\",\\\"updated\\\":\\\"2026-04-12 13:13:51\\\",\\\"json\\\":null}\",\"wallet\":\"gaming_wallet\"}', 'success', '2026-04-12 20:15:39', '2026-04-12 20:15:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `translations`
+--
+
+CREATE TABLE `translations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `translate_id` varchar(255) DEFAULT NULL,
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
+  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `updated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_id` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `translations`
+--
+
+INSERT INTO `translations` (`id`, `translate_id`, `json`, `status`, `updated`, `date`, `user_id`) VALUES
+(1, '6', NULL, 'active', '2026-04-04 02:23:54', '2026-04-04 02:23:54', 1),
+(2, '5', NULL, 'active', '2026-04-04 02:24:02', '2026-04-04 02:24:02', 1),
+(3, '6', NULL, 'active', '2026-04-04 16:15:02', '2026-04-04 16:15:02', 1),
+(4, '6', NULL, 'active', '2026-04-05 19:06:25', '2026-04-05 19:06:25', 1);
 
 -- --------------------------------------------------------
 
@@ -1277,7 +1497,10 @@ CREATE TABLE `users` (
   `coupon` varchar(255) DEFAULT NULL,
   `deposit_balance` float DEFAULT 0,
   `activities_balance` float DEFAULT 0,
+  `giftcard_balance` double NOT NULL DEFAULT 0,
+  `dailyclaim_balance` double NOT NULL DEFAULT 0,
   `affiliate_balance` float NOT NULL DEFAULT 0,
+  `gaming_balance` float DEFAULT 0,
   `bank` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bank`)),
   `ref` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -1286,6 +1509,7 @@ CREATE TABLE `users` (
   `type` varchar(255) DEFAULT 'user',
   `remember_token` varchar(100) DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'active',
+  `notified` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json`)),
@@ -1297,34 +1521,34 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uniqid`, `name`, `email`, `username`, `phone`, `country`, `package`, `coupon`, `deposit_balance`, `activities_balance`, `affiliate_balance`, `bank`, `ref`, `email_verified_at`, `password`, `photo`, `type`, `remember_token`, `status`, `created_at`, `updated_at`, `json`, `updated`, `date`) VALUES
-(1, 'USR68B9A5424F8BB', 'David James', 'abakpadavid05@gmail.com', 'Blaady05', 9013350351, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGPNTEP43VI', 5786460, 5525, 5000, '{\"account_number\":\"876543456789\",\"bank_name\":\"Abulesoro MFB\",\"account_name\":\"David James\"}', NULL, NULL, '$2y$12$kkeWYHnVjPd9OIBPcJdL..yfbAjdt83X77L0Pge.mymx7cFw.Zsj2', '1764612911.jpeg', 'vendor', 'ezRBeRX4OuxbqVL06pt8ygvMmTGjZCAywShsvwqqD4VlK0mWkV4WM7VQslHn', 'active', NULL, NULL, NULL, '2025-12-02 03:25:30', '2025-09-04 21:42:10'),
-(2, 'USR68B9A5E137162', 'David James', 'techie5961@gmail.com', 'techie_innovations', 9013350351, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '5080E8A39F69599555AF', 10000, 428582, 5000, '{\"account_number\":\"5005016577\",\"bank_name\":\"Access Bank (Diamond)\",\"account_name\":\"David James\"}', NULL, NULL, '$2y$12$bgIwXIIsxLbae8yg6XNl3.yMRRjwHxeSf4R980vFK8W5Oh9DxGudq', 'avatar.jpeg', 'user', 'p5xJRzmZblccbxapAYSLLoUBl9PEy0N3Igrq65qbOY5T5zPl5uLGhhPXrXXu', 'active', NULL, NULL, NULL, '2025-09-28 10:05:09', '2025-09-04 21:44:49'),
-(3, 'USR68CFD3EE2B7DD', 'David Abakpa', 'ocheemmanuel@gmail.com', 'abakpa', 7035864553, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 23:07:01\",\"date\":\"2025-08-31 23:07:01\"}', 'E125FAFDEB8C615FDA94', 500, 1000, 10500, NULL, 'techie_innovations', NULL, '$2y$12$AwI3olBYnb1fv4A/72d5OOAn464RNrRzecGqkwoOCDxe4w5E6WbPm', 'avatar.jpeg', 'vendor', 'nIeWjayr5OIgnQFxXKK8Dk4xhfkuquslbqwYhcVKZ2gug66Fyu7DqPYOEox4', 'banned', NULL, NULL, NULL, '2025-09-21 09:31:10', '2025-09-21 09:31:10'),
-(4, 'USR68CFD46CE1A9D', 'Daniel James', 'daniel@gmail.com', 'james', 84653181663, 'nigeria', '{\"id\":8,\"name\":\"T\",\"type\":\"paid\",\"cost\":5,\"cashback\":2,\"subordinate\":2,\"first_indirect\":2,\"free_data\":5,\"article_writing\":5,\"earning_per_click\":5,\"tiktok_monitizing\":5,\"casino_game\":5,\"daily_advert\":5,\"status\":\"active\",\"updated\":\"2025-09-16 13:06:15\",\"date\":\"2025-09-16 13:06:15\"}', '9F1EE1F77D615A3881ED', 0, 2, 0, NULL, 'abakpa', NULL, '$2y$12$kyw7nRTMXZnjZPIk8nssGuV6HQjWsrcz84Yy8Fab6g2m2.GXP2XtW', 'avatar.jpeg', 'vendor', NULL, 'active', NULL, NULL, NULL, '2025-09-21 09:33:17', '2025-09-21 09:33:17'),
-(5, 'USR68CFD4CF1551D', 'Jonathan De', 'jonathan@gmail.com', 'jonathan', 70156868963, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', 'A77EF3BB2C02D86EB0C1', 0, 500, 0, NULL, 'abakpa', NULL, '$2y$12$d1BwwVHRbNDGRo4Xtf40G.bOawSxixr45Rr2.BUhJlqLdto7CtElW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-09-21 09:34:55', '2025-09-21 09:34:55'),
-(6, 'USR68CFD50DD9E40', 'Emmanuel Hudson', 'hudson@gmail.com', 'hudson', 8053846274, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '9D8F3780F0A5E417C7E4', 0, 500, 0, NULL, 'abakpa', NULL, '$2y$12$MBhBwqU5/KNWqT0pv1dIcuryZEc1XbwcTYgRu7xoYzQfEPf10mxjm', '1760683367.jpeg', 'vendor', NULL, 'active', NULL, NULL, NULL, '2025-09-21 09:35:58', '2025-09-21 09:35:58'),
-(7, 'USR68CFD58F0428B', 'Hojlund Rasmussen', 'hojlund@gmail.com', 'hojlund', 901338496, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '43114BFA9971D0A66955', 0, 1749, 0, '{\"account_number\":\"5005016577\",\"bank_name\":\"Standard Chartered Bank\",\"account_name\":\"DAVID JAMES ABAKPA\"}', 'abakpa', NULL, '$2y$12$tFLgRZMhCPnQcDz83FWwM.muqtawm579BGh.L75x5XiA52lGs7u2q', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-09-23 11:24:25', '2025-09-21 09:38:07'),
-(8, 'USR68D493F4A5153', 'David Abakpa', 'emmanueloche@gmail.com', 'emmydoo', 9013350351, 'nigeria', '{\"id\":8,\"name\":\"T\",\"type\":\"paid\",\"cost\":5,\"cashback\":2,\"subordinate\":2,\"first_indirect\":2,\"free_data\":5,\"article_writing\":5,\"earning_per_click\":5,\"tiktok_monitizing\":5,\"casino_game\":5,\"daily_advert\":5,\"status\":\"active\",\"updated\":\"2025-09-16 13:06:15\",\"date\":\"2025-09-16 13:06:15\"}', 'null', 0, 2, 0, NULL, NULL, NULL, '$2y$12$p.yrydRTXabmgMFHL.nVU.IXWPtDrgpJWCcfSaLv/zYe88U70qKEy', 'avatar.jpeg', 'vendor', '52aOiqilzB2x6w3ytiERLLTvc5Ca2FoV6ynn1PDl8kB50RJGiXxYVCXC21T9', 'active', NULL, NULL, NULL, '2025-09-24 23:59:33', '2025-09-24 23:59:33'),
-(11, 'USR68EE3E37B767B', 'Emmanuel James', 'blessingjames5961@gmail.com', 'emmyjames', 70350846123, 'nigeria', '{\"id\":19,\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-14 11:36:07\",\"date\":\"2025-10-14 11:36:07\"}', NULL, 0, 150, 0, NULL, NULL, NULL, '$2y$12$WcFhu.8oNIusVcNaOIaH3OPBQbREWulPVmGp9KtVJulXuc9Ik7gPC', '1760555940.jpg', 'vendor', 'wi61o6VKl1K84aZt3TjDk5RHxuEFMvuFhErUpHGJPacuAGJbO0q4TfiDl0y1', 'active', NULL, NULL, NULL, '2025-10-14 19:57:00', '2025-10-14 19:12:40'),
-(12, 'USR68F0110E7B741', 'Eboh bliss', 'bliss@gmail.com', 'blisa', 894564394, 'nigeria', '{\"id\":20,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-14 11:37:15\",\"date\":\"2025-10-14 11:36:59\"}', 'F33C5FF783BB2F18269C', 0, 700, 2500, NULL, NULL, NULL, '$2y$12$Di8RdFiB9GtODSfa8nO.IeD2FkG4M5DHima3l6JCqISsob1FT/JY.', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-20 01:58:21', '2025-10-16 04:24:31'),
-(13, 'USR68F54FE5D02F0', 'David Abakpa', 'techie5961vv@gmail.com', 'ccv', 23333, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGIR6R3SEST', 0, 499951000, 0, '{\"account_number\":\"5005016577\",\"bank_name\":\"Above Only MFB\",\"account_name\":\"David James\"}', 'blisa', NULL, '$2y$12$86NZsmbCZT9ATk5QtslIj.DI2b0xwT0Vtbar2EYEKcQ8xhVLBmi6i', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-20 03:53:58', '2025-10-20 03:53:58'),
-(14, 'USR68F8DEA585719', 'David Abakpa', 'techie59gwgga61@gmail.com', 'faya', 54848, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\",\"minimum_withdrawal\":null,\"maximum_withdrawal\":null}', 'ALP9QT02VQDA', 0, 500, 0, NULL, 'Blaady05', NULL, '$2y$12$JcITHXrxf2m4DVfrKFkTK.q0XDGfea5OaJZkJ6CA.rrt0R.kVvJ7y', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:39:49', '2025-10-22 20:39:49'),
-(15, 'USR68F8DF0C05855', 'David Abakpa', 'techiedavidavag1@gmail.com', 'techie59gwggawgag61@gmail.com', 884884, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 3500, NULL, NULL, NULL, '$2y$12$weDYdceDpYdzcFQikE031ODwWm/FK7zB3d5OyZQt/8zGkrkj5CNeu', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:41:32', '2025-10-22 20:41:32'),
-(16, 'USR68F8DFC87F8D8', 'David Abakpa', 'techie5961aa@gmail.com', 'techiedavidavwhag1@gmail.com', 948546, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$wdt.1RxsBQvyKapv..XroeqOMye5Pp6aGgw6kfZW8zhxBUHDh0GRe', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:44:40', '2025-10-22 20:44:40'),
-(17, 'USR68F8E13720DBC', 'David Abakpa', 'cvgy@gmm', 'gggj', 89889, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$KWAY1.9vtQ2unGj.X.nR1O7zOR4yk5vwmMZ4W7SNAq4D2Gi9otewy', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:50:47', '2025-10-22 20:50:47'),
-(18, 'USR68F8E172E7B06', 'David Abakpa', 'MEGKBWIFC7RU@gmail', 'vahah', 494634, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGKBWIFC7RU', 0, 5, 7508, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$Qz3CZXP7gocvgTy2msDZZ.EAjY4hGcwl3y2YCrzs9QP/e5ceQ/E8C', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:51:47', '2025-10-22 20:51:47'),
-(19, 'USR68F8E1D8EEF18', 'David Abakpa', 'ALPPWVPSEJMU@gmak', 'alppwvpsejmu', 948646334, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALPPWVPSEJMU', 0, 500, 0, NULL, 'vahah', NULL, '$2y$12$hSwUlaixId1n.A.yKz2KAeIcvFIyi/2fgQ.IKhNvyBmAQZHW9z6Wi', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:53:29', '2025-10-22 20:53:29'),
-(20, 'USR68F8E2B7770CE', 'David Abakpa', 'vah@gann', 'bahja', 4849, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALP68F54AFD4', 0, 500, 0, NULL, 'vahah', NULL, '$2y$12$Tn5bjkkcLn2BRWxL.V0UXesvf3UGksA.Ux6H///jHY6SuKqGAU7kW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 20:57:11', '2025-10-22 20:57:11'),
-(21, 'USR68F8E6E734D87', 'David Abakpa', 'avagah@ganna', 'vaha', 4849463, 'nigeria', '{\"id\":20,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-14 11:37:15\",\"date\":\"2025-10-14 11:36:59\"}', 'DB36906824EA5F9DF749', 0, 500, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$KbfG.ucpzO7BFmDSOD3S3ecrVdIl7XT5Jt.KreYfYX4bmttZ9v3k.', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 21:15:03', '2025-10-22 21:15:03'),
-(22, 'USR68F8E731818DB', 'Fsghs', 'ahahahuau@gah', 'agaha', 16434368484, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGWONZB3PBL', 0, 10, 0, NULL, 'vahah', NULL, '$2y$12$QPRpDakuduo0.k93jq4VSe2yr1rTxP5n8QfJRv6X.hTagRreuDlNK', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-24 18:55:19', '2025-10-22 21:16:17'),
-(23, 'USR68F8E7BB4480B', 'Vahah', 'techie59vavah61@gmail.com', 'vahahag', 48446, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALPMQCRBVRHH', 0, 500, 0, NULL, 'vahah', NULL, '$2y$12$S88VTvuiLX8rcazbL553De/1XPFqKCJaopsjT298SBrPcIaDXLIwO', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 21:18:35', '2025-10-22 21:18:35'),
-(24, 'USR68F8E7F18FEF7', 'David Abakpa', 'techie5961cc@gmail.com', 'vxdfg', 555, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 700, NULL, 'vahah', NULL, '$2y$12$bxPxsTiJkAgyWCDgTmiRv.pB3T5zoScuoafAAwkiAnBcIzfN4KPSW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 21:19:29', '2025-10-22 21:19:29'),
-(25, 'USR68F8E83A1BFA4', 'David Abakpa', 'fff@cc', 'fff', 55, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 500, NULL, 'vxdfg', NULL, '$2y$12$KncmETwz0ZKvWrDMLqojyOl8yoRfHwdLtGfcIunJnci8mdvUcDnGK', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 21:20:42', '2025-10-22 21:20:42'),
-(26, 'USR68F8E880C532B', 'David Abakpa', 'ggggg@fgh', 'chhhjj', 9898, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGPNTEP43VI', 0, 0, 0, NULL, 'fff', NULL, '$2y$12$yVc.UlLRhcy19d/FsXwONOWw/ZPRAC7e8LMnBsTjTFRRhunIWL3hW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-22 21:21:53', '2025-10-22 21:21:53'),
-(27, 'USR68FA070F32B6A', 'Dav', 'fhfht@fsh', 'ghg', 888892, 'ghana', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"country\":\"ghana\",\"type\":\"paid\",\"cost\":4000,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-23 10:31:10\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', 'FRERGLE9IZRQ', 0, 1611, 280, NULL, NULL, NULL, '$2y$12$Udi485V2h2lItGM4htVHUemMtI5Q8h0H2Lgpr9T2jLhXaB0DCLXUW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-24 18:30:49', '2025-10-23 17:44:31'),
-(28, 'USR68FB544A69DC9', 'David Abakpa', 'agagah@hsjaj', 'dafaf', 6464, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEG08Y2NDTN7', 0, 5, 0, NULL, 'ghg', NULL, '$2y$12$gzXsgWLWpk5SKIgKfquhl.sblB/GCBfxXP9AUkcRK8cB2WsiR65oW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-24 17:26:19', '2025-10-24 17:26:19'),
-(29, 'USR68FB685F67CAC', 'David Abakpa', 'ff@fgg', 'dde', 88852, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGZDC4QTSKI', 0, 5, 0, NULL, 'ghg', NULL, '$2y$12$/pYD5VEKSugJr/o/2Ei.jeTcKibx2XAHMKy3Q6DMctJBJahMbEj3u', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, '2025-10-24 18:51:59', '2025-10-24 18:51:59');
+INSERT INTO `users` (`id`, `uniqid`, `name`, `email`, `username`, `phone`, `country`, `package`, `coupon`, `deposit_balance`, `activities_balance`, `giftcard_balance`, `dailyclaim_balance`, `affiliate_balance`, `gaming_balance`, `bank`, `ref`, `email_verified_at`, `password`, `photo`, `type`, `remember_token`, `status`, `notified`, `created_at`, `updated_at`, `json`, `updated`, `date`) VALUES
+(1, 'USR68B9A5424F8BB', 'Abakpa David James', 'abakpadavid05@gmail.com', 'Blaady05', 9013350351, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGPNTEP43VI', 5788960, 530, 100, 0, 0, 13000, '{\"account_number\":\"5005825\",\"bank_name\":\"Abbey Mortgage Bank\",\"account_name\":\"sdfghjkp[\"}', NULL, NULL, '$2y$12$kkeWYHnVjPd9OIBPcJdL..yfbAjdt83X77L0Pge.mymx7cFw.Zsj2', '1764612911.jpeg', 'vendor', 'eov3iZEhYa0k5CiTyiOqkUMXHfF4ipN87tp0QV9WNeYofjrH1WIQpnoynsee', 'active', 'true', NULL, NULL, NULL, '2026-04-10 16:52:04', '2025-09-04 21:42:10'),
+(2, 'USR68B9A5E137162', 'David James', 'techie5961@gmail.com', 'techie_innovations', 9013350351, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '5080E8A39F69599555AF', 10000, 428582, 0, 0, 5000, 0, '{\"account_number\":\"5005016577\",\"bank_name\":\"Access Bank (Diamond)\",\"account_name\":\"David James\"}', NULL, NULL, '$2y$12$bgIwXIIsxLbae8yg6XNl3.yMRRjwHxeSf4R980vFK8W5Oh9DxGudq', 'avatar.jpeg', 'user', 'p5xJRzmZblccbxapAYSLLoUBl9PEy0N3Igrq65qbOY5T5zPl5uLGhhPXrXXu', 'active', NULL, NULL, NULL, NULL, '2025-09-28 10:05:09', '2025-09-04 21:44:49'),
+(3, 'USR68CFD3EE2B7DD', 'David Abakpa', 'ocheemmanuel@gmail.com', 'abakpa', 7035864553, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 23:07:01\",\"date\":\"2025-08-31 23:07:01\"}', 'E125FAFDEB8C615FDA94', 500, 1000, 0, 0, 10500, 0, NULL, 'techie_innovations', NULL, '$2y$12$AwI3olBYnb1fv4A/72d5OOAn464RNrRzecGqkwoOCDxe4w5E6WbPm', 'avatar.jpeg', 'vendor', 'nIeWjayr5OIgnQFxXKK8Dk4xhfkuquslbqwYhcVKZ2gug66Fyu7DqPYOEox4', 'banned', NULL, NULL, NULL, NULL, '2025-09-21 09:31:10', '2025-09-21 09:31:10'),
+(4, 'USR68CFD46CE1A9D', 'Daniel James', 'daniel@gmail.com', 'james', 84653181663, 'nigeria', '{\"id\":8,\"name\":\"T\",\"type\":\"paid\",\"cost\":5,\"cashback\":2,\"subordinate\":2,\"first_indirect\":2,\"free_data\":5,\"article_writing\":5,\"earning_per_click\":5,\"tiktok_monitizing\":5,\"casino_game\":5,\"daily_advert\":5,\"status\":\"active\",\"updated\":\"2025-09-16 13:06:15\",\"date\":\"2025-09-16 13:06:15\"}', '9F1EE1F77D615A3881ED', 0, 2, 0, 0, 0, 0, NULL, 'abakpa', NULL, '$2y$12$kyw7nRTMXZnjZPIk8nssGuV6HQjWsrcz84Yy8Fab6g2m2.GXP2XtW', 'avatar.jpeg', 'vendor', NULL, 'active', NULL, NULL, NULL, NULL, '2025-09-21 09:33:17', '2025-09-21 09:33:17'),
+(5, 'USR68CFD4CF1551D', 'Jonathan De', 'jonathan@gmail.com', 'jonathan', 70156868963, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', 'A77EF3BB2C02D86EB0C1', 0, 500, 0, 0, 0, 0, NULL, 'abakpa', NULL, '$2y$12$d1BwwVHRbNDGRo4Xtf40G.bOawSxixr45Rr2.BUhJlqLdto7CtElW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-09-21 09:34:55', '2025-09-21 09:34:55'),
+(6, 'USR68CFD50DD9E40', 'Emmanuel Hudson', 'hudson@gmail.com', 'hudson', 8053846274, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '9D8F3780F0A5E417C7E4', 0, 500, 0, 0, 0, 0, NULL, 'abakpa', NULL, '$2y$12$MBhBwqU5/KNWqT0pv1dIcuryZEc1XbwcTYgRu7xoYzQfEPf10mxjm', '1760683367.jpeg', 'vendor', NULL, 'active', NULL, NULL, NULL, NULL, '2025-09-21 09:35:58', '2025-09-21 09:35:58'),
+(7, 'USR68CFD58F0428B', 'Hojlund Rasmussen', 'hojlund@gmail.com', 'hojlund', 901338496, 'nigeria', '{\"id\":5,\"name\":\"Alpha Package\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":1,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-08-31 15:07:01\",\"date\":\"2025-08-31 15:07:01\"}', '43114BFA9971D0A66955', 0, 1749, 0, 0, 0, 0, '{\"account_number\":\"5005016577\",\"bank_name\":\"Standard Chartered Bank\",\"account_name\":\"DAVID JAMES ABAKPA\"}', 'abakpa', NULL, '$2y$12$tFLgRZMhCPnQcDz83FWwM.muqtawm579BGh.L75x5XiA52lGs7u2q', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-09-23 11:24:25', '2025-09-21 09:38:07'),
+(8, 'USR68D493F4A5153', 'David Abakpa', 'emmanueloche@gmail.com', 'emmydoo', 9013350351, 'nigeria', '{\"id\":8,\"name\":\"T\",\"type\":\"paid\",\"cost\":5,\"cashback\":2,\"subordinate\":2,\"first_indirect\":2,\"free_data\":5,\"article_writing\":5,\"earning_per_click\":5,\"tiktok_monitizing\":5,\"casino_game\":5,\"daily_advert\":5,\"status\":\"active\",\"updated\":\"2025-09-16 13:06:15\",\"date\":\"2025-09-16 13:06:15\"}', 'null', 0, 2, 0, 0, 0, 0, NULL, NULL, NULL, '$2y$12$p.yrydRTXabmgMFHL.nVU.IXWPtDrgpJWCcfSaLv/zYe88U70qKEy', 'avatar.jpeg', 'vendor', '52aOiqilzB2x6w3ytiERLLTvc5Ca2FoV6ynn1PDl8kB50RJGiXxYVCXC21T9', 'active', NULL, NULL, NULL, NULL, '2025-09-24 23:59:33', '2025-09-24 23:59:33'),
+(11, 'USR68EE3E37B767B', 'Emmanuel James', 'blessingjames5961@gmail.com', 'emmyjames', 70350846123, 'nigeria', '{\"id\":19,\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-14 11:36:07\",\"date\":\"2025-10-14 11:36:07\"}', NULL, 0, 150, 0, 0, 0, 0, NULL, NULL, NULL, '$2y$12$WcFhu.8oNIusVcNaOIaH3OPBQbREWulPVmGp9KtVJulXuc9Ik7gPC', '1760555940.jpg', 'vendor', 'wi61o6VKl1K84aZt3TjDk5RHxuEFMvuFhErUpHGJPacuAGJbO0q4TfiDl0y1', 'active', NULL, NULL, NULL, NULL, '2025-10-14 19:57:00', '2025-10-14 19:12:40'),
+(12, 'USR68F0110E7B741', 'Eboh bliss', 'bliss@gmail.com', 'blisa', 894564394, 'nigeria', '{\"id\":20,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-14 11:37:15\",\"date\":\"2025-10-14 11:36:59\"}', 'F33C5FF783BB2F18269C', 0, 700, 0, 0, 2500, 0, NULL, NULL, NULL, '$2y$12$Di8RdFiB9GtODSfa8nO.IeD2FkG4M5DHima3l6JCqISsob1FT/JY.', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-20 01:58:21', '2025-10-16 04:24:31'),
+(13, 'USR68F54FE5D02F0', 'David Abakpa', 'techie5961vv@gmail.com', 'ccv', 23333, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGIR6R3SEST', 0, 499951000, 0, 0, 0, 0, '{\"account_number\":\"5005016577\",\"bank_name\":\"Above Only MFB\",\"account_name\":\"David James\"}', 'blisa', NULL, '$2y$12$86NZsmbCZT9ATk5QtslIj.DI2b0xwT0Vtbar2EYEKcQ8xhVLBmi6i', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-20 03:53:58', '2025-10-20 03:53:58'),
+(14, 'USR68F8DEA585719', 'David Abakpa', 'techie59gwgga61@gmail.com', 'faya', 54848, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\",\"minimum_withdrawal\":null,\"maximum_withdrawal\":null}', 'ALP9QT02VQDA', 0, 500, 0, 0, 0, 0, NULL, 'Blaady05', NULL, '$2y$12$JcITHXrxf2m4DVfrKFkTK.q0XDGfea5OaJZkJ6CA.rrt0R.kVvJ7y', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:39:49', '2025-10-22 20:39:49'),
+(15, 'USR68F8DF0C05855', 'David Abakpa', 'techiedavidavag1@gmail.com', 'techie59gwggawgag61@gmail.com', 884884, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, 0, 3500, 0, NULL, NULL, NULL, '$2y$12$weDYdceDpYdzcFQikE031ODwWm/FK7zB3d5OyZQt/8zGkrkj5CNeu', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:41:32', '2025-10-22 20:41:32'),
+(16, 'USR68F8DFC87F8D8', 'David Abakpa', 'techie5961aa@gmail.com', 'techiedavidavwhag1@gmail.com', 948546, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, 0, 0, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$wdt.1RxsBQvyKapv..XroeqOMye5Pp6aGgw6kfZW8zhxBUHDh0GRe', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:44:40', '2025-10-22 20:44:40'),
+(17, 'USR68F8E13720DBC', 'David Abakpa', 'cvgy@gmm', 'gggj', 89889, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, 0, 0, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$KWAY1.9vtQ2unGj.X.nR1O7zOR4yk5vwmMZ4W7SNAq4D2Gi9otewy', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:50:47', '2025-10-22 20:50:47'),
+(18, 'USR68F8E172E7B06', 'David Abakpa', 'MEGKBWIFC7RU@gmail', 'vahah', 494634, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGKBWIFC7RU', 0, 5, 0, 0, 7508, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$Qz3CZXP7gocvgTy2msDZZ.EAjY4hGcwl3y2YCrzs9QP/e5ceQ/E8C', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:51:47', '2025-10-22 20:51:47'),
+(19, 'USR68F8E1D8EEF18', 'David Abakpa', 'ALPPWVPSEJMU@gmak', 'alppwvpsejmu', 948646334, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALPPWVPSEJMU', 0, 500, 0, 0, 0, 0, NULL, 'vahah', NULL, '$2y$12$hSwUlaixId1n.A.yKz2KAeIcvFIyi/2fgQ.IKhNvyBmAQZHW9z6Wi', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:53:29', '2025-10-22 20:53:29'),
+(20, 'USR68F8E2B7770CE', 'David Abakpa', 'vah@gann', 'bahja', 4849, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALP68F54AFD4', 0, 500, 0, 0, 0, 0, NULL, 'vahah', NULL, '$2y$12$Tn5bjkkcLn2BRWxL.V0UXesvf3UGksA.Ux6H///jHY6SuKqGAU7kW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 20:57:11', '2025-10-22 20:57:11'),
+(21, 'USR68F8E6E734D87', 'David Abakpa', 'avagah@ganna', 'vaha', 4849463, 'nigeria', '{\"id\":20,\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-14 11:37:15\",\"date\":\"2025-10-14 11:36:59\"}', 'DB36906824EA5F9DF749', 0, 500, 0, 0, 0, 0, NULL, 'techie59gwggawgag61@gmail.com', NULL, '$2y$12$KbfG.ucpzO7BFmDSOD3S3ecrVdIl7XT5Jt.KreYfYX4bmttZ9v3k.', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 21:15:03', '2025-10-22 21:15:03'),
+(22, 'USR68F8E731818DB', 'Fsghs', 'ahahahuau@gah', 'agaha', 16434368484, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":8,\"first_indirect\":5,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-17 06:56:08\",\"date\":\"2025-10-17 06:33:21\"}', 'MEGWONZB3PBL', 0, 10, 0, 0, 0, 0, NULL, 'vahah', NULL, '$2y$12$QPRpDakuduo0.k93jq4VSe2yr1rTxP5n8QfJRv6X.hTagRreuDlNK', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-24 18:55:19', '2025-10-22 21:16:17'),
+(23, 'USR68F8E7BB4480B', 'Vahah', 'techie59vavah61@gmail.com', 'vahahag', 48446, 'nigeria', '{\"id\":20,\"banner\":\"1760684136.jpg\",\"name\":\"Alpha Package\",\"type\":\"paid\",\"cost\":3000,\"cashback\":500,\"subordinate\":2500,\"first_indirect\":1500,\"free_data\":2,\"article_writing\":5000,\"earning_per_click\":200,\"tiktok_monitizing\":1000,\"casino_game\":5000,\"daily_advert\":400,\"status\":\"active\",\"updated\":\"2025-10-17 06:55:36\",\"date\":\"2025-10-14 11:36:59\"}', 'ALPMQCRBVRHH', 0, 500, 0, 0, 0, 0, NULL, 'vahah', NULL, '$2y$12$S88VTvuiLX8rcazbL553De/1XPFqKCJaopsjT298SBrPcIaDXLIwO', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 21:18:35', '2025-10-22 21:18:35'),
+(24, 'USR68F8E7F18FEF7', 'David Abakpa', 'techie5961cc@gmail.com', 'vxdfg', 555, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, 0, 700, 0, NULL, 'vahah', NULL, '$2y$12$bxPxsTiJkAgyWCDgTmiRv.pB3T5zoScuoafAAwkiAnBcIzfN4KPSW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 21:19:29', '2025-10-22 21:19:29'),
+(25, 'USR68F8E83A1BFA4', 'David Abakpa', 'fff@cc', 'fff', 55, 'nigeria', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"type\":\"free\",\"cost\":null,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-22 11:59:37\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', NULL, 0, 0, 0, 0, 500, 0, NULL, 'vxdfg', NULL, '$2y$12$KncmETwz0ZKvWrDMLqojyOl8yoRfHwdLtGfcIunJnci8mdvUcDnGK', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 21:20:42', '2025-10-22 21:20:42'),
+(26, 'USR68F8E880C532B', 'David Abakpa', 'ggggg@fgh', 'chhhjj', 9898, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGPNTEP43VI', 0, 0, 0, 0, 0, 0, NULL, 'fff', NULL, '$2y$12$yVc.UlLRhcy19d/FsXwONOWw/ZPRAC7e8LMnBsTjTFRRhunIWL3hW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-22 21:21:53', '2025-10-22 21:21:53'),
+(27, 'USR68FA070F32B6A', 'Dav', 'fhfht@fsh', 'ghg', 888892, 'ghana', '{\"id\":19,\"banner\":\"1760684117.jpg\",\"name\":\"Free Package\",\"country\":\"ghana\",\"type\":\"paid\",\"cost\":4000,\"cashback\":20,\"subordinate\":500,\"first_indirect\":200,\"free_data\":1,\"article_writing\":300,\"earning_per_click\":50,\"tiktok_monitizing\":700,\"casino_game\":400,\"daily_advert\":250,\"status\":\"active\",\"updated\":\"2025-10-23 10:31:10\",\"date\":\"2025-10-14 11:36:07\",\"minimum_withdrawal\":500,\"maximum_withdrawal\":18000}', 'FRERGLE9IZRQ', 0, 1611, 0, 0, 280, 0, NULL, NULL, NULL, '$2y$12$Udi485V2h2lItGM4htVHUemMtI5Q8h0H2Lgpr9T2jLhXaB0DCLXUW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-24 18:30:49', '2025-10-23 17:44:31'),
+(28, 'USR68FB544A69DC9', 'David Abakpa', 'agagah@hsjaj', 'dafaf', 6464, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEG08Y2NDTN7', 0, 5, 0, 0, 0, 0, NULL, 'ghg', NULL, '$2y$12$gzXsgWLWpk5SKIgKfquhl.sblB/GCBfxXP9AUkcRK8cB2WsiR65oW', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-24 17:26:19', '2025-10-24 17:26:19'),
+(29, 'USR68FB685F67CAC', 'David Abakpa', 'ff@fgg', 'dde', 88852, 'nigeria', '{\"id\":21,\"banner\":\"1760684168.jpg\",\"name\":\"Mega Package\",\"country\":\"nigeria\",\"type\":\"paid\",\"cost\":8000,\"cashback\":5,\"subordinate\":20000,\"first_indirect\":15000,\"free_data\":5,\"article_writing\":8,\"earning_per_click\":5,\"tiktok_monitizing\":8,\"casino_game\":588,\"daily_advert\":800,\"status\":\"active\",\"updated\":\"2025-10-24 10:25:46\",\"date\":\"2025-10-17 06:33:21\",\"minimum_withdrawal\":5000,\"maximum_withdrawal\":50000}', 'MEGZDC4QTSKI', 0, 5, 0, 0, 0, 0, NULL, 'ghg', NULL, '$2y$12$/pYD5VEKSugJr/o/2Ei.jeTcKibx2XAHMKy3Q6DMctJBJahMbEj3u', 'avatar.jpeg', 'user', NULL, 'active', NULL, NULL, NULL, NULL, '2025-10-24 18:51:59', '2025-10-24 18:51:59');
 
 -- --------------------------------------------------------
 
@@ -1355,7 +1579,22 @@ INSERT INTO `vouchers` (`id`, `code`, `used_by`, `type`, `vendor_id`, `value`, `
 (5, '4TS3SJKIBS', NULL, 'games', '1', 2400, 'redeemed', '2025-10-30 14:57:59', '2025-10-30 14:57:59', NULL),
 (6, 'M4Y6DVKTUR', NULL, 'games', '1', 2400, 'redeemed', '2025-10-30 14:57:59', '2025-10-30 14:57:59', '{}'),
 (7, 'A1XY0CK8T7', 'Blaady05', 'games', '1', 2400, 'redeemed', '2025-10-30 14:57:59', '2025-10-30 14:57:59', NULL),
-(8, 'BQUPXCXRU7', 'Blaady05', 'games', '0', 6000000, 'redeemed', '2025-11-04 08:31:31', '2025-11-04 08:31:31', NULL);
+(8, 'BQUPXCXRU7', 'Blaady05', 'games', '0', 6000000, 'redeemed', '2025-11-04 08:31:31', '2025-11-04 08:31:31', NULL),
+(9, 'XYQSBENNTA', 'Blaady05', 'games', '0', 2500, 'redeemed', '2026-04-12 19:06:06', '2026-04-12 19:06:06', NULL),
+(10, 'DTZWJQACSY', 'Blaady05', 'games', '0', 2500, 'redeemed', '2026-04-12 20:07:50', '2026-04-12 20:07:50', NULL),
+(11, 'EDI8ZEWSVK', 'Blaady05', 'games', '0', 2500, 'redeemed', '2026-04-12 20:09:35', '2026-04-12 20:09:35', NULL),
+(12, 'SMN00OX7SZ', 'Blaady05', 'games', '0', 2500, 'redeemed', '2026-04-12 20:09:35', '2026-04-12 20:09:35', NULL),
+(13, 'IOPAWBWBGH', 'Blaady05', 'games', '0', 2500, 'redeemed', '2026-04-12 20:09:35', '2026-04-12 20:09:35', NULL),
+(14, 'IHDPXUYQ1W', 'Blaady05', 'games', '0', 1000, 'redeemed', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(15, '4OE1KBHASH', 'Blaady05', 'games', '0', 1000, 'redeemed', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(16, '9JZQYJMHHI', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(17, 'DYTLXZ0O0N', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(18, 'O7D65EILTJ', 'Blaady05', 'games', '0', 1000, 'redeemed', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(19, 'XHKGWXOFSX', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(20, 'SZVZWRUPTC', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(21, 'AKBENTPH2L', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(22, 'GSOXOSVE6D', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL),
+(23, 'LETEY62EQE', NULL, 'games', '0', 1000, 'active', '2026-04-12 20:13:51', '2026-04-12 20:13:51', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1396,6 +1635,12 @@ ALTER TABLE `cache`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `chats`
+--
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `coupons`
@@ -1442,6 +1687,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `neo_translate`
+--
+ALTER TABLE `neo_translate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
@@ -1474,6 +1725,24 @@ ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `songs`
+--
+ALTER TABLE `songs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `streams`
+--
+ALTER TABLE `streams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
@@ -1489,6 +1758,12 @@ ALTER TABLE `task_proofs`
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `translations`
+--
+ALTER TABLE `translations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1533,6 +1808,12 @@ ALTER TABLE `article_votes`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
+-- AUTO_INCREMENT for table `chats`
+--
+ALTER TABLE `chats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
@@ -1560,7 +1841,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1569,10 +1850,16 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `neo_translate`
+--
+ALTER TABLE `neo_translate`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -1587,22 +1874,46 @@ ALTER TABLE `settings`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `songs`
+--
+ALTER TABLE `songs`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `streams`
+--
+ALTER TABLE `streams`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `task_proofs`
 --
 ALTER TABLE `task_proofs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
+
+--
+-- AUTO_INCREMENT for table `translations`
+--
+ALTER TABLE `translations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1614,9 +1925,4 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vouchers`
 --
 ALTER TABLE `vouchers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;

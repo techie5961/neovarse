@@ -522,7 +522,7 @@ button.active{
     pointer-events:none;
 }
 button.disabled{
-    filter:grayscale(90%);
+    filter:grayscale(50%);
     pointer-events:none;
 }
 

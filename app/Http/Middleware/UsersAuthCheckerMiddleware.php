@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class UsersAuthCheckerMiddleware
 {
@@ -23,6 +24,7 @@ class UsersAuthCheckerMiddleware
         if(!Auth::guard('users')->check()){
             return redirect()->to('login');
         }
+        View::share('logo',Str::contains(Session::get('mode_link',asset('vitecss/css/app.css?v='.config('versions.vite_version').'')),'light.css') ? asset('logos/black-logo.png') : asset('logos/white-logo.png'));
         View::share('giftcard_balance','$'.number_format(ToDollars(Auth::guard('users')->user()->giftcard_balance),2));
         View::share('mode_link',Session::get('mode_link',asset('vitecss/css/app.css?v='.config('versions.vite_version').'')));
         return $next($request);

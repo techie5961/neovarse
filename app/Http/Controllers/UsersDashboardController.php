@@ -84,6 +84,12 @@ class UsersDashboardController extends Controller
                         $table->text('raw_message')->after('message')->nullable();
         });
        }
+
+       if(!Schema::hasColumn('users','last_claim')){
+        Schema::table('users',function($table){
+                $table->timestamp('last_claim')->useCurrent();
+        });
+       }
       
          return response()->json([
         'message' => 'All queries successfull'
@@ -140,7 +146,13 @@ class UsersDashboardController extends Controller
             $each->date=Carbon::parse($each->date)->diffForHumans();
             return $each;
         });
+
+        $last_claim=Carbon::parse(Auth::guard('users')->user()->last_claim);
+        $seconds=60 -($last_claim->diffInSeconds(Carbon::now()) % 60);
+        $minutes=29 - floor($last_claim->diffInSeconds() / 60);
     return view('users.dashboard',[
+        'minutes' => $minutes,
+        'seconds' => $seconds,
         'team_members' => DB::table('users')->where('ref',Auth::guard('users')->user()->username)->count(),
         'total_transactions' => DB::table('transactions')->where('user_id',Auth::guard('users')->user()->id)->count(),
         'all_time' => DB::table('transactions')->where('class','credit')->whereNot('type','like','%deposit%')->where('status','success')->where('user_id',Auth::guard('users')->user()->id)->sum('amount'),
@@ -527,6 +539,8 @@ class UsersDashboardController extends Controller
     }
     // neo chat
     public function NeoChat(){
+        
+        
         $chats=DB::table('chats')->where('user_id',Auth::guard('users')->user()->id)->orderBy('date','desc')->limit(50)->get()->sortBy('date');
         return view('users.neo.chat',[
             'chats' => $chats

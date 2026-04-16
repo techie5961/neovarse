@@ -5,26 +5,93 @@
 @section('css')
     <style class="css">
         .message-divs{
-            background:rgba(var(--rgt),0.1);
             width:fit-content;
             padding:10px;
-            border-radius: 5px 20px 20px 20px;
+            border-radius: 2px 20px 20px 20px;
             max-width:70% !important;
             display:flex;
             flex-direction: column;
             gap:10px;
+            background:var(--primary-01);
+            border:1px solid var(--primary);
+            
 
 
         }
         .message-divs.me{
-            border-radius: 20px 20px 5px 20px;
+            border-radius: 20px 20px 2px 20px;
             margin-left:auto;
+               background:rgba(var(--rgt),0.1);
+               border:1px solid rgba(var(--rgt),0.5);
+              
+        }
+        .populate{
+            position:fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            z-index:3500;
+            background:rgba(0,0,0,0.6);
+            backdrop-filter:blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding:20px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            align-items:center;
+            justify-content: center;
+            display:none;
+        }
+        .populate .child{
+            width:80%;
+            background:var(--bg);
+            border:1px solid var(--primary);
+            padding:20px;
+            border-radius:5px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+            justify-content:center;
+            
+        }
+        .populate.active{
+            display:flex;
+        }
+        .populate.active .child{
+            animation:animate-up 0.5s linear forwards;
+        }
+        @keyframes animate-up{
+            0%{
+                transform:translateY(30px);
+                opacity:0;
+            }
+            100%{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+        body:has(.populate.active){
+            overflow:hidden;
         }
     </style>
 @endsection
 @section('main')
+<section class="populate">
+<div class="child">
+<span style="font-size:3rem">🎁✨</span>
+<strong style="font-size:1.5rem;text-align:center;text-shadow:0 0 10px var(--primary);" class="c-primary">Gift Card Received</strong>
+<strong style="font-size:2rem;text-align:center;text-shadow:0 0 10px var(--primary);" class="c-primary">$1.00</strong>
+<span style="display:block;width:100%;color:var(--primary-light);text-align:center;opacity:0.7;border-bottom:1px dashed var(--primary-05);padding-bottom:10px;">You've been rewarded for your engaging conversation on NeoChat with our smart Neo Bot.</span>
+<span class="text-center" style="color:var(--primary-05)">💜Powered by Neovarse | Neochat loyalty</span>
+<div onclick="this.closest('.populate').classList.toggle('active');" class="w-full br-1000 row align-center justify-center g-10 h-40 bg-primary p-x-20 primary-text no-select pointer">
+    Continue
+</div>
+</div>
+</section>
     <section class="w-full flex-auto column g-10 p-20">
-        <div style="border:1px solid var(--primary-02);" class="w-full flex-auto overflow-hidden br-20 column">
+        <div style="border:1px solid var(--primary-05);" class="w-full flex-auto overflow-hidden br-20 column">
             {{-- head --}}
             <div style="border-bottom:1px solid var(--primary-02);" class="w-full p-20 column g-10">
               <div class="row align-center g-10 space-between">
@@ -37,8 +104,8 @@
                </div>
                <div style="border:1px solid var(--primary-text);color:var(--primary-text);background:linear-gradient(to right,var(--primary-light),var(--primary))" class="p-5 row align-center g-5 p-x-20 br-1000">
                 <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM56,146.87C36.41,141.4,24,132.39,24,124V109.93c8.16,5.78,19.09,10.44,32,13.57Zm80-23.37c12.91-3.13,23.84-7.79,32-13.57V124c0,8.39-12.41,17.4-32,22.87Zm-16,71.37C100.41,189.4,88,180.39,88,172v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41Zm0-44.62A163,163,0,0,1,96,152a163,163,0,0,1-24-1.75V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54Zm64,48a165.45,165.45,0,0,1-48,0V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54ZM232,172c0,8.39-12.41,17.4-32,22.87V171.5c12.91-3.13,23.84-7.79,32-13.57Z"></path></svg>
-
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M160,152a16,16,0,0,1-16,16h-8V136h8A16,16,0,0,1,160,152Zm72-24A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-56,24a32,32,0,0,0-32-32h-8V88h4a16,16,0,0,1,16,16,8,8,0,0,0,16,0,32,32,0,0,0-32-32h-4V64a8,8,0,0,0-16,0v8h-4a32,32,0,0,0,0,64h4v32h-8a16,16,0,0,1-16-16,8,8,0,0,0-16,0,32,32,0,0,0,32,32h8v8a8,8,0,0,0,16,0v-8h8A32,32,0,0,0,176,152Zm-76-48a16,16,0,0,0,16,16h4V88h-4A16,16,0,0,0,100,104Z"></path></svg>
+                  
                 </span>
                 <span>Earn</span>
                </div>
@@ -63,7 +130,7 @@
             </div>
             {{-- foot --}}
             <div style="border-top:1px solid var(--primary-02);" class="w-full p-20 column g-10">
-                <div style="border:1px solid rgba(var(--rgt),0.1);background:rgba(var(--rgt),0.1);height:120px;" class="w-full row align-center g-10 p-10 br-20">
+                <div style="border:1px solid rgba(var(--rgt),0.1);background:rgba(var(--rgt),0.1);height:70px;" class="w-full row align-center g-10 p-10 br-20">
                     <textarea oninput="MyFunc.Typing(this)" style="width:100%;height:100%;background:transparent;border:none;resize:none;" class="input" placeholder="Type a Message..."></textarea>
                 <div onclick="MyFunc.SendChat('{{ url('users/get/neo/chat/send/message/process?message=') }}')" class="h-40 send-btn display-none clip-circle pointer perfect-square circle bg-primary primary-text column align-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="CurrentColor" height="20" width="20"><path d="M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z"></path></svg>
@@ -77,9 +144,10 @@
 @endsection
 @section('js')
     <script class="js">
-        
+        let chat_started;
         window.MyFunc = {
             Restyle : ()=>{
+               
                 // scroll into view
                 document.querySelector('.chats-body').scrollTo({
                     top : document.querySelector('.chats-body').scrollHeight,
@@ -94,6 +162,7 @@
                 }
             },
             SendChat : async (link)=>{
+                
               let send_btn=document.querySelector('.send-btn');
                  let input=document.querySelector('textarea.input');
                 let message=input.value;
@@ -123,6 +192,7 @@
                     if(response.ok){
                         let data=await response.json();
                         if(data.status == 'success'){
+                            chat_started='true';
                             document.querySelector('div.message-divs:last-of-type').innerHTML=`<span>${data.message}</span>`;
                              // scroll into view start
                   
@@ -140,8 +210,27 @@
                         CreateNotify('error','Unknown error occured,please try again');
                     }
               
+            },
+            RewardUser : ()=>{
+              
+                let countdown=setInterval(async () => {
+                    
+                   if(chat_started){
+                      let response=await fetch('{{ url('users/get/neo/chat/reward/user/process') }}');
+                     if(response.ok){
+                        let data=await response.json();
+                        if(data.status == 'success'){
+                             document.querySelector('.populate').classList.add('active')
+                        }
+                       
+
+                     }
+                   }
+                }, 60000);
             }
         }
+       
         MyFunc.Restyle();
+    MyFunc.RewardUser();
     </script>
 @endsection

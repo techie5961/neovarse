@@ -46,7 +46,7 @@
      <section class="column w-full flex-auto justify-center">
       <form action="{{ url('users/post/register/process') }}" method="POST" onsubmit="PostRequest(event,this,MyFunc.call_back)" class="w-full bg-light max-w-500 align-center bg-transparent c-white column g-5">
             <div class="column w-full p-10 align-center g-10">
-              <img onclick="window.location.href='{{ url('/') }}'" src="{{ config('settings.site_logo') }}" class="w-quarter pc-pointer" alt="">
+              <img onclick="window.location.href='{{ url('/') }}'" src="{{ $logo }}" class="w-quarter pc-pointer" alt="">
           
             <span class="desc bold">Create an account</span>
               <span class="text-center opacity-06">Get started by entering your details in the inputs below</span>

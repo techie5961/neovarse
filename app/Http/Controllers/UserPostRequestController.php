@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class UserPostRequestController extends Controller
 {
@@ -203,7 +205,72 @@ class UserPostRequestController extends Controller
             'url' => url('users/dashboard')
         ]);
     }
-
+    // login
+    public function ForgotPassword(){
+       if(!DB::table('users')->where('email',request('email'))->exists()){
+        return response()->json([
+            'message' => 'User not found',
+            'status' => 'error'
+        ]);
+       }
+       if(DB::table('otp')->where('email',request('email'))->where('date','>=',Carbon::now()->subMinutes(10))->exists()){
+        return response()->json([
+            'message' => 'You already requested a code within the last 10 Minutes,check your email spam foleder if you did not see it or try again later',
+            'status' => 'error'
+        ]);
+       }
+        $otp=rand(100000,999999);
+        DB::table('otp')->insert([
+            'otp' => $otp,
+            'email' => request('email'),
+            'status' => 'active',
+            'date' => Carbon::now()
+        ]);
+        
+       $send=Mail::send('users.email',[
+                'otp' => $otp,
+                'email' => request('email')
+       ],function($email){
+        $email->to(request('email'))->subject('Password Reset');
+       });
+       if($send){
+        Session::put('reset_password',request('email'));
+        return response()->json([
+        'message' => 'Password reset link sent successfully',
+        'status' => 'success'
+        ]);
+       }else{
+        return response()->json([
+        'message' => 'Internal server error,please try again',
+        'status' => 'error'
+        ]);
+       }
+    }
+    // reset password
+    public function ResetPassword(){
+             if(!DB::table('otp')->where('otp',request('otp'))->where('email',request('email'))->where('status','active')->where('date','>=',Carbon::now()->subMinutes('10'))->exists()){
+           return response()->json([
+            'message' => 'Invalid reset link',
+            'status' => 'error'
+           ]);
+        }
+        if(!Hash::check(request('confirm'),Hash::make(request('new')))){
+                    return response()->json([
+                        'message' => 'New password and confirm password must match',
+                        'status' => 'error'
+                    ]);
+        }
+        DB::table('users')->where('email',request('email'))->update([
+                'password' => Hash::make(request('new'))
+        ]);
+        DB::table('otp')->where('otp',request('otp'))->where('email',request('email'))->where('status','active')->update([
+            'status' => 'used'
+        ]);
+        return response()->json([
+            'message' => 'Account password reset successfully',
+            'status' => 'success'
+        ]);
+    }
     // add bank
     public function AddBank(){
         DB::table('users')->where('id',Auth::guard('users')->user()->id)->update([

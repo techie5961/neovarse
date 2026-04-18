@@ -43,6 +43,15 @@ Route::get('voucher/vendors',[
 Route::get('login',[
     UsersDashboardController::class,'Login'
 ]);
+Route::get('forgot/password',[
+    UsersDashboardController::class,'ForgotPassword'
+]);
+Route::get('users/reset/password',[
+    UsersDashboardController::class,'ResetPassword'
+]);
+Route::get('users/email/link/success',[
+    UsersDashboardController::class,'EmailSuccess'
+]);
 Route::get('register',[
     UsersDashboardController::class,'Register'
 ]);
@@ -215,6 +224,12 @@ Route::prefix('users')->group(function(){
     ]);
         Route::post('login/process',[
             UserPostRequestController::class,'Login'
+        ]);
+        Route::post('forgot/password/process',[
+            UserPostRequestController::class,'ForgotPassword'
+        ]);
+        Route::post('reset/password/process',[
+            UserPostRequestController::class,'ResetPassword'
         ]);
         Route::post('add/bank/process',[
             UserPostRequestController::class,'AddBank'

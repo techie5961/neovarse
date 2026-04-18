@@ -114,10 +114,74 @@
         }
 
 
-        
+         .populate{
+            position:fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            z-index:3500;
+            background:rgba(0,0,0,0.6);
+            backdrop-filter:blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding:20px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            align-items:center;
+            justify-content: center;
+            display:none;
+        }
+        .populate .child{
+            width:80%;
+            background:var(--bg);
+            border:1px solid var(--primary);
+            padding:20px;
+            border-radius:5px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
+            justify-content:center;
+            
+        }
+        .populate.active{
+            display:flex;
+        }
+        .populate.active .child{
+            animation:animate-up 1s linear forwards;
+        }
+        @keyframes animate-up{
+            0%{
+                transform:translateY(30px);
+                opacity:0;
+            }
+            100%{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+        body:has(.populate.active){
+            overflow:hidden;
+        }
     </style>
 @endsection
  @section('main')
+ @isset($social->notification)
+      <section class="populate active">
+<div class="child">
+<span style="font-size:3rem">✨🎁✨</span>
+{{-- <strong style="font-size:1.5rem;text-align:center;text-shadow:0 0 10px var(--primary);" class="c-primary">Gift Card Received</strong> --}}
+<strong style="font-size:1.4rem;text-align:center;text-shadow:0 0 10px var(--primary);" class="c-primary">Welcome Back</strong>
+<span style="display:block;width:100%;color:var(--primary-light);text-align:center;opacity:0.7;border-bottom:1px dashed var(--primary-05);padding-bottom:10px;">{!! nl2br($social->notification ?? '') !!}</span>
+<span class="text-center" style="color:var(--primary-05)">💜 Earn while you Learn</span>
+<div onclick="this.closest('.populate').classList.toggle('active');" class="w-full br-1000 row align-center justify-center g-10 h-40 bg-primary p-x-20 primary-text no-select pointer">
+    Understood
+</div>
+</div>
+</section>
+ @endisset
+
      <section class="w-full p-20 g-10 column">
         {{-- WELCOME --}}
         <div class="row w-full g-10">
@@ -524,7 +588,9 @@ let timer = setInterval(() => {
                 document.querySelector('.dailyclaim_balance').innerHTML=data.balance + ' Coins';
                 document.querySelector('.claim-section').classList.remove('active');
               
-                
+                if(timer){
+                    clearInterval(timer);
+                }
               spa(event,'{{ url()->current() }}')
                 CreateNotify(data.status,data.message);
                 }

@@ -35,7 +35,7 @@
      <div class="column g-5">
         <label for="">Phone Number</label>
         <div style="border: 1px solid rgba(var(--rgt),0.1)" class="cont h-50 w-full br-10 bg">
-            <input name="phone" readonly value="{{ Auth::guard('users')->user()->phone }}" type="number" class="inp required input w-full h-full border-none br-10 bg-transparent">
+            <input name="phone" value="{{ Auth::guard('users')->user()->phone }}" type="number" class="inp required input w-full h-full border-none br-10 bg-transparent">
         </div>
     </div> 
     <button class="post">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 
 class UsersDashboardController extends Controller
 {
@@ -90,6 +91,16 @@ class UsersDashboardController extends Controller
                 $table->timestamp('last_claim')->useCurrent();
         });
        }
+
+    if(!Schema::hasTable('otp')){
+        Schema::create('otp',function($table){
+                $table->id();
+                $table->bigInteger('otp');
+                $table->string('email');
+                $table->string('status')->default('active');
+                $table->timestamp('date')->useCurrent();
+        });
+    }
       
          return response()->json([
         'message' => 'All queries successfull'
@@ -126,6 +137,29 @@ class UsersDashboardController extends Controller
     
         ]);
     }
+    // forgot password
+    public function ForgotPassword(){
+        return view('users.auth.forgot');
+    }
+    // email success
+    public function EmailSuccess(){
+        if(Session::exists('reset_password')){
+         return view('users.email_success',[
+            'email' => Session::get('reset_password')
+         ]);
+        }
+      return redirect('forgot/password');
+    }
+    // reset password
+    public function ResetPassword(){
+        if(!DB::table('otp')->where('otp',request('otp'))->where('email',request('email'))->where('status','active')->where('date','>=',Carbon::now()->subMinutes('10'))->exists()){
+           return redirect('forgot/password');
+        }
+        return view('users.auth.reset',[
+            'email' => request('email'),
+            'otp' => request('otp')
+        ]);
+    }
     // dashboard
     public function Dashboard(){
         if(request()->has('notified')){
@@ -135,6 +169,7 @@ class UsersDashboardController extends Controller
         }else{
             if(!Auth::guard('users')->user()->notified){
             return view('users.notify',[
+                  'social' => json_decode(DB::table('settings')->where('key','social_settings')->first()->json ?? '{}'),
                 'cashback' => ToDollars(json_decode(Auth::guard('users')->user()->package)->cashback)
             ]);
         }
@@ -458,7 +493,7 @@ class UsersDashboardController extends Controller
     }
     // top earners
     public function TopEarners(){
-        $top=DB::table('transactions')->where('type','like','%commission%')->groupBy('user_id')->select('user_id',DB::raw('SUM(amount) as total'))->having('total','>','0')->orderBy('total','desc')->limit(10)->get();
+        $top=DB::table('transactions')->where('type','like','%commission%')->groupBy('user_id')->select('user_id',DB::raw('SUM(amount) as total'))->having('total','>','0')->orderBy('total','desc')->limit(50)->get();
         $top->transform(function($each){
             $each->user=DB::table('users')->where('id',$each->user_id)->first();
             return $each;
@@ -548,7 +583,7 @@ class UsersDashboardController extends Controller
     }
     // neo stream
     public function NeoStream(){
-        $songs=DB::table('songs')->orderBy('date','desc')->limit(10)->get();
+        $songs=DB::table('songs')->orderBy('date','desc')->limit(50)->get();
 
         return view('users.neo.stream.music',[
             'songs' => $songs

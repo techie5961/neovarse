@@ -493,7 +493,8 @@ class UsersDashboardController extends Controller
     }
     // top earners
     public function TopEarners(){
-        $top=DB::table('transactions')->where('type','like','%commission%')->groupBy('user_id')->select('user_id',DB::raw('SUM(amount) as total'))->having('total','>','0')->orderBy('total','desc')->limit(50)->get();
+        $top=DB::table('transactions')->where('json->data->type','referral_commission')->select('user_id',DB::raw('SUM(amount) AS  total'))->groupBy('user_id')->orderBy('total','desc')->paginate(100);
+
         $top->transform(function($each){
             $each->user=DB::table('users')->where('id',$each->user_id)->first();
             return $each;

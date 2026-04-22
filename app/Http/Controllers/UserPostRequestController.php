@@ -308,6 +308,9 @@ class UserPostRequestController extends Controller
             'gaming_balance' => 'Game Wallet',
             'giftcard_balance' => 'Gift Card Wallet'
         ];
+        if($wallet == 'gaming_balance'){
+            $minimum_withdrawal=$finance->wallets->games->minimum;
+        }
 
             //check if wallet not selected
         if($wallet == ''){
